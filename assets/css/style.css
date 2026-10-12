@@ -224,10 +224,16 @@ a{color:inherit}
 .x-press .eyebrow{color:var(--gold-ink)}
 .x-press h3{margin-top:6px;font:var(--t-h2);letter-spacing:-.015em}
 .x-press__lead{margin-top:6px;max-width:62ch;color:var(--ink-2)}
+.x-reach{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--gap);margin:18px 0 6px;padding:16px 0;border-top:1px solid var(--rule-l);border-bottom:1px solid var(--rule-l);list-style:none}
+.x-reach li{display:flex;flex-direction:column;gap:4px;min-width:0}
+.x-reach b{font-family:var(--serif);font-weight:400;font-size:clamp(32px,3.4vw,46px);line-height:1;color:inherit}
+.x-reach span{font:var(--t-meta);color:var(--ink-2)}
+@media (max-width:720px){.x-reach{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:18px}}
 .x-logos{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px var(--gap);margin-top:14px;align-items:stretch}
 .x-logos li{display:flex;min-width:0}
 .x-logos a,.x-logos figure{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;min-width:0;min-height:44px;text-align:center;text-decoration:none}
 .x-logos figure{justify-content:flex-start}
+.x-press .x-logos figure{justify-content:center}
 .x-logos figcaption{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%;font:var(--t-meta);font-weight:400;color:var(--ink-2)}
 .x-logo{display:block;width:100%;max-width:200px;height:auto;aspect-ratio:440/144;opacity:.9;transition:opacity .2s}
 a:hover .x-logo,a:focus-visible .x-logo,a:focus .x-logo,.x-logos figure:hover .x-logo,.rec li:hover .x-logo{opacity:1}
