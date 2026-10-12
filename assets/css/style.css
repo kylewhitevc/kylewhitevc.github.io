@@ -105,8 +105,8 @@ a{color:inherit}
 
 #about{padding-top:clamp(24px,3vw,36px)}
 .about{align-items:stretch}
-.about__photo{margin:0;position:relative;min-height:420px}
-.about__photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 12%}
+.about__photo{margin:0;position:relative;min-height:340px}
+.about__photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:68% 45%}
 .about__copy{display:flex;flex-direction:column;justify-content:center}
 .about__kicker{color:var(--gold-ink);margin:0}
 .about .h2{margin:10px 0 16px;max-width:20ch}
