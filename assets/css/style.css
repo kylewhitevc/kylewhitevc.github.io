@@ -135,6 +135,8 @@ a{color:inherit}
 .talkline .meta{margin-right:14px}
 .talkline q{font:var(--t-h3)}
 .talkline i{font-style:normal;color:var(--gold);padding:0 .6em}
+#talks{padding-top:0}
+.nw{white-space:nowrap}
 .quote{padding-top:14px;border-top:1px solid var(--gold)}
 .quote blockquote{font:400 clamp(22px,2.3vw,28px)/1.25 var(--serif);letter-spacing:-.01em;max-width:30ch}
 .quote blockquote::before{content:"\201C";color:var(--gold-hi)}
@@ -255,7 +257,7 @@ a:hover .x-logo,a:focus-visible .x-logo,a:focus .x-logo,.x-logos figure:hover .x
 .talk h3{grid-column:span 5;font:var(--t-h3);font-size:clamp(22px,2vw,26px)}
 .talk p{grid-column:span 6;color:var(--ink-2)}
 .formats{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:8px 32px;margin-top:14px}
-.formats .fmt{font-weight:500}
+.formats .fmt{font-weight:500;display:flex;flex-wrap:wrap;row-gap:4px;min-width:0;max-width:100%}
 .formats .fmt i{font-style:normal;color:var(--gold-ink);padding:0 .5em}
 .rec{border-top:1px solid var(--ink);row-gap:0}
 .rec li{padding:14px 0;border-bottom:1px solid var(--rule-l);font:var(--t-small);color:var(--ink-2)}
@@ -342,6 +344,10 @@ a:hover .x-logo,a:focus-visible .x-logo,a:focus .x-logo,.x-logos figure:hover .x
   .rec .x-logo--blank{display:none}
   .x-logos{grid-template-columns:repeat(2,minmax(0,1fr))}
   .x-logos figcaption{white-space:normal;text-overflow:clip;min-height:2.7em}
+  .talkline p{flex-direction:column;align-items:flex-start;gap:6px}
+  .talkline i{display:none}
+  .formats .fmt{column-gap:8px}
+  .formats .fmt i{visibility:hidden;width:0;padding:0;overflow:hidden}
   .nav__right{gap:8px}
   .nav__toggle{display:inline-flex}
   .nav .nav__links{display:none;position:absolute;top:56px;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;padding:4px var(--pad) 12px;background:var(--ink);border-bottom:1px solid var(--rule-d)}

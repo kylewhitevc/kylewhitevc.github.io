@@ -76,12 +76,12 @@ var SHORT_BIO = "Kyle White is a Youngstown-based venture investor and accelerat
           pointRadius: pts.map(function (p, k) { return s.labels || k === 0 || k === last ? 3.5 : 0; }) }] },
         options: {
 
-          layout: { padding: { top: 22, left: 30, right: 6 } },
+          layout: { padding: { top: 28, left: 30, right: 8 } },
           scales: {
             x: { type: "linear", min: pts[0].x, max: pts[last].x,
               afterBuildTicks: function (ax) { if (s.ticks) ax.ticks = s.ticks.map(function (v) { return { value: v }; }); },
               ticks: { stepSize: 1, autoSkip: false, callback: function (v) { return Number.isInteger(v) ? String(v) : ""; } } },
-            y: { display: false, min: 0 }
+            y: { display: false, min: 0, grace: "12%" }
           },
           plugins: {
             legend: { display: false },
