@@ -12,7 +12,7 @@
   --t-small:400 14px/1.45 var(--sans);
   --t-meta:500 13px/1.35 var(--sans);
   --max:1180px; --pad:clamp(16px,3.4vw,32px); --gap:24px; --sec:clamp(36px,4.6vw,60px);
-  --r:6px;
+  --r:0;
 
   --chart-ink:#CFA25A; --chart-ink-2:#A7A39B; --chart-ink-3:rgba(245,242,236,.3);
   --chart-grid:rgba(245,242,236,.08); --chart-reference:rgba(245,242,236,.22); --chart-muted:rgba(245,242,236,.3);
@@ -137,7 +137,7 @@ a{color:inherit}
 .stage-card__role{font:var(--t-meta);color:var(--gold-hi)}
 .stage-card p{font:var(--t-small);color:var(--paper-2)}
 .stage-card .stage-card__para{padding-left:12px;border-left:2px solid var(--gold);color:var(--paper)}
-.talkline{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 24px;margin-top:var(--gap);padding:12px 0;border-top:1px solid var(--rule-d);border-bottom:1px solid var(--rule-d)}
+.talkline{display:flex;flex-wrap:wrap;align-items:center;justify-content:flex-end;gap:12px 24px;margin-top:var(--gap);padding:12px 0;border-top:1px solid var(--rule-d);border-bottom:1px solid var(--rule-d)}
 .talkline p{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 0}
 .talkline .meta{margin-right:14px}
 .talkline q{font:var(--t-h3)}
