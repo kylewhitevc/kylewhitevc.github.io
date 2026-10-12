@@ -341,10 +341,11 @@ a:hover .x-logo,a:focus-visible .x-logo,a:focus .x-logo,.x-logos figure:hover .x
   .rec .c-4,.x-built .c-4{grid-column:1/-1}
   .rec .x-logo--blank{display:none}
   .x-logos{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .x-logos figcaption{white-space:normal;text-overflow:clip;min-height:2.7em}
   .nav__right{gap:8px}
   .nav__toggle{display:inline-flex}
-  .nav__links{display:none;position:absolute;top:56px;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;padding:4px var(--pad) 12px;background:var(--ink);border-bottom:1px solid var(--rule-d)}
-  .nav__links.is-open{display:flex}
+  .nav .nav__links{display:none;position:absolute;top:56px;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;padding:4px var(--pad) 12px;background:var(--ink);border-bottom:1px solid var(--rule-d)}
+  .nav .nav__links.is-open{display:flex}
   .nav__links li+li{border-top:1px solid var(--rule-d)}
   .nav ul a:not(.btn){display:flex;width:100%;font-size:16px;color:var(--paper)}
   .speak{grid-template-columns:1fr}

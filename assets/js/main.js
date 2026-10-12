@@ -18,9 +18,9 @@ var CHART_DATA = {
   },
 
   btf: {
-    start: ["2018-01", 260], ath: ["2026-01", 1749], startNote: "Token sale",
+    start: ["2018-01", 260], ath: ["2026-10", 1749], startNote: "Token sale",
     months: ["2020-06", 850], labels: ["$260M", "$850M", "$1.75B"],
-    dates: ["Jan 2018", "Jun 2020", "2026"], step: 2
+    dates: ["Jan 2018", "Jun 2020", "Oct 2026"], ticks: [2020, 2022, 2024]
   }
 };
 
@@ -79,7 +79,8 @@ var SHORT_BIO = "Kyle White is a Youngstown-based venture investor and accelerat
           layout: { padding: { top: 22, left: 30, right: 6 } },
           scales: {
             x: { type: "linear", min: pts[0].x, max: pts[last].x,
-              ticks: { stepSize: s.step || 1, autoSkip: false, callback: function (v) { return Number.isInteger(v) ? String(v) : ""; } } },
+              afterBuildTicks: function (ax) { if (s.ticks) ax.ticks = s.ticks.map(function (v) { return { value: v }; }); },
+              ticks: { stepSize: 1, autoSkip: false, callback: function (v) { return Number.isInteger(v) ? String(v) : ""; } } },
             y: { display: false, min: 0 }
           },
           plugins: {
@@ -91,7 +92,7 @@ var SHORT_BIO = "Kyle White is a Youngstown-based venture investor and accelerat
               display: isEnd, clamp: true,
 
               align: function (ctx) { return ctx.dataIndex === last ? 180 : "top"; },
-              offset: function (ctx) { return ctx.dataIndex === 0 ? 12 : 8; },
+              offset: function (ctx) { return ctx.dataIndex === 0 ? 12 : 10; },
               backgroundColor: function (ctx) { return ctx.dataIndex === 0 ? "rgba(11,31,58,.92)" : null; },
               borderRadius: 3,
               padding: function (ctx) { return ctx.dataIndex === 0 ? { top: 2, bottom: 2, left: 4, right: 4 } : 0; },
