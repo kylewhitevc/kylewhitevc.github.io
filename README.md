@@ -1,10 +1,10 @@
 # kylewhitevc.github.io
 
-Personal site of Kyle White, venture investor and accelerator builder from Youngstown, Ohio.
+Kyle White, venture investor, mentor, and accelerator builder from Youngstown, Ohio.
 
 **[kylewhitevc.github.io](https://kylewhitevc.github.io/)**
 
-For speaking, podcast, judging or media requests, use the booking form on the site.
+For speaking, podcast, judging, or media requests, use the booking form on the site.
 
 ## Structure
 
