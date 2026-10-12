@@ -68,7 +68,8 @@ var SHORT_BIO = "Kyle White is a Youngstown-based venture investor and accelerat
           backgroundColor: Site.wash("var(--chart-ink)", 0.22),
           pointRadius: pts.map(function (p, k) { return k === 0 || k === last ? 3.5 : 0; }) }] },
         options: {
-          layout: { padding: { top: 22, left: 4, right: 4 } },
+
+          layout: { padding: { top: 22, left: 30, right: 6 } },
           scales: {
             x: { type: "linear", min: pts[0].x, max: pts[last].x,
               ticks: { stepSize: 1, autoSkip: false, callback: function (v) { return Number.isInteger(v) ? String(v) : ""; } } },
@@ -208,7 +209,6 @@ var SHORT_BIO = "Kyle White is a Youngstown-based venture investor and accelerat
     .catch(function () {});
   }
 
-  if (navigator.webdriver) return;
   var started = false;
   function start() { if (started) return; started = true; setTimeout(run, 0); }
   var score = document.getElementById("score");
@@ -219,6 +219,5 @@ var SHORT_BIO = "Kyle White is a Youngstown-based venture investor and accelerat
     }, { rootMargin: "400px 0px" });
     io.observe(score);
   }
-  if (document.readyState === "complete") watch();
-  else window.addEventListener("load", watch);
+  watch();
 })();
