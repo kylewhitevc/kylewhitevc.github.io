@@ -15,6 +15,12 @@ var CHART_DATA = {
   eth: {
     start: ["2020-08-06", 394.77], ath: ["2025-08-24", 4957], startLabel: "$394.77", athLabel: "ATH $4,957",
     months: ["2020-08",433.79,"2020-09",359.83,"2020-10",386.46,"2020-11",616.66,"2020-12",736.42,"2021-01",1312.55,"2021-02",1419.18,"2021-03",1919.37,"2021-04",2772.42,"2021-05",2706.15,"2021-06",2275.68,"2021-07",2531.05,"2021-08",3429.2,"2021-09",3000.61,"2021-10",4287.21,"2021-11",4630.26,"2021-12",3676.23,"2022-01",2686.94,"2022-02",2920.95,"2022-03",3281.51,"2022-04",2726.66,"2022-05",1941.9,"2022-06",1071.01,"2022-07",1678.12,"2022-08",1554.1,"2022-09",1328.72,"2022-10",1572.69,"2022-11",1294.46,"2022-12",1196.13,"2023-01",1585.33,"2023-02",1605.23,"2023-03",1821.52,"2023-04",1870.09,"2023-05",1873.63,"2023-06",1933.79,"2023-07",1856.14,"2023-08",1645.76,"2023-09",1670.89,"2023-10",1814.67,"2023-11",2051.96,"2023-12",2281.87,"2024-01",2283.14,"2024-02",3340.09,"2024-03",3645.29,"2024-04",3014.05,"2024-05",3762.29,"2024-06",3438.16,"2024-07",3232.74,"2024-08",2513.01,"2024-09",2602.23,"2024-10",2518.61,"2024-11",3703.6,"2024-12",3337.78,"2025-01",3300.99,"2025-02",2237.59,"2025-03",1822.43,"2025-04",1793.61,"2025-05",2528.06,"2025-06",2485.47,"2025-07",3698.39]
+  },
+
+  btf: {
+    start: ["2018-01", 260], ath: ["2026-01", 1749], startNote: "Token sale",
+    months: ["2020-06", 850], labels: ["$260M", "$850M", "$1.75B"],
+    dates: ["Jan 2018", "Jun 2020", "2026"], step: 2
   }
 };
 
@@ -60,33 +66,40 @@ var SHORT_BIO = "Kyle White is a Youngstown-based venture investor and accelerat
     for (var i = 0; i < s.months.length; i += 2) pts.push({ x: toYear(s.months[i]), y: s.months[i + 1], d: s.months[i] });
     pts.push({ x: toYear(s.ath[0]), y: s.ath[1], d: s.ath[0] });
     var last = pts.length - 1;
-    function isEnd(ctx) { return ctx.dataIndex === 0 || ctx.dataIndex === last; }
+
+    function isEnd(ctx) { return !!s.labels || ctx.dataIndex === 0 || ctx.dataIndex === last; }
     whenVisible(cv, function () {
       new Chart(cv, {
         type: "line",
         data: { datasets: [{ label: cv.dataset.built.toUpperCase(), data: pts, fill: true,
           backgroundColor: Site.wash("var(--chart-ink)", 0.22),
-          pointRadius: pts.map(function (p, k) { return k === 0 || k === last ? 3.5 : 0; }) }] },
+          pointRadius: pts.map(function (p, k) { return s.labels || k === 0 || k === last ? 3.5 : 0; }) }] },
         options: {
 
           layout: { padding: { top: 22, left: 30, right: 6 } },
           scales: {
             x: { type: "linear", min: pts[0].x, max: pts[last].x,
-              ticks: { stepSize: 1, autoSkip: false, callback: function (v) { return Number.isInteger(v) ? String(v) : ""; } } },
+              ticks: { stepSize: s.step || 1, autoSkip: false, callback: function (v) { return Number.isInteger(v) ? String(v) : ""; } } },
             y: { display: false, min: 0 }
           },
           plugins: {
             legend: { display: false },
-            tooltip: { callbacks: { title: function (items) { return items[0].raw.d; }, label: function (ctx) { return money(ctx.raw.y); } } },
+            tooltip: { callbacks: {
+              title: function (items) { return s.dates ? s.dates[items[0].dataIndex] : items[0].raw.d; },
+              label: function (ctx) { return s.labels ? s.labels[ctx.dataIndex] : money(ctx.raw.y); } } },
             datalabels: Object.assign({}, Site.labels.points, {
               display: isEnd, clamp: true,
 
-              align: function (ctx) { return ctx.dataIndex === 0 ? "top" : 180; },
+              align: function (ctx) { return ctx.dataIndex === last ? 180 : "top"; },
               offset: function (ctx) { return ctx.dataIndex === 0 ? 12 : 8; },
               backgroundColor: function (ctx) { return ctx.dataIndex === 0 ? "rgba(11,31,58,.92)" : null; },
               borderRadius: 3,
               padding: function (ctx) { return ctx.dataIndex === 0 ? { top: 2, bottom: 2, left: 4, right: 4 } : 0; },
-              formatter: function (v, ctx) { return ctx.dataIndex === 0 ? s.startLabel : s.athLabel; }
+              formatter: function (v, ctx) {
+                var k = ctx.dataIndex;
+                if (s.labels) return k === 0 && s.startNote ? s.labels[0] + "\n" + s.startNote : s.labels[k];
+                return k === 0 ? s.startLabel : s.athLabel;
+              }
             })
           }
         }
