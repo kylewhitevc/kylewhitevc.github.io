@@ -2,100 +2,141 @@
 <html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Rustproof Ventures · Physical AI for the industrial heartland</title>
-<meta name="description" content="Rustproof Ventures backs pre-seed and seed founders making industrial machines autonomous. Based in Youngstown, Ohio.">
+<meta name="description" content="Rustproof Ventures backs pre-seed and seed founders who make America's existing industrial machines autonomous. Youngstown, Ohio.">
 <meta property="og:title" content="Rustproof Ventures">
 <meta property="og:description" content="The Rust Belt built America's machines. We back the founders making them autonomous and built to last.">
 <meta property="og:image" content="https://kylewhitevc.github.io/rustproof/hero.jpg">
 <link rel="icon" href="mark.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;600;700&family=Inter:wght@400;500;600&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;600;700&family=Inter:wght@400;500;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&display=swap" rel="stylesheet">
 <style>
-:root{--obs:#0C0C0D;--gold:#C9A54C;--bone:#F3EEE3;--steel:#3A3D42;--mut:#8C877C;--line:rgba(201,165,76,.28);--soft:rgba(243,238,227,.08)}
+:root{--obs:#0C0C0D;--gold:#C9A54C;--bone:#F3EEE3;--steel:#3A3D42;--mut:#9A958A;--body:#D2CBBB;--line:rgba(201,165,76,.26);--soft:rgba(243,238,227,.08)}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{font-variant-numeric:lining-nums;font-feature-settings:'lnum' 1;background:var(--obs);color:var(--bone);font-family:Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body{background:var(--obs);color:var(--bone);font-family:Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden;font-variant-numeric:lining-nums}
 a{color:inherit;text-decoration:none}
-.wrap{max-width:1120px;margin:0 auto;padding:0 32px}
-.eyebrow{font:600 11px/1 Inter;letter-spacing:.24em;text-transform:uppercase;color:var(--gold)}
-.btn{display:inline-flex;align-items:center;gap:10px;padding:15px 24px;font:600 12px Inter;letter-spacing:.12em;text-transform:uppercase;border-radius:2px;transition:all .2s}
-.btn-gold{background:var(--gold);color:var(--obs)}.btn-gold:hover{background:#dcbb64;transform:translateY(-1px)}
-.btn-ghost{border:1px solid rgba(243,238,227,.35);color:var(--bone)}.btn-ghost:hover{border-color:var(--gold);color:var(--gold)}
+.wrap{max-width:1180px;margin:0 auto;padding:0 40px}
+.eyebrow{font:600 11px/1 Inter;letter-spacing:.26em;text-transform:uppercase;color:var(--gold)}
+.serif{font-family:'Source Serif 4',Georgia,serif}
+.btn{display:inline-flex;align-items:center;gap:12px;padding:16px 26px;font:600 12px Inter;letter-spacing:.14em;text-transform:uppercase;border-radius:1px;transition:all .25s}
+.btn-gold{background:var(--gold);color:var(--obs)}.btn-gold:hover{background:#DDBD66;transform:translateY(-1px)}
+.btn-ghost{border:1px solid rgba(243,238,227,.4);color:var(--bone)}.btn-ghost:hover{border-color:var(--gold);color:var(--gold)}
+.btn .ar{transition:transform .25s}.btn:hover .ar{transform:translateX(4px)}
+
 /* nav */
-nav{position:fixed;top:0;left:0;right:0;z-index:20;transition:background .3s,border-color .3s;border-bottom:1px solid transparent}
-nav{background:linear-gradient(180deg,rgba(12,12,13,.55),rgba(12,12,13,0))}nav.solid{background:rgba(12,12,13,.92);backdrop-filter:blur(10px);border-color:var(--line)}
-nav .wrap{display:flex;align-items:center;justify-content:space-between;height:82px}
-nav img{height:42px;display:block}
-nav ul{display:flex;gap:34px;list-style:none;align-items:center}
-nav ul a{font-size:13px;font-weight:500;color:var(--bone);letter-spacing:.02em;text-shadow:0 1px 8px rgba(0,0,0,.55)}nav ul a:hover{color:var(--gold)}
-nav .btn{padding:11px 18px}
+nav{position:fixed;inset:0 0 auto 0;z-index:30;background:linear-gradient(180deg,rgba(12,12,13,.7),rgba(12,12,13,0));transition:background .35s,border-color .35s;border-bottom:1px solid transparent}
+nav.solid{background:rgba(12,12,13,.94);backdrop-filter:blur(12px);border-color:var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:84px}
+nav img{height:40px;display:block}
+nav ul{display:flex;gap:36px;list-style:none;align-items:center}
+nav ul a{font:500 13px Inter;color:var(--bone);letter-spacing:.02em;text-shadow:0 1px 10px rgba(0,0,0,.6)}nav ul a:hover{color:var(--gold)}
+nav .btn{padding:12px 18px;text-shadow:none}
+
 /* hero */
-.hero{position:relative;min-height:100vh;display:flex;align-items:flex-end;padding-bottom:110px;
- background:linear-gradient(90deg,rgba(12,12,13,.9) 0%,rgba(12,12,13,.6) 40%,rgba(12,12,13,.08) 72%),linear-gradient(0deg,var(--obs) 0%,rgba(12,12,13,0) 38%),url(hero.jpg) center/cover no-repeat}
-.hero h1{font:600 clamp(42px,6.6vw,84px)/1.0 Syne;letter-spacing:-.025em;max-width:860px;margin:22px 0 26px}
-.hero h1 em{font-style:normal;color:var(--gold)}
-.hero p{font:400 21px/1.55 'Source Serif 4',Georgia,serif;color:#DCD5C5;max-width:580px}
-.hero .ctas{display:flex;gap:14px;margin-top:40px;flex-wrap:wrap}
-.scroll{position:absolute;bottom:34px;left:50%;transform:translateX(-50%);font-size:10px;letter-spacing:.3em;color:#B9B3A6}
-/* sections */
-section.s{padding:130px 0;border-top:1px solid var(--soft)}
-.head{display:grid;grid-template-columns:1fr 1.25fr;gap:60px;align-items:end;margin-bottom:64px}
-.head h2{font:600 clamp(32px,4vw,50px)/1.05 Syne;letter-spacing:-.02em;margin-top:18px}
-.head p{font:400 18px/1.65 'Source Serif 4',serif;color:#CFC8B8}
-.nums{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line)}
-.num{padding:38px 30px 10px 30px}.num:first-child{padding-left:0}.num+.num{border-left:1px solid var(--line)}
-.num b{font:600 clamp(48px,5.5vw,72px)/1 Syne;color:var(--gold);letter-spacing:-.02em}
-.num span{display:block;margin-top:16px;font-size:15px;line-height:1.5;color:#CFC8B8;max-width:260px}
-.src{margin-top:26px;font-size:12px;color:#9A958A;letter-spacing:.04em}
-/* verticals */
-.vgrid{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
-.v{background:var(--obs);padding:34px 24px 38px;min-height:250px;display:flex;flex-direction:column;transition:background .25s}
-.v:hover{background:#151513}
-.v .i{font:600 12px Syne;color:var(--gold)}
-.v h3{font:600 20px/1.15 Syne;margin:56px 0 12px}
-.v p{font-size:14px;line-height:1.55;color:var(--mut)}
-.split{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);margin-top:44px}
-.split>div{background:var(--obs);padding:36px 34px}
-.split h4{margin-bottom:18px}
-.split li{list-style:none;font:400 17px/1.5 'Source Serif 4',serif;padding:10px 0;border-bottom:1px solid var(--soft);color:#DCD5C5}
-.split li:last-child{border:0}
-.pass li{color:var(--mut)}
-/* approach */
-.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:28px}
-.step{border-top:2px solid var(--gold);padding-top:26px}
-.step .k{font:600 13px Syne;color:var(--gold)}
-.step h3{font:600 21px/1.2 Syne;margin:18px 0 12px}
-.step p{font-size:14.5px;line-height:1.6;color:#B9B3A6}
-.tests{margin-top:80px;display:grid;grid-template-columns:repeat(7,1fr);border:1px solid var(--line)}
-.t{padding:22px 16px;border-left:1px solid var(--line)}.t:first-child{border-left:0}
-.t b{display:block;font:600 11px Syne;color:var(--gold);margin-bottom:10px}
-.t span{font-size:13px;line-height:1.45;color:#E2DCCD}
-/* gp */
-.gp{display:grid;grid-template-columns:.9fr 1.1fr;gap:70px;align-items:start}
-.gp h2{font:600 clamp(32px,4vw,50px)/1.05 Syne;margin:18px 0 0}
-.gp .role{color:var(--mut);margin-top:12px;font-size:14px}
-.gp p{font:400 18px/1.7 'Source Serif 4',serif;color:#CFC8B8;margin-bottom:18px}
-.creds{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--line);margin-top:30px}
-.cred{padding:22px 18px 0 0}.cred+.cred{padding-left:18px;border-left:1px solid var(--line)}
-.cred b{font:600 30px Syne;color:var(--bone)}.cred span{display:block;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--mut);margin-top:8px;line-height:1.5}
-/* cta */
-.cta{position:relative;padding:150px 0;text-align:center;border-top:1px solid var(--soft);background:radial-gradient(ellipse at 50% 100%,rgba(201,165,76,.14),transparent 62%)}
-.cta img{width:62px;margin-bottom:34px}
-.cta h2{font:600 clamp(36px,5vw,64px)/1.03 Syne;letter-spacing:-.02em;max-width:820px;margin:0 auto 22px}
-.cta p{font:400 19px/1.6 'Source Serif 4',serif;color:#CFC8B8;max-width:560px;margin:0 auto}
-.cta .ctas{display:flex;gap:14px;justify-content:center;margin-top:42px;flex-wrap:wrap}
-footer{border-top:1px solid var(--line);padding:34px 0 46px}
+.hero{position:relative;min-height:100vh;display:flex;align-items:flex-end;padding-bottom:120px;
+ background:linear-gradient(90deg,rgba(12,12,13,.92) 0%,rgba(12,12,13,.62) 38%,rgba(12,12,13,.05) 70%),linear-gradient(0deg,var(--obs) 0%,rgba(12,12,13,0) 34%),url(hero.jpg) 62% center/cover no-repeat}
+.hero h1{font:600 clamp(44px,6.8vw,92px)/.98 Syne;letter-spacing:-.03em;max-width:900px;margin:26px 0 28px}
+.hero p{font:300 clamp(20px,2vw,25px)/1.45 'Source Serif 4',serif;color:#E4DDCD;max-width:600px}
+.hero .ctas{display:flex;gap:14px;margin-top:44px;flex-wrap:wrap}
+.hero .loc{position:absolute;right:40px;bottom:46px;font:500 11px Inter;letter-spacing:.24em;color:#CFC8B8;text-transform:uppercase}
+
+/* route spine: the Path R line runs the length of the page */
+main{position:relative}
+.spine{position:absolute;left:40px;top:0;bottom:0;width:2px;pointer-events:none}
+.spine:before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(180deg,rgba(201,165,76,.45) 0 3px,transparent 3px 11px)}
+.spine i{position:absolute;left:0;top:0;width:2px;background:var(--gold);height:0;box-shadow:0 0 12px rgba(201,165,76,.5)}
+.sec{position:relative;padding:150px 0 150px 92px;border-top:1px solid var(--soft)}
+.node{position:absolute;left:-7px;top:154px;width:16px;height:16px;border-radius:50%;border:2px solid var(--gold);background:var(--obs)}
+.node.fill{background:var(--gold)}
+.sec .eyebrow{display:block;margin-bottom:26px}
+
+/* manifesto */
+.big{font:400 clamp(38px,5vw,68px)/1.04 'Source Serif 4',serif;letter-spacing:-.02em;max-width:980px}
+.big em{font-style:italic;color:var(--gold)}
+.essay{display:grid;grid-template-columns:1fr 1fr;gap:56px;margin-top:64px;max-width:980px}
+.essay p{font:400 18.5px/1.72 'Source Serif 4',serif;color:var(--body)}
+.essay p b{color:var(--bone);font-weight:600}
+
+.nums{display:grid;grid-template-columns:repeat(4,1fr);margin-top:90px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.num{padding:40px 28px 36px}.num:first-child{padding-left:0}.num+.num{border-left:1px solid var(--line)}
+.num b{display:block;font:600 clamp(40px,4.4vw,62px)/1 Syne;color:var(--gold);letter-spacing:-.02em}
+.num span{display:block;margin-top:16px;font-size:14.5px;line-height:1.5;color:var(--body)}
+.src{margin-top:22px;font-size:12px;line-height:1.6;color:#8A857A}
+
+/* convictions */
+.conv{margin-top:20px}
+.c{display:grid;grid-template-columns:120px 1fr 1.1fr;gap:40px;padding:48px 0;border-top:1px solid var(--line);align-items:start}
+.c:last-child{border-bottom:1px solid var(--line)}
+.c .k{font:300 64px/0.9 'Source Serif 4',serif;color:var(--gold);font-style:italic}
+.c h3{font:600 clamp(26px,2.8vw,36px)/1.08 Syne;letter-spacing:-.015em}
+.c p{font:400 17.5px/1.7 'Source Serif 4',serif;color:var(--body)}
+.c p+p{margin-top:14px}
+.h2{font:600 clamp(34px,4.2vw,56px)/1.02 Syne;letter-spacing:-.025em;max-width:820px}
+.lede{font:400 19px/1.65 'Source Serif 4',serif;color:var(--body);max-width:640px;margin-top:22px}
+
+/* why now */
+.forces{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:64px}
+.f{background:var(--obs);padding:40px 34px 44px}
+.f .eyebrow{margin-bottom:22px}
+.f h4{font:600 22px/1.2 Syne;margin-bottom:14px}
+.f p{font-size:15px;line-height:1.65;color:#BDB7A9}
+
+/* focus */
+.vlist{margin-top:60px;border-top:1px solid var(--line)}
+.vrow{display:grid;grid-template-columns:70px 1fr 1.2fr;gap:30px;padding:30px 0;border-bottom:1px solid var(--line);align-items:baseline;transition:padding .3s,background .3s}
+.vrow:hover{padding-left:14px;background:linear-gradient(90deg,rgba(201,165,76,.07),transparent 70%)}
+.vrow .i{font:600 13px Syne;color:var(--gold)}
+.vrow h3{font:600 clamp(22px,2.4vw,30px)/1.1 Syne;letter-spacing:-.01em}
+.vrow p{font:400 17px/1.55 'Source Serif 4',serif;color:var(--body)}
+.pass{margin-top:30px;font:400 16px/1.6 'Source Serif 4',serif;color:var(--mut)}
+.pass b{color:var(--bone);font:600 11px Inter;letter-spacing:.2em;text-transform:uppercase;margin-right:14px}
+
+/* 1977 */
+.y77{position:relative;padding:170px 0;border-top:1px solid var(--soft);overflow:hidden}
+.y77 .wrap{padding-left:132px}.y77 .date{font:600 clamp(80px,13vw,190px)/.85 Syne;letter-spacing:-.04em;color:transparent;-webkit-text-stroke:1.5px rgba(201,165,76,.65)}
+.y77 .grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;margin-top:56px;max-width:1000px}
+.y77 p{font:400 19px/1.72 'Source Serif 4',serif;color:var(--body)}
+.y77 .close{font:400 clamp(26px,2.6vw,34px)/1.3 'Source Serif 4',serif;color:var(--bone)}
+.y77 .close em{color:var(--gold)}
+
+/* GP */
+.gp{display:grid;grid-template-columns:.85fr 1.15fr;gap:72px}
+.gp .role{color:var(--mut);margin-top:14px;font-size:14px;letter-spacing:.02em}
+.gp p{font:400 18px/1.72 'Source Serif 4',serif;color:var(--body);margin-bottom:18px}
+.creds{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line);margin-top:36px}
+.cred{padding:24px 18px 0 0}.cred+.cred{padding-left:18px;border-left:1px solid var(--line)}
+.cred b{font:600 32px Syne}.cred span{display:block;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--mut);margin-top:10px;line-height:1.5}
+.help{margin-top:30px;border-top:1px solid var(--line)}
+.help div{display:grid;grid-template-columns:190px 1fr;gap:24px;padding:18px 0;border-bottom:1px solid var(--soft)}
+.help b{font:600 12px Inter;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);padding-top:4px}
+.help span{font:400 16.5px/1.55 'Source Serif 4',serif;color:var(--body)}
+
+/* CTA */
+.cta{position:relative;padding:170px 0 160px;text-align:center;border-top:1px solid var(--soft);background:radial-gradient(ellipse at 50% 110%,rgba(201,165,76,.16),transparent 60%)}
+.cta img{width:64px;margin-bottom:36px}
+.cta h2{font:600 clamp(40px,5.6vw,76px)/1 Syne;letter-spacing:-.03em;max-width:860px;margin:0 auto 24px}
+.cta p{font:400 19px/1.6 'Source Serif 4',serif;color:var(--body);max-width:560px;margin:0 auto}
+.cta .ctas{display:flex;gap:14px;justify-content:center;margin-top:44px;flex-wrap:wrap}
+footer{border-top:1px solid var(--line);padding:36px 0 48px}
 footer .wrap{display:flex;justify-content:space-between;gap:40px;align-items:flex-start}
-footer img{height:34px}
-footer small{display:block;max-width:620px;font-size:11px;line-height:1.7;color:#66635c}
-.reveal{opacity:0;transform:translateY(22px);transition:opacity .8s ease,transform .8s ease}.reveal.in{opacity:1;transform:none}
-@media(max-width:900px){nav ul li:not(:last-child){display:none}.head,.gp{grid-template-columns:1fr;gap:24px}.vgrid{grid-template-columns:1fr 1fr}.v{min-height:0}.v h3{margin-top:28px}
- .steps{grid-template-columns:1fr 1fr}.tests{grid-template-columns:1fr 1fr}.t{border-left:0;border-top:1px solid var(--line)}.nums{grid-template-columns:1fr}.num+.num{padding-left:0;border-left:0;border-top:1px solid var(--line)}
- .split{grid-template-columns:1fr}footer .wrap{flex-direction:column}.wrap{padding:0 22px}section.s{padding:90px 0}.hero{background-position:70% center}}
+footer img{height:32px}
+footer small{display:block;max-width:640px;font-size:11.5px;line-height:1.7;color:#7E796F}
+
+.rv{opacity:0;transform:translateY(26px);transition:opacity .9s ease,transform .9s ease}.rv.in{opacity:1;transform:none}
+@media(max-width:960px){
+ nav ul li:not(:last-child){display:none}.wrap{padding:0 22px}
+ .spine{left:22px}.sec{padding:100px 0 100px 40px}.y77{padding:100px 0}.y77 .wrap{padding-left:62px}.node{top:104px}
+ .essay,.gp,.y77 .grid{grid-template-columns:1fr;gap:26px}
+ .nums{grid-template-columns:1fr 1fr}.num{padding:28px 18px}.num:nth-child(3){padding-left:0;border-left:0}.num:nth-child(n+3){border-top:1px solid var(--line)}
+ .c{grid-template-columns:1fr;gap:16px}.forces{grid-template-columns:1fr}
+ .vrow{grid-template-columns:44px 1fr;gap:14px}.vrow p{grid-column:2}
+ .help div{grid-template-columns:1fr;gap:6px}footer .wrap{flex-direction:column}
+ .hero{background-position:72% center}.hero .loc{display:none}}
 </style></head>
 <body>
 <nav id="nav"><div class="wrap">
   <a href="#top"><img src="logo.png" alt="Rustproof Ventures"></a>
-  <ul><li><a href="#thesis">Thesis</a></li><li><a href="#focus">Focus</a></li><li><a href="#approach">Approach</a></li><li><a href="#gp">Team</a></li>
+  <ul><li><a href="#thesis">Thesis</a></li><li><a href="#convictions">Convictions</a></li><li><a href="#focus">Focus</a></li><li><a href="#gp">Team</a></li>
   <li><a class="btn btn-gold" href="room/">Investor Room</a></li></ul>
 </div></nav>
 
@@ -103,68 +144,93 @@ footer small{display:block;max-width:620px;font-size:11px;line-height:1.7;color:
   <div class="eyebrow">Physical AI for the industrial heartland</div>
   <h1>The Rust Belt built America's machines.</h1>
   <p>We back the founders making them autonomous and built to last.</p>
-  <div class="ctas"><a class="btn btn-gold" href="room/">Investor Room &nbsp;→</a><a class="btn btn-ghost" href="mailto:kpwhite330@gmail.com?subject=Founder%20introduction%20-%20Rustproof%20Ventures">Founders, get in touch</a></div>
-</div><div class="scroll">SCROLL</div></header>
+  <div class="ctas"><a class="btn btn-gold" href="room/">Investor Room <span class="ar">→</span></a><a class="btn btn-ghost" href="mailto:kpwhite330@gmail.com?subject=Founder%20introduction%20-%20Rustproof%20Ventures">Founders, get in touch</a></div>
+</div><div class="loc">Youngstown, Ohio · 41.10° N</div></header>
 
-<section class="s" id="thesis"><div class="wrap">
-  <div class="head reveal"><div><div class="eyebrow">01 · Thesis</div><h2>Industry needs autonomy. The work can't wait for hiring.</h2></div>
-  <p>Farms, plants, yards and mines run the physical economy, and they are short of people. The perception, compute and AI to automate the equipment they already own is finally practical. Rustproof writes the first institutional check to the founders building it.</p></div>
-  <div class="nums reveal">
-    <div class="num"><b>3.8M</b><span>US manufacturing workers needed between 2024 and 2033</span></div>
-    <div class="num"><b>1.9M</b><span>Of those roles could go unfilled without new solutions</span></div>
-    <div class="num"><b>409K</b><span>Manufacturing jobs open in August 2025</span></div>
+<main><div class="wrap" style="position:relative">
+<div class="spine"><i id="trail"></i></div>
+
+<section class="sec" id="thesis"><span class="node fill"></span>
+  <span class="eyebrow">Thesis</span>
+  <h2 class="big rv">Autonomy will reach industry as an <em>upgrade</em>, not a replacement.</h2>
+  <div class="essay rv">
+    <p>Most of the money in robotics is chasing new machines. Humanoids, robotaxis and robot foundation models drew billions in 2025. Those bets need years of capital before a customer pays for a single shift.</p>
+    <p>The machines that run the economy are already built. <b>Farmers own 3.8 million tractors, and 88% were made before 2018.</b> Plants keep a CNC cell for decades. Operators will not scrap equipment that works. They will pay to make it run without a full crew. We back the companies that sell them that upgrade.</p>
   </div>
-  <div class="src">Sources: Deloitte and The Manufacturing Institute (2024); Deloitte Insights (2025).</div>
+  <div class="nums rv">
+    <div class="num"><b>3.8M</b><span>Tractors on US farms</span></div>
+    <div class="num"><b>88%</b><span>Of them built before 2018</span></div>
+    <div class="num"><b>856K</b><span>Forklifts in service across US plants and warehouses</span></div>
+    <div class="num"><b>1.9M</b><span>Manufacturing jobs that could go unfilled by 2033</span></div>
+  </div>
+  <div class="src">Sources: USDA 2022 Census of Agriculture; OSHA; Deloitte and The Manufacturing Institute (2024).</div>
+</section>
+
+<section class="sec" id="convictions"><span class="node"></span>
+  <span class="eyebrow">Three convictions</span>
+  <h2 class="h2 rv">What we believe that most of the market does not.</h2>
+  <div class="conv">
+    <div class="c rv"><div class="k">i.</div><h3>The installed base is the market.</h3>
+      <div><p>Every tractor, forklift, excavator and inspection line already in service is a buyer for autonomy. The customer has a budget, a measured labor cost and a machine that will run for another decade.</p></div></div>
+    <div class="c rv"><div class="k">ii.</div><h3>Retrofit beats rebuild.</h3>
+      <div><p>A kit and a software subscription sold through the dealers and OEMs that already own the customer can reach revenue on a few million dollars. A new autonomous vehicle needs hundreds of millions first.</p><p>We fund the first kind of company. That is how a seed fund owns a real share of the outcome.</p></div></div>
+    <div class="c rv"><div class="k">iii.</div><h3>Proximity wins the deal and the deployment.</h3>
+      <div><p>The Midwest produces about 16% of US GDP and receives roughly 3% to 5% of US venture capital. Industrial buyers adopt from people who show up at the plant. We live a drive away from them, and so do the founders we back.</p></div></div>
+  </div>
+  <div class="src">Source: Dealroom and StartMidwest, Mapping the Midwest Innovation Ecosystem (April 2026).</div>
+</section>
+
+<section class="sec" id="now"><span class="node"></span>
+  <span class="eyebrow">Why now</span>
+  <h2 class="h2 rv">Three curves crossed at once.</h2>
+  <div class="forces rv">
+    <div class="f"><div class="eyebrow">Labor</div><h4>The crews are not coming back.</h4><p>Plants, farms and warehouses cannot staff every shift. Buyers now price autonomy as shift coverage with a payback date.</p></div>
+    <div class="f"><div class="eyebrow">Hardware</div><h4>Sensing got cheap.</h4><p>Cameras, lidar and edge compute cost a fraction of what they did a few years ago. A retrofit kit now pencils out on a single machine.</p></div>
+    <div class="f"><div class="eyebrow">Models</div><h4>Autonomy ships as software.</h4><p>Vision and planning models now generalize across sites and machines. Each deployment teaches the next one, and the data stays with the company.</p></div>
+  </div>
+</section>
+
+<section class="sec" id="focus"><span class="node"></span>
+  <span class="eyebrow">Where we invest</span>
+  <h2 class="h2 rv">Pre-seed and seed. Five industries that share one buyer.</h2>
+  <div class="vlist rv">
+    <div class="vrow"><span class="i">01</span><h3>Agriculture</h3><p>Retrofit autonomy for tractors, sprayers and combines already in the field.</p></div>
+    <div class="vrow"><span class="i">02</span><h3>Manufacturing</h3><p>Vision quality control and plant-floor AI that cut scrap and downtime.</p></div>
+    <div class="vrow"><span class="i">03</span><h3>Logistics</h3><p>Autonomy for yard trucks, forklifts and the freight between them.</p></div>
+    <div class="vrow"><span class="i">04</span><h3>Construction and mining</h3><p>Autonomous earthmoving, haulage and site inspection.</p></div>
+    <div class="vrow"><span class="i">05</span><h3>Defense supply chain</h3><p>Dual-use autonomy and resilient domestic production.</p></div>
+  </div>
+  <p class="pass"><b>We pass on</b>vehicle makers, humanoids, semiconductors, and any hardware plan that needs $50M before revenue.</p>
+</section>
+</div>
+
+<section class="y77"><div class="wrap" style="position:relative">
+  <div class="date rv">9.19.1977</div>
+  <div class="grid rv">
+    <p>On a Monday in September, Youngstown Sheet and Tube closed its Campbell Works. About 5,000 people lost their jobs in a day. Youngstown learned early that whoever controls the technology decides where the work stays.</p>
+    <p class="close">The machines are getting a new brain. This time, <em>it gets built here.</em></p>
+  </div>
 </div></section>
 
-<section class="s" id="focus"><div class="wrap">
-  <div class="head reveal"><div><div class="eyebrow">02 · Focus</div><h2>Five industries. One buyer profile.</h2></div>
-  <p>Software-first and capital-light hardware sold to industrial operators and equipment makers, most of them within driving distance of Youngstown, Ohio.</p></div>
-  <div class="vgrid reveal">
-    <div class="v"><span class="i">01</span><h3>Agriculture</h3><p>Retrofit autonomy and crop robotics for fleets already in the field.</p></div>
-    <div class="v"><span class="i">02</span><h3>Manufacturing</h3><p>Vision quality control and plant-floor AI.</p></div>
-    <div class="v"><span class="i">03</span><h3>Logistics</h3><p>Yard, warehouse and freight autonomy.</p></div>
-    <div class="v"><span class="i">04</span><h3>Construction &amp; mining</h3><p>Autonomous earthmoving and inspection.</p></div>
-    <div class="v"><span class="i">05</span><h3>Defense supply chain</h3><p>Dual-use autonomy and resilient production.</p></div>
-  </div>
-  <div class="split reveal">
-    <div><h4 class="eyebrow">We back</h4><ul><li>Retrofit kits and autonomy software</li><li>Perception, sensing and vision quality control</li><li>Industrial AI sold to OEMs and operators</li></ul></div>
-    <div class="pass"><h4 class="eyebrow">We pass on</h4><ul><li>Vehicle manufacturers and humanoids</li><li>Semiconductors</li><li>Hardware needing $50M before revenue</li></ul></div>
-  </div>
-</div></section>
-
-<section class="s" id="approach"><div class="wrap">
-  <div class="head reveal"><div><div class="eyebrow">03 · Approach</div><h2>Customer access is the edge.</h2></div>
-  <p>Industrial founders win on deployments, not demos. We put them in front of the buyers next door and bring the operating discipline that turns pilots into contracts.</p></div>
-  <div class="steps reveal">
-    <div class="step"><span class="k">01</span><h3>Paid pilots</h3><p>Introductions to regional OEMs, plants and farms ready to deploy.</p></div>
-    <div class="step"><span class="k">02</span><h3>Operating rigor</h3><p>Lean Six Sigma methods applied to deployment, quality and unit economics.</p></div>
-    <div class="step"><span class="k">03</span><h3>Series A readiness</h3><p>Metrics, narrative and introductions to the investors who lead the next round.</p></div>
-    <div class="step"><span class="k">04</span><h3>Room to build</h3><p>Access to flex-industrial space for labs, test yards and pilot lines.</p></div>
-  </div>
-  <div class="tests reveal">
-    <div class="t"><b>PROBLEM</b><span>A cost the customer already measures</span></div>
-    <div class="t"><b>INSTALLED BASE</b><span>Works on equipment already owned</span></div>
-    <div class="t"><b>PAYBACK</b><span>Credible ROI inside 18 months</span></div>
-    <div class="t"><b>DEPLOYMENT</b><span>Installs without a major project</span></div>
-    <div class="t"><b>MOAT</b><span>Field data that compounds</span></div>
-    <div class="t"><b>EFFICIENCY</b><span>Revenue before a large round</span></div>
-    <div class="t"><b>EXIT</b><span>Clear strategic acquirers</span></div>
-  </div>
-</div></section>
-
-<section class="s" id="gp"><div class="wrap gp">
-  <div class="reveal"><div class="eyebrow">04 · Team</div><h2>Kyle White</h2><div class="role">General Partner · Youngstown, Ohio</div>
+<div class="wrap" style="position:relative">
+<section class="sec" id="gp"><div class="gp">
+  <div class="rv"><span class="eyebrow">Team</span><h2 class="h2">Kyle White</h2><div class="role">General Partner · Youngstown, Ohio</div>
     <div class="creds"><div class="cred"><b>$1B+</b><span>Transaction value</span></div><div class="cred"><b>400+</b><span>Companies screened</span></div><div class="cred"><b>$600M+</b><span>Raises supported</span></div></div></div>
-  <div class="reveal"><p>Kyle has spent more than fifteen years on the capital and operating side of early-stage companies. He built and ran the Cointelegraph accelerator, founded and sold the capital advisory firm Interstellar Digital, and leads investor relations at CoreNest Capital.</p>
-  <p>He is a Lean Six Sigma Master Black Belt and lives in Youngstown, inside the industrial corridor Rustproof is built around.</p></div>
+  <div class="rv"><p>Kyle has spent more than fifteen years on the capital side of early-stage companies. He built and ran the Cointelegraph accelerator, founded and sold the capital advisory firm Interstellar Digital, and leads investor relations at CoreNest Capital. He is a Lean Six Sigma Master Black Belt.</p>
+    <div class="help">
+      <div><b>Customers</b><span>Paid pilots with regional OEMs, plants and farms.</span></div>
+      <div><b>Operations</b><span>Lean Six Sigma rigor on deployment, quality and unit economics.</span></div>
+      <div><b>Capital</b><span>Series A preparation and introductions to the firms that lead it.</span></div>
+      <div><b>Space</b><span>Access to flex-industrial space for labs, test yards and pilot lines.</span></div>
+    </div></div>
 </div></section>
+</div></main>
 
-<section class="cta"><div class="wrap reveal">
+<section class="cta"><div class="wrap rv">
   <img src="mark.png" alt="">
   <h2>Built to last.</h2>
-  <p>Limited partners can access the full investor room with the code provided by the General Partner.</p>
-  <div class="ctas"><a class="btn btn-gold" href="room/">Enter Investor Room &nbsp;→</a><a class="btn btn-ghost" href="mailto:kpwhite330@gmail.com?subject=Rustproof%20Ventures">Contact Kyle</a></div>
+  <p>Limited partners can open the investor room with the code provided by the General Partner.</p>
+  <div class="ctas"><a class="btn btn-gold" href="room/">Enter Investor Room <span class="ar">→</span></a><a class="btn btn-ghost" href="mailto:kpwhite330@gmail.com?subject=Rustproof%20Ventures">Contact Kyle</a></div>
 </div></section>
 
 <footer><div class="wrap">
@@ -172,8 +238,13 @@ footer small{display:block;max-width:620px;font-size:11px;line-height:1.7;color:
   <small>© 2026 Rustproof Ventures · Youngstown, Ohio. This website is for informational purposes only and is not an offer to sell or a solicitation of an offer to buy any security. Figures describe the General Partner's professional experience, not investment performance.</small>
 </div></footer>
 <script>
-const nav=document.getElementById('nav');const f=()=>nav.classList.toggle('solid',scrollY>40);addEventListener('scroll',f);f();
+const nav=document.getElementById('nav');const f=()=>nav.classList.toggle('solid',scrollY>40);addEventListener('scroll',f,{passive:true});f();
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
-document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+const trail=document.getElementById('trail'),spine=trail.parentElement;
+const nodes=[...document.querySelectorAll('.sec .node')];
+function draw(){const r=spine.getBoundingClientRect();const h=Math.max(0,Math.min(r.height,innerHeight*.6-r.top));trail.style.height=h+'px';
+ nodes.forEach(n=>{const b=n.getBoundingClientRect();n.classList.toggle('fill',b.top<innerHeight*.6)})}
+addEventListener('scroll',draw,{passive:true});addEventListener('resize',draw);draw();
 </script>
 </body></html>
