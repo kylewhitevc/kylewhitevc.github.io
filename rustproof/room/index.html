@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Rustproof Ventures · Investor Room</title>
+<meta name="robots" content="noindex,nofollow">
+<link rel="icon" href="../mark.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;600;700&family=Inter:wght@400;500;600&family=Source+Serif+4:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--obs:#0C0C0D;--gold:#C9A54C;--bone:#F3EEE3;--steel:#3A3D42;--mut:#8C877C;--line:rgba(201,165,76,.28)}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--obs);color:var(--bone);font-family:Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.wrap{max-width:1040px;margin:0 auto;padding:0 32px}
+.eyebrow{font:600 11px/1 Inter;letter-spacing:.22em;text-transform:uppercase;color:var(--gold)}
+/* gate */
+#gate{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:40px 24px;
+ background:radial-gradient(ellipse at 50% 0%,rgba(201,165,76,.10),transparent 60%)}
+#gate img{width:300px;max-width:78vw;margin-bottom:44px}
+#gate h1{font:600 30px/1.15 Syne;margin:16px 0 10px;letter-spacing:-.01em}
+#gate p{color:var(--mut);font-size:14px;line-height:1.6;max-width:380px}
+form{margin-top:30px;display:flex;gap:10px;width:100%;max-width:400px}
+input{flex:1;background:transparent;border:1px solid var(--line);color:var(--bone);padding:14px 16px;font:500 14px Inter;border-radius:2px;outline:none;letter-spacing:.04em}
+input:focus{border-color:var(--gold)}
+button{background:var(--gold);color:var(--obs);border:0;padding:0 22px;font:600 13px Inter;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;border-radius:2px}
+button:hover{background:#d8b65f}
+#err{color:#d98b6a;font-size:13px;min-height:20px;margin-top:14px}
+.gfoot{position:fixed;bottom:22px;font-size:11px;color:#5d5a54;letter-spacing:.08em}
+/* room */
+#room{display:none}
+header{border-bottom:1px solid var(--line)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:84px}
+header img{height:46px}
+header .meta{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--mut);text-align:right;line-height:1.7}
+.hero{padding:88px 0 56px}
+.hero h1{font:600 clamp(36px,5.4vw,62px)/1.04 Syne;letter-spacing:-.02em;margin:18px 0 22px;max-width:820px}
+.hero p{font:400 19px/1.6 'Source Serif 4',Georgia,serif;color:#CFC8B8;max-width:640px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-top:56px}
+.stat{padding:26px 22px 24px;border-left:1px solid var(--line)}.stat:first-child{border-left:0;padding-left:0}
+.stat b{display:block;font:600 30px/1 Syne;color:var(--bone)}
+.stat span{display:block;margin-top:10px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--mut)}
+.bar{display:flex;justify-content:space-between;align-items:flex-end;margin:76px 0 8px;gap:20px;flex-wrap:wrap}
+.bar h2{font:600 26px/1.1 Syne}
+.dl-all{display:inline-flex;align-items:center;gap:10px;border:1px solid var(--gold);color:var(--gold);padding:12px 18px;font:600 12px Inter;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;background:transparent}
+.dl-all:hover{background:var(--gold);color:var(--obs)}
+.sec{margin-top:40px}
+.sec h3{padding-bottom:12px;border-bottom:1px solid var(--line)}
+.doc{display:grid;grid-template-columns:56px 1fr auto 120px;align-items:center;gap:18px;padding:20px 0;border-bottom:1px solid rgba(243,238,227,.07);cursor:pointer;transition:background .15s}
+.doc:hover{background:rgba(201,165,76,.05)}
+.doc .n{font:600 13px Syne;color:var(--gold);padding-left:4px}
+.doc .t{font:500 16px/1.3 Inter}.doc .d{font-size:13px;color:var(--mut);margin-top:4px}
+.doc .x{font-size:11px;letter-spacing:.12em;color:var(--mut)}
+.doc .go{justify-self:end;font:600 11px Inter;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);padding-right:4px}
+.doc.busy .go{color:var(--mut)}
+.contact{margin:96px 0 0;padding:56px 0;border-top:1px solid var(--line);display:grid;grid-template-columns:1.3fr 1fr;gap:40px}
+.contact h2{font:600 28px/1.15 Syne;margin:14px 0 14px}
+.contact p{font:400 16px/1.6 'Source Serif 4',serif;color:#CFC8B8}
+.card{border:1px solid var(--line);padding:26px}
+.card .nm{font:600 18px Syne}.card .rl{color:var(--mut);font-size:13px;margin:4px 0 18px}
+.card a{display:block;color:var(--gold);text-decoration:none;font-size:14px;margin-top:6px}
+footer{padding:28px 0 48px;border-top:1px solid var(--line);font-size:11px;line-height:1.7;color:#6d6a63}
+@media(max-width:760px){.stats{grid-template-columns:1fr 1fr}.stat:nth-child(3){border-left:0;padding-left:0}.stat:nth-child(n+3){border-top:1px solid var(--line)}
+ .doc{grid-template-columns:40px 1fr auto}.doc .x{display:none}.contact{grid-template-columns:1fr}header .meta{display:none}.wrap{padding:0 22px}form{flex-direction:column}button{padding:14px}}
+</style></head>
+<body>
+<section id="gate">
+  <img src="../logo.png" alt="Rustproof Ventures">
+  <div class="eyebrow">Fund I · Investor Room</div>
+  <h1>Confidential materials</h1>
+  <p>This room is for prospective limited partners. Enter the access code provided by the General Partner.</p>
+  <form id="f"><input id="code" type="password" placeholder="Access code" autocomplete="off" autofocus><button>Enter</button></form>
+  <div id="err"></div>
+  <a class="gfoot" href="../" style="text-decoration:none">← RUSTPROOF VENTURES</a>
+</section>
+<main id="room">
+  <header><div class="wrap"><a href="../"><img src="../logo.png" alt="Rustproof Ventures"></a><div class="meta">Fund I Investor Room<br>Confidential · October 2026</div></div></header>
+  <div class="wrap">
+    <section class="hero">
+      <div class="eyebrow">Physical AI for the industrial heartland</div>
+      <h1>The Rust Belt built America's machines.</h1>
+      <p>We back the founders making them autonomous and built to last. Rustproof Ventures Fund I invests at pre-seed and seed in the software and retrofit systems that make industrial equipment autonomous.</p>
+      <div class="stats">
+        <div class="stat"><b>$15M</b><span>Target · $20M cap</span></div>
+        <div class="stat"><b>25</b><span>Portfolio companies</span></div>
+        <div class="stat"><b>$250-300K</b><span>Initial checks</span></div>
+        <div class="stat"><b>Q4 2026</b><span>First close</span></div>
+      </div>
+    </section>
+    <div class="bar"><h2>Documents</h2><button class="dl-all" id="all">Download all (ZIP)</button></div>
+    <div id="docs"></div>
+    <section class="contact">
+      <div><div class="eyebrow">Next step</div><h2>Join the first close.</h2>
+        <p>Fund I holds its first close in Q4 2026. Fund documents, a pipeline review and references are available to qualified investors on request.</p></div>
+      <div class="card"><div class="nm">Kyle White</div><div class="rl">General Partner · Youngstown, Ohio</div>
+        <a href="mailto:kpwhite330@gmail.com?subject=Rustproof%20Ventures%20Fund%20I">kpwhite330@gmail.com</a></div>
+    </section>
+  </div>
+  <footer><div class="wrap">Confidential. Provided to prospective limited partners for discussion purposes only. This site is not an offer to sell or a solicitation of an offer to buy any security. Any offering will be made only through the fund's definitive documents. Return scenarios are illustrative and are not projections.</div></footer>
+</main>
+<script>
+const SALT="i+HArntyaGTF+pM4TBk2qA==",ITER=310000,BLOB="mE82um2upyh9+1TGQM9zeOowHVwZZI7h0qQslk2bDIlnf7Rxd4k7qS8zqeIkd19ef60huFlGl09eh9eEfBLg0RQeBCM+qi1JTmSLkDLWzxU+gWBIEYku+kq1NioK5mfLTP4nW+53tlRz90MnT9cv2Od9hCm6wi44GX+re9RAO8jg+AmYGpWLcxQO8fOV8U2X5SUEKr1cm9Rq+bzrH9dXzsZc6qvV9IYwwTDp+dlBwDukCSRIVI+cjQPNah4W6fEEhWKxWWupliEiX8fqFgAEudBhyqXxKrfwkNOpe+HKiFAcE/0A8NElGeNZzNdrDX6y5xz0roczFszzqXcZCEHyoel/cc5/2LNumYZHFqY/A818Ga7lfp16r8EPn76mCzB+L31W438LLWWNRlxn8QbvE5PReaEUbxFyjlEHJyo5iFL5YkabeQP5GH167vk4sRZTl/ckVSuQ4zxbTsxd2auYXpqdjeau7tct2CvibL322UQQdFjX3nzW3siudzq5QkSGpKDXxSYWGL7L5Ko9cJEYV8BCC9mp8sNOmdzZR0FwpQpg6xKkMBizaGsJ1FAfQ/zdLQ0uqOF1lKcsMF2IkzKB+BGQR9vCmnJMXvs3awPbQlG+tnidfQLIq7Z2/IeLM8qb2bkxy9Ly6RwCAWqPS+IFMHE2lfNX2fLSVRBKdQNT3h/euj6P1JNbxC0ZYCrOpBxSpyvzruwLstwu+rCa9UwRrcF7QvnSyC/l8c5MTnhbt/BH3XyWaNo/KtFaB5luTLUOha8x8vlUhtB6YZOJ1BR/GWt0waebTpMDYLaC7fOlPLWRI58EFcspScAXMgadJZS+ACbfRFEhsKm7UTwORbyvWu0KHpPIoQbN8QrXAOt9DtW1gZ/8tlfdQTijY7brLO5JmZRvx+n+skLPD4D132wVO2EWE5NUkf3dZzvkItnMo3GefqSFLiF4/0LM+7gkoNw9pgtx3wr3yq/y2UTs1Lw4cAEC1E/Wz6q0sN+XcjKx1FKPFeQQwoNB4EHyTLrOyIIP7foFi6k1F/UBD22/9oGTqv/6U7cOCHb3YlTRvZJor50Yrd9EmCs+KJqp4/n0fdPd6pOZiHPbXWewejMoVyFX1UNvbAAkn5xLUTorH04uFvRWYxNGnTpi8ZSniLoKG+LA1n4+Pke7rXBY5TEBeW0MVqdHqQcMoe0u1hyCfzAOJUAH+EzxOJytOJo5HzGM6NsVZlXer57ZUgPRksU2iGljwQ9hhIAVyYAY+n9AkposmuBDKdHlXf+jH8XMtxJnjrMs+oY2UbAkDYisT0S6sZo6O3jO++QwGzX66k2oqrVNhmXz4Yopr0YtxpK8A8o3JT4AXFKPGc/XX0OdaJVp6tLvYosEyxk8ILkp8dsBvX20BNGjiviJw8DLJBfQHc+pBgS1E5UWv68vplnFjZF/D8viCWIDOVWYvp01usG+W54nFBeMe5/DBB+XjCxEiXcqg9wg6+r7qAMXw0/khT78iHqfhGNOO6Nr18sGEOINJTOsPCP+fASFzZ//gCS9pGNqTPeracSQs6FQUwFTeHFGdVwe14OgESViHwl/ZYXwgZ289mYPdffqqyf26zNcxvVyjvGPN5mzVr+Gvfr6iYJEDgrtYpfNVlFFT5biSkreJ4OCCll+BHDu72VEtYpHHAk1qXj9hIrNtUttkw/y42TKC7RRuRv5gpMTQu53eB1XVp68x+OehmmUvhWhnjo3BGCcGR9NaBJZBkOfZM6kNqj9RtzOMo45SDVeKYyduXuxJcmCLgNbDGMGEaUnvTfwqBwRbOq85pM3Zi9miqyEpFXDbiE4fTaAsYwYKKSGdbXOlJA8Tm5yN/K2rLX1PJjyNRxU7GSDoqKXfrDt/QJ/0eHtWRHOK7t+NVeJze+XDmrUXaEe4Kgw+Y+ysVoxTiK35i+8S6aLVcjORZwikZdRZ5tIRWzRwe27++HbZhCPN9jEWLDgIEwKQi6Np0Q/w24q+S/T74cnnTmLFToy+0WVYG6iygQ4JWZMo6Sm2zC7KF8lbDp/hcrBefjxXR8Bm9ayO1aoXxed2SwOneIsg9Rf1Gr/L0V7571FnJUd6Q38rQBTIUrKZgj1dawp3HuyMGUJyQBvAsfmfD6LnyYiOghI+j1N/WVF+kY391jKX4A25V8aE5WUioqrKRihSlJTtX+kJ+/FeQlJjREYvaBWNj2jOJUIYfRRdmmE0lHuAVm6GnYvlP5P/VkwsyYVaSfeFvfcf5xkh+CKVpJSVVyC5t0TVArT8YVBvpmKc357H1W2ZShLeft9gbgRXcoojUy1YGaG6en6vYGz3bTB0tA9mj0T48za7ixiz2U4QlQ6KwQ9blx1BoYX/rcx5vQN20vlEzU8QSS4ql1amOf0jWYJGwA1lWWHMZSIHh9bcumXr++ScAGpdkIyETOjwz41ewCcRdE23h5McS5ti6IaSyp3sjEsZ5nvcRNkuyN4r3F8RhvjdpLxd7T6HIo89gNZDLoDMwy/SSF2PNV/ZRj0RkQbA7erl42zVhFFkPDiQulXFSvQBuOuS1Ewaaet3VJHLLkjJXVmh7VzczOxhcK6ENM/1yjuzIW3ZV+ujtB+A4a9EXpOMRT6s0MSGNT4sHK0TxwrkosZ3NNaPcVV0xq+5r3Xx8hUC0f3jZ1vOrAaxU+Up0E4oTzAaJSz+Vo46QZz1hZZZDZNYaFBGJLWASixwXGjJjnQBSSeXysneMPkYB30wDXIMCRTUJkdecJDLTYP9Udu2DaMCcg3MqWoACUuCqEmVz+Px25tMJ02sgbITQQE1nI+k0a0t1nywhXShpz5Ck7DPe+Lcso=";
+const b64=s=>Uint8Array.from(atob(s),c=>c.charCodeAt(0));
+let KEY=null;
+async function derive(code){const m=await crypto.subtle.importKey('raw',new TextEncoder().encode(code),'PBKDF2',false,['deriveKey']);
+ return crypto.subtle.deriveKey({name:'PBKDF2',salt:b64(SALT),iterations:ITER,hash:'SHA-256'},m,{name:'AES-GCM',length:256},false,['decrypt']);}
+async function dec(buf){const u=new Uint8Array(buf);return crypto.subtle.decrypt({name:'AES-GCM',iv:u.slice(0,12)},KEY,u.slice(12));}
+const MIME={pdf:'application/pdf',pptx:'application/vnd.openxmlformats-officedocument.presentationml.presentation',xlsx:'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',zip:'application/zip'};
+async function fetchDoc(id,f,open){const r=await fetch('../d/'+id+'.bin');const p=await dec(await r.arrayBuffer());const ext=f.split('.').pop();
+ const url=URL.createObjectURL(new Blob([p],{type:MIME[ext]}));
+ if(open&&ext==='pdf'){window.open(url,'_blank')||save(url,f)}else save(url,f);}
+function save(url,f){const a=document.createElement('a');a.href=url;a.download=f;document.body.appendChild(a);a.click();a.remove();}
+function render(P){const root=document.getElementById('docs');
+ P.docs.forEach(s=>{const sec=document.createElement('div');sec.className='sec';sec.innerHTML='<h3 class="eyebrow">'+s.sec+'</h3>';
+  s.items.forEach(d=>{const r=document.createElement('div');r.className='doc';
+   r.innerHTML='<div class="n">'+d.n+'</div><div><div class="t">'+d.t+'</div><div class="d">'+d.desc+'</div></div><div class="x">'+d.ext+' · '+d.kb+' KB</div><div class="go">'+(d.ext==='PDF'?'Open':'Download')+' →</div>';
+   r.onclick=async()=>{r.classList.add('busy');try{await fetchDoc(d.id,d.f,true)}finally{r.classList.remove('busy')}};sec.appendChild(r);});
+  root.appendChild(sec);});
+ document.getElementById('all').onclick=()=>fetchDoc(P.zip.id,P.zip.f,false);}
+async function unlock(code,remember){KEY=await derive(code);const P=JSON.parse(new TextDecoder().decode(await dec(b64(BLOB))));
+ if(remember)sessionStorage.setItem('rv_code',code);render(P);document.getElementById('gate').style.display='none';document.getElementById('room').style.display='block';}
+document.getElementById('f').onsubmit=async e=>{e.preventDefault();const c=document.getElementById('code').value.trim();const err=document.getElementById('err');err.textContent='';
+ try{await unlock(c,true)}catch(_){err.textContent='That code did not work. Please check it and try again.'}};
+const saved=sessionStorage.getItem('rv_code');if(saved)unlock(saved,false).catch(()=>sessionStorage.removeItem('rv_code'));
+</script>
+</body></html>
