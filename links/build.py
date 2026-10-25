@@ -218,7 +218,7 @@ page = f'''<!doctype html>
   <div class="track"><div style="display:flex">{tick_items()}</div><div class="dup" style="display:flex">{tick_items(True)}</div></div>
 </nav>
 <header class="hero">
-  <figure><img src="img/kyle-hero.webp" width="380" height="475" alt="Kyle White speaking on a panel at the Crypto Invest Summit" fetchpriority="high"></figure>
+  <figure><img src="img/kyle-hero.webp" width="760" height="950" alt="Kyle White speaking on a panel at the Crypto Invest Summit" fetchpriority="high"></figure>
   <div class="intro">
     <p class="cap rise">Youngstown, Ohio</p>
     <h1 class="serif rise d2">Kyle <i>White</i></h1>
