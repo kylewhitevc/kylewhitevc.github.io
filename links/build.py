@@ -85,7 +85,7 @@ a{color:inherit;text-decoration:none;-webkit-tap-highlight-color:rgba(195,161,10
 /* hero */
 .hero{position:relative;max-width:1080px;margin:0 auto}
 .hero figure{position:relative;height:min(118vw,560px);overflow:hidden}
-.hero img{width:100%;height:100%;object-fit:cover;object-position:50% 22%;filter:sepia(.12) saturate(.9);transform:scale(1.06);animation:settle 2.4s cubic-bezier(.2,.7,.2,1) forwards}
+.hero img{width:100%;height:100%;object-fit:cover;object-position:50% 18%;filter:sepia(.12) saturate(.9);transform:scale(1.06);animation:settle 2.4s cubic-bezier(.2,.7,.2,1) forwards}
 .hero figure:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,11,9,0) 35%,rgba(14,11,9,.55) 68%,var(--bg) 100%)}
 .intro{position:relative;margin-top:-150px;padding:0 24px;z-index:2}
 h1{font-weight:500;font-size:58px;line-height:.95;letter-spacing:-.01em}
@@ -106,6 +106,10 @@ section{margin-top:52px}
 .rs{grid-area:s;color:var(--mute);font-size:13px;margin-top:2px}
 .ar{grid-area:a;color:var(--brass);font-size:22px;transition:transform .3s}
 .row:hover .ar,.row:focus-visible .ar{transform:translateX(5px)}
+/* stage */
+.stage{margin-top:26px}
+.stage img{display:block;width:100%;height:auto;aspect-ratio:5/4;object-fit:cover;filter:sepia(.1) saturate(.92)}
+.stage figcaption{margin-top:9px;font-family:"Cormorant Garamond",Garamond,serif;font-style:italic;font-size:16px;color:var(--mute)}
 /* vault */
 .vault{margin-top:64px;position:relative}
 .vk{display:flex;align-items:flex-end;justify-content:space-between;gap:12px}
@@ -218,7 +222,7 @@ page = f'''<!doctype html>
   <div class="track"><div style="display:flex">{tick_items()}</div><div class="dup" style="display:flex">{tick_items(True)}</div></div>
 </nav>
 <header class="hero">
-  <figure><img src="img/kyle-hero.webp" width="760" height="950" alt="Kyle White speaking on a panel at the Crypto Invest Summit" fetchpriority="high"></figure>
+  <figure><img src="img/kyle-hero.webp" width="752" height="940" alt="Kyle White" fetchpriority="high"></figure>
   <div class="intro">
     <p class="cap rise">Youngstown, Ohio</p>
     <h1 class="serif rise d2">Kyle <i>White</i></h1>
@@ -227,7 +231,7 @@ page = f'''<!doctype html>
   </div>
 </header>
 <main>
-  <section><div class="sh"><h2 class="serif">Find me</h2></div>{links_html}</section>
+  <section><div class="sh"><h2 class="serif">Find me</h2></div>{links_html}<figure class="stage"><img src="img/kyle-cis.webp" width="600" height="480" alt="Kyle White speaking on a panel at the Crypto Invest Summit" loading="lazy" decoding="async"><figcaption>On the panel at the Crypto Invest Summit.</figcaption></figure></section>
   <section class="vault" id="vault">
     <div class="vk"><h2 class="vt serif"><small>EREDO &times; SECONDO</small>The Vault</h2><p class="big" aria-label="up to 79 percent off">79<sup>%</sup></p></div>
     <p class="vsub">Zegna, Brioni, Tod&rsquo;s, Missoni. Real Italian houses at up to 79% off, every price checked {e(VERIFIED)}.</p>
