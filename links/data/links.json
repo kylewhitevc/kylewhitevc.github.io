@@ -41,9 +41,45 @@
   {
    "id": "eredo",
    "name": "EREDO",
-   "line": "Italian-American menswear. The best makers, marked down up to 79%.",
-   "url": "https://eredo.netlify.app/",
+   "kind": "Italian menswear",
+   "line": "The great Italian houses at their biggest markdowns, up to 79% off.",
+   "url": "https://eredo-house-eredo.static.hf.space/",
    "img": "img/eredo.webp"
+  },
+  {
+   "id": "tenor",
+   "name": "EREDO TENOR",
+   "kind": "Top-tier menswear",
+   "line": "The finest makers, found at steal prices.",
+   "url": "https://eredo-house-tenor.static.hf.space/"
+  },
+  {
+   "id": "gantry",
+   "name": "GANTRY",
+   "kind": "American workwear",
+   "line": "Workwear made in America, built to last decades.",
+   "url": "https://eredo-house-gantry.static.hf.space/"
+  },
+  {
+   "id": "scatto",
+   "name": "SCATTO",
+   "kind": "Menswear on sale",
+   "line": "Well-made menswear on sale, $39 to $95.",
+   "url": "https://eredo-house-scatto.static.hf.space/"
+  },
+  {
+   "id": "luce",
+   "name": "LUCE",
+   "kind": "Lab-grown diamonds",
+   "line": "Custom lab-grown diamonds, made to order.",
+   "url": "https://eredo-house-luce.static.hf.space/"
+  },
+  {
+   "id": "gameday",
+   "name": "GAMEDAY",
+   "kind": "Coming soon",
+   "line": "",
+   "url": ""
   }
  ]
 }
