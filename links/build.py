@@ -286,6 +286,22 @@ footer .sig{font-family:"Cormorant Garamond",Garamond,serif;font-style:italic;fo
  .lbuy,.ldrop{max-width:560px}
  .lnm{font-size:48px}
 }
+
+/* stat band */
+.stats{display:grid;grid-template-columns:1fr 1fr;margin-top:40px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.sb{display:flex;flex-direction:column;align-items:flex-start;padding:20px 4px 18px 0}
+.sb:nth-child(odd){padding-right:14px}
+.sb:nth-child(even){padding-left:18px;border-left:1px solid var(--line)}
+.sb:nth-child(n+3){border-top:1px solid var(--line)}
+.sn{font-size:46px;line-height:.9;font-weight:500;color:var(--brass2);letter-spacing:-.01em;font-variant-numeric:lining-nums}
+.sl2{margin-top:9px;font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--mute)}
+.stats+.links{margin-top:0;border-top:0}
+@media (min-width:760px){
+ .stats{grid-template-columns:repeat(4,1fr)}
+ .sb{padding:26px 0 24px 24px!important;border-left:1px solid var(--line);border-top:0!important}
+ .sb:first-child{border-left:0;padding-left:0!important}
+ .sn{font-size:64px}
+}
 :focus-visible{outline:2px solid var(--brass);outline-offset:3px}
 @media (min-width:760px){
  .hero{display:grid;grid-template-columns:1fr 1fr;align-items:end;gap:40px;padding:48px 24px 0}
@@ -385,6 +401,7 @@ fs.onerror=function(){var v=document.createElement('script');v.src='vendor/famil
 document.body.appendChild(fs);
 })();
 </script>"""
+stats_html = ''.join(f'<div class="sb"><span class="sn serif">{e(x["n"])}</span><span class="sl2">{e(x["l"])}</span></div>' for x in L.get('stats',[]))
 houses_live = [h for h in L['houses'] if h.get('url')]
 fam_html = ''.join(f'''<a class="fh" href="{e(h['url'])}" target="_blank" rel="noopener">{('<span class="fimg"><img src="'+e(h['img'])+'" width="600" height="750" alt="'+e(h['name'])+'" loading="lazy" decoding="async"></span>') if h.get('img') else ''}<span class="fno">N&deg;{i:02d}</span><span class="fk">{e(h['kind'])}</span><span class="fnm serif">{e(h['name'])}</span><span class="fl">{e(h['line'])}</span><span class="fe">Enter &rarr;</span></a>''' for i,h in enumerate(houses_live,1))
 house_html = (f'''<a class="house" href="{e(house['url'])}" target="_blank" rel="noopener"><span><span class="hn">{e(house['name'])}</span><span class="hl">{e(house['line'])}</span><span class="hc">Enter the full shop &rarr;</span></span><img src="{e(house['img'])}" width="112" height="140" alt="" loading="lazy"></a>''' if house else '')
@@ -423,6 +440,7 @@ page = f'''<!doctype html>
   </div>
 </header>
 <main>
+  <div class="stats" aria-label="Reach and track record">{stats_html}</div>
   <section class="links">{links_html}</section>
   <figure class="stage"><img src="img/kyle-cis.webp" width="720" height="720" alt="Kyle White speaking on a panel at the Crypto Invest Summit" loading="lazy" decoding="async"><figcaption><span class="cap">On stage</span><span class="st serif">Crypto Invest Summit</span><span class="sl">Panelist, Blockchain Technology Investing track.</span></figcaption></figure>
   <section class="looks" id="looks">
