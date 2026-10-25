@@ -430,6 +430,11 @@ fs.onerror=function(){var v=document.createElement('script');v.src='vendor/famil
 document.body.appendChild(fs);
 })();
 </script>"""
+TRACK_JS = r'''<script>
+(function(){var A='https://abacus.jasoncameron.dev/hit/kwlinks/';function hit(k){try{fetch(A+k,{mode:'no-cors',keepalive:true})}catch(e){}}
+document.addEventListener('click',function(ev){var a=ev.target.closest&&ev.target.closest('a[rel~="sponsored"]');if(!a)return;
+var z=a.closest('.look')?'outfit':a.closest('.ticker')?'ticker':a.closest('.cta')?'broker':'other';hit('out-total');hit('out-'+z)},true)})();
+</script>'''
 stats_html = ''.join(f'<div class="sb"><span class="sn serif">{e(x["n"])}</span><span class="sl2">{e(x["l"])}</span></div>' for x in L.get('stats',[]))
 cta_html = '<div class="cta"><span class="ctl">Open an account</span>' + ''.join(f'<a class="ctb" data-ref="{e(k)}" href="{e(ref_href(k))}" target="_blank" rel="sponsored noopener"><b>{e(REF["brokers"][k]["name"])}</b><i>{e(REF["brokers"][k]["tag"])}</i></a>' for k in REF['strip']) + '<p class="ctd">I may earn a referral fee if you open an account. Not investment advice.</p></div>'
 houses_live = [h for h in L['houses'] if h.get('url')]
@@ -496,6 +501,7 @@ page = f'''<!doctype html>
 <script src="data/looks.js"></script>
 {LOOKS_JS}
 {JS}
+{TRACK_JS}
 </body>
 </html>
 '''
