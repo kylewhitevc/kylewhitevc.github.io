@@ -221,6 +221,8 @@ footer .sig{font-family:"Cormorant Garamond",Garamond,serif;font-style:italic;fo
  .rail{grid-auto-columns:calc((100% - 42px)/4);margin:14px 0 0;padding:4px 0 8px}
  .swipe{display:none}
  .vt{font-size:72px}.big{font-size:120px}
+ .links{display:grid;grid-template-columns:1fr 1fr;column-gap:40px}
+ .stage{display:grid;grid-template-columns:minmax(0,420px) 1fr;gap:28px;align-items:end}
  .uwrap{display:grid;grid-template-columns:5fr 7fr;gap:36px;align-items:start}
  .feat{margin:22px 0 0;position:sticky;top:60px}
  .grid{grid-template-columns:repeat(2,1fr);gap:34px 22px}
@@ -302,5 +304,12 @@ page = f'''<!doctype html>
 </body>
 </html>
 '''
+import hashlib, re
+def _v(m):
+    p = os.path.join(D, m.group(1))
+    h = hashlib.md5(open(p, 'rb').read()).hexdigest()[:8] if os.path.exists(p) else ''
+    return f'src="{m.group(1)}?v={h}"' if h else m.group(0)
+page = re.sub(r'src="(img/[^"?]+)"', _v, page)
+page = re.sub(r'href="(img/[^"?]+)"', lambda m: 'href=' + _v(m)[4:], page)
 open(os.path.join(D, 'index.html'), 'w').write(page)
 print('built', len(page), 'bytes;', len(ticker), 'ticker items;', len(picks), 'picks')
