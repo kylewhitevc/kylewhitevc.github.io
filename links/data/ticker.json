@@ -8,7 +8,9 @@
    "piece": "Gommino driving loafer",
    "price": 358,
    "pct": 68,
-   "url": "https://italist.com/products/tod-s-loafer-gray-2238466187"
+   "url": "https://italist.com/products/tod-s-loafer-gray-2238466187",
+   "was": 1118,
+   "img": "img/deal-s5.webp"
   },
   {
    "house": "SECONDO",
@@ -17,7 +19,9 @@
    "piece": "Striped wool scarf",
    "price": 128,
    "pct": 79,
-   "url": "https://www.italist.com/products/missoni-scarf-gray-267019"
+   "url": "https://www.italist.com/products/missoni-scarf-gray-267019",
+   "was": 607,
+   "img": "img/deal-i1.webp"
   },
   {
    "house": "EREDO",
@@ -26,7 +30,9 @@
    "piece": "Long-sleeve cotton polo",
    "price": 126,
    "pct": 80,
-   "url": "https://italist.com/products/corneliani-polo-gray-338699"
+   "url": "https://italist.com/products/corneliani-polo-gray-338699",
+   "was": 631,
+   "img": "img/deal-s1.webp"
   },
   {
    "house": "SECONDO",
@@ -35,7 +41,9 @@
    "piece": "Silk necktie",
    "price": 133,
    "pct": 75,
-   "url": "https://www.italist.com/products/dolce-gabbana-necktie-blue-390219"
+   "url": "https://www.italist.com/products/dolce-gabbana-necktie-blue-390219",
+   "was": 530,
+   "img": "img/deal-i2.webp"
   },
   {
    "house": "EREDO",
@@ -44,7 +52,9 @@
    "piece": "Desert jacket",
    "price": 1732,
    "pct": 61,
-   "url": "https://italist.com/products/brioni-jacket-navy-2821015691"
+   "url": "https://italist.com/products/brioni-jacket-navy-2821015691",
+   "was": 4442,
+   "img": "img/deal-s6.webp"
   },
   {
    "house": "SECONDO",
@@ -53,7 +63,9 @@
    "piece": "Cashmere turtleneck",
    "price": 160,
    "pct": 50,
-   "url": "https://us.gobicashmere.com/products/mens-cashmere-turtleneck-charcaol"
+   "url": "https://us.gobicashmere.com/products/mens-cashmere-turtleneck-charcaol",
+   "was": 319,
+   "img": "img/deal-k4.webp"
   },
   {
    "house": "EREDO",
@@ -62,7 +74,9 @@
    "piece": "Oasi cashmere coat",
    "price": 3033,
    "pct": 67,
-   "url": "https://italist.com/products/zegna-cashmere-coat-navy-6411339915"
+   "url": "https://italist.com/products/zegna-cashmere-coat-navy-6411339915",
+   "was": 9190,
+   "img": "img/deal-s2.webp"
   },
   {
    "house": "SECONDO",
@@ -71,7 +85,9 @@
    "piece": "Silk knit tie",
    "price": 115,
    "pct": 73,
-   "url": "https://www.italist.com/products/dolce-gabbana-necktie-brown-256267"
+   "url": "https://www.italist.com/products/dolce-gabbana-necktie-brown-256267",
+   "was": 426,
+   "img": "img/deal-i3.webp"
   },
   {
    "house": "EREDO",
@@ -80,7 +96,9 @@
    "piece": "Cotton shirt",
    "price": 505,
    "pct": 66,
-   "url": "https://italist.com/products/brioni-shirt-navy-1876860043"
+   "url": "https://italist.com/products/brioni-shirt-navy-1876860043",
+   "was": 1501,
+   "img": "img/deal-s3.webp"
   },
   {
    "house": "SECONDO",
@@ -89,7 +107,9 @@
    "piece": "Cotton-cashmere quarter zip",
    "price": 69,
    "pct": 59,
-   "url": "https://naadam.co/products/cotton-cashmere-textured-quarter-zip"
+   "url": "https://naadam.co/products/cotton-cashmere-textured-quarter-zip",
+   "was": 168,
+   "img": "img/deal-k1.webp"
   }
  ]
 }
