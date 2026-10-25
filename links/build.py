@@ -193,6 +193,17 @@ section{margin-top:52px}
 .dp{display:flex;gap:10px;align-items:baseline;margin-top:5px;font-variant-numeric:tabular-nums}
 .dp b{font-weight:600;font-size:15px}.dp s{color:var(--mute);font-size:13px}
 .swipe{margin-top:10px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--mute)}
+/* family houses */
+.fam{margin-top:72px}
+.fgrid{display:grid;grid-template-columns:1fr;gap:12px;margin-top:22px}
+.fh{position:relative;display:flex;flex-direction:column;padding:22px 20px 18px;border:1px solid var(--line);background:linear-gradient(140deg,#1b150f,#0f0b08);transition:border-color .3s,transform .3s}
+.fh:hover{border-color:var(--brass);transform:translateY(-2px)}
+.fno{position:absolute;top:16px;right:18px;font-family:"Cormorant Garamond",Garamond,serif;font-style:italic;color:var(--mute);font-size:15px}
+.fk{font-size:10px;letter-spacing:.26em;text-transform:uppercase;color:var(--brass)}
+.fnm{font-size:34px;line-height:1;margin-top:10px;letter-spacing:.04em}
+.fl{color:var(--mute);font-size:13.5px;margin-top:10px;flex:1}
+.fe{margin-top:16px;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--brass2)}
+@media (min-width:760px){.fgrid{grid-template-columns:repeat(3,1fr);gap:16px}.fh{min-height:210px}}
 /* house banner */
 .house{display:grid;grid-template-columns:1fr 112px;gap:18px;align-items:center;margin-top:28px;padding:18px;border:1px solid var(--line);background:linear-gradient(120deg,#1b150f,#100c09);transition:border-color .3s}
 .house:hover{border-color:var(--brass)}
@@ -261,6 +272,8 @@ document.querySelectorAll('[data-cg]').forEach(function(a){var q=d[a.dataset.cg]
 a.querySelector('.pr').textContent=px(q.usd);var s=a.querySelector('.chg');s.textContent=(c>=0?'+':'\u2212')+Math.abs(c).toFixed(2)+'%';s.className='chg '+(c>=0?'up':'dn')})}).catch(function(){})}
 go();setInterval(go,60000)})();
 </script>'''
+houses_live = [h for h in L['houses'] if h.get('url')]
+fam_html = ''.join(f'''<a class="fh" href="{e(h['url'])}" target="_blank" rel="noopener"><span class="fno">N&deg;{i:02d}</span><span class="fk">{e(h['kind'])}</span><span class="fnm serif">{e(h['name'])}</span><span class="fl">{e(h['line'])}</span><span class="fe">Enter &rarr;</span></a>''' for i,h in enumerate(houses_live,1))
 house_html = (f'''<a class="house" href="{e(house['url'])}" target="_blank" rel="noopener"><span><span class="hn">{e(house['name'])}</span><span class="hl">{e(house['line'])}</span><span class="hc">Enter the full shop &rarr;</span></span><img src="{e(house['img'])}" width="112" height="140" alt="" loading="lazy"></a>''' if house else '')
 page = f'''<!doctype html>
 <html lang="en">
@@ -307,6 +320,11 @@ page = f'''<!doctype html>
     <div class="rail">{deals_html}</div>
     <p class="swipe">Swipe &rarr;</p>
     {house_html}
+  </section>
+  <section class="fam" id="houses">
+    <div class="sh"><h2 class="vt serif"><small>The family</small>The Houses</h2></div>
+    <p class="ulede">Each one its own shop, each with a single focus.</p>
+    <div class="fgrid">{fam_html}</div>
   </section>
   <section class="uni">
     <div class="sh"><h2 class="vt serif"><small>Shop my wardrobe</small>The Uniform</h2></div>
