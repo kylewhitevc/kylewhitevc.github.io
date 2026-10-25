@@ -456,6 +456,7 @@ a:hover .x-logo,a:focus-visible .x-logo,a:focus .x-logo,.x-logos figure:hover .x
 
   .speak>.speak__tile{grid-row:span 3;row-gap:8px}
   .speak__tile>h3{grid-row:1}.speak__tile>p{grid-row:2}.speak__tile>.tlink{grid-row:3;margin-top:4px}
+  .spk__talks>.speak__tile>.eyebrow{grid-row:1}.spk__talks>.speak__tile>h3{grid-row:2}.spk__talks>.speak__tile>p:last-child{grid-row:3}
 
   .x-convs>.conv{grid-row:span 5;row-gap:14px}
   .conv>:nth-child(1){grid-row:1}.conv>.conv__q{grid-row:2}.conv>p.meta{grid-row:3}.conv>.conv__foot{grid-row:4;margin-top:0;align-self:stretch}.conv>.tlink{grid-row:5}
@@ -508,3 +509,19 @@ a:hover .x-logo,a:focus-visible .x-logo,a:focus .x-logo,.x-logos figure:hover .x
 .edge__item h3{font:var(--t-h3);margin:0 0 6px}
 .edge__item p:last-child{color:var(--ink-2);margin:0}
 @media (max-width:720px){.edge__grid{grid-template-columns:1fr;gap:18px}}
+
+.spk{display:grid;grid-template-columns:minmax(0,300px) minmax(0,1fr);gap:clamp(20px,3vw,40px);align-items:start;margin-bottom:var(--gap)}
+.spk__photo{margin:0;position:relative}
+.spk__photo img{display:block;width:100%;height:auto;border:1px solid var(--rule-l)}
+.spk__bio{font-size:17px;line-height:1.6;max-width:62ch;margin:0 0 16px}
+.spk__k{color:var(--gold-ink);margin:0 0 8px}
+.spk__topics{list-style:none;margin:0 0 16px;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 24px}
+.spk__topics li{padding-left:14px;position:relative;color:var(--ink-2)}
+.spk__topics li::before{content:"";position:absolute;left:0;top:.6em;width:6px;height:6px;background:var(--gold)}
+.spk__fmt{margin:0 0 16px;color:var(--ink-2)}
+.spk__fmt b{color:var(--ink);font-weight:600}
+.spk__cta{display:flex;flex-wrap:wrap;align-items:center;gap:10px 18px}
+.spk__cta p{margin:0;font:var(--t-meta);color:var(--ink-2);max-width:40ch}
+.spk__talks{grid-template-columns:repeat(3,minmax(0,1fr))}
+.spk__talks .eyebrow{color:var(--gold-ink);margin:0}
+@media (max-width:860px){.spk{grid-template-columns:1fr}.spk__photo{max-width:260px}.spk__topics{grid-template-columns:1fr}.spk__talks{grid-template-columns:1fr}}
