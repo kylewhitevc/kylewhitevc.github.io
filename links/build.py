@@ -257,7 +257,12 @@ footer .sig{font-family:"Cormorant Garamond",Garamond,serif;font-style:italic;fo
 .lpb{display:block;margin-top:9px;font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--brass)}
 .lpn{display:block;font-family:"Cormorant Garamond",Garamond,serif;font-size:18px;line-height:1.1;margin-top:3px}
 .lpp{display:block;margin-top:4px;font-size:13px;color:var(--ink);font-variant-numeric:tabular-nums}
-.lbuy{margin-top:16px}
+.lsum{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 14px;margin-top:18px}
+.lwas{font-size:15px;color:var(--mute);font-variant-numeric:tabular-nums}
+.lnow{font-family:"Cormorant Garamond",Garamond,serif;font-size:34px;line-height:1;color:var(--ink);font-weight:500;font-variant-numeric:lining-nums}
+.lsave{flex-basis:100%;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--brass2);font-weight:700}
+.lpp s{color:var(--mute);font-size:11.5px;margin-left:4px}
+.lbuy{margin-top:12px}
 .lbuy summary{list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px;min-height:54px;padding:0 18px;background:var(--brass);color:#0e0b09;font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;font-weight:600;cursor:pointer;-webkit-tap-highlight-color:transparent}
 .lbuy summary::-webkit-details-marker{display:none}
 .lbuy summary b{font-size:16px;letter-spacing:.02em;font-variant-numeric:tabular-nums}
@@ -269,13 +274,6 @@ footer .sig{font-family:"Cormorant Garamond",Garamond,serif;font-style:italic;fo
 .rp{font-size:14px;font-variant-numeric:tabular-nums;text-align:right}
 .rn{font-family:"Cormorant Garamond",Garamond,serif;font-size:18px;line-height:1.1}
 .rs{font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--brass2);text-align:right}
-.ldrop{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
-.ldrop label[for]{flex-basis:100%;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--mute)}
-.ldrop input[type=email]{flex:1;min-width:0;height:48px;padding:0 14px;background:transparent;border:1px solid var(--line);border-radius:0;color:var(--ink);font-size:16px}
-.ldrop input[type=email]:focus{border-color:var(--brass);outline:none}
-.ldrop button{height:48px;padding:0 18px;background:transparent;border:1px solid var(--brass);color:var(--brass2);font-size:11px;letter-spacing:.2em;text-transform:uppercase;cursor:pointer}
-.ldrop [hidden]{display:none}
-.lok{flex-basis:100%;font-family:"Cormorant Garamond",Garamond,serif;font-style:italic;font-size:20px;color:var(--brass2)}
 .fimg{display:block;margin:-22px -20px 16px;aspect-ratio:4/3;overflow:hidden;background:#ece5d9}
 .fimg img{display:block;width:100%;height:100%;object-fit:cover;transition:transform 1.2s cubic-bezier(.2,.7,.2,1)}
 .fh:hover .fimg img{transform:scale(1.04)}
@@ -283,8 +281,7 @@ footer .sig{font-family:"Cormorant Garamond",Garamond,serif;font-style:italic;fo
 @media (min-width:760px){
  .lpcs{grid-auto-flow:row;grid-template-columns:repeat(5,1fr);overflow:visible;margin:18px 0 0;padding:0;-webkit-mask-image:none;mask-image:none}
  .lsw{display:none}
- .lbuy,.ldrop{max-width:560px}
- .lnm{font-size:48px}
+ .lbuy, .lnm{font-size:48px}
 }
 
 /* stat band */
@@ -341,61 +338,74 @@ go();setInterval(go,60000)})();
 _lsrc = open(os.path.join(D, 'data', 'looks.js')).read()
 LK = json.loads(_lsrc[_lsrc.index('{', _lsrc.index('KW_LOOKS')):].rstrip().rstrip(';'))
 def _live(k):
-    p = LK['LINKS'].get(k)
+    p = LK['links'].get(k)
     return bool(p and p.get('live', True) and p.get('url'))
+def _sums(keys):
+    P = LK['links']
+    now = round(sum(P[k]['price'] for k in keys))
+    was = round(sum((P[k].get('was') or P[k]['price']) for k in keys))
+    save = was - now
+    pct = int(save * 100 // was) if was else 0
+    return now, was, save, pct
+def sum_html(keys):
+    now, was, save, pct = _sums(keys)
+    if save > 0 and pct >= 1:
+        return f'<div class="lsum"><s class="lwas">{money(was)}</s><span class="lnow">{money(now)}</span><b class="lsave">Save {money(save)} ({pct}%)</b></div>'
+    return f'<div class="lsum"><span class="lnow">{money(now)}</span></div>'
 looks_html = ''
 _n = 0
-for lk in LK['LOOKS']:
+for lk in LK['looks']:
     keys = [k for k in lk['pieces'] if _live(k)]
     if len(keys) < 2:
         continue
     _n += 1
-    P = LK['LINKS']
-    tot = sum(P[k]['price'] for k in keys)
-    pcs = ''.join(f"""<a class="lp" data-k="{e(k)}" href="{e(P[k]['url'])}" target="_blank" rel="sponsored noopener"><span class="lpi"><img src="{e(P[k]['img'])}" width="600" height="750" alt="{e(P[k]['brand'])} {e(P[k]['name'])}" loading="lazy" decoding="async"></span><span class="lpb">{e(P[k]['brand'])}</span><span class="lpn">{e(P[k]['name'])}</span><span class="lpp">{money(P[k]['price'])}</span></a>""" for k in keys)
+    P = LK['links']
+    def _pp(k):
+        w = P[k].get('was')
+        return f"{money(P[k]['price'])}" + (f" <s>{money(w)}</s>" if w and w > P[k]['price'] else '')
+    pcs = ''.join(f"""<a class="lp" data-k="{e(k)}" href="{e(P[k]['url'])}" target="_blank" rel="sponsored noopener"><span class="lpi"><img src="{e(P[k]['img'])}" width="600" height="750" alt="{e(P[k]['brand'])} {e(P[k]['name'])}" loading="lazy" decoding="async"></span><span class="lpb">{e(P[k]['brand'])}</span><span class="lpn">{e(P[k]['name'])}</span><span class="lpp">{_pp(k)}</span></a>""" for k in keys)
     rows = ''.join(f"""<li data-k="{e(k)}"><a href="{e(P[k]['url'])}" target="_blank" rel="sponsored noopener"><span class="rb">{e(P[k]['brand'])}</span><span class="rp">{money(P[k]['price'])}</span><span class="rn">{e(P[k]['name'])}</span><span class="rs">Shop &rarr;</span></a></li>""" for k in keys)
     looks_html += f"""<article class="look" data-look="{e(lk['id'])}">
-  <p class="lno">Look N&deg;{_n:02d}</p><h3 class="lnm serif">{e(lk['name'])}</h3><p class="ll">{e(lk['line'])}</p>
+  <p class="lno">Look N&deg;{_n:02d}</p><h3 class="lnm serif">{e(lk['name'])}</h3><p class="ll">{e(lk.get('note',''))}</p>
   <div class="lpcs">{pcs}</div><span class="lsw">Swipe for all {len(keys)} pieces &rarr;</span>
-  <details class="lbuy"><summary><span>Shop the full look</span><b class="ltot">{money(tot)}</b></summary><ol>{rows}</ol></details>
-  <form class="ldrop" action="https://eredo.netlify.app/" method="POST"><input type="hidden" name="form-name" value="markdowns"><input type="hidden" name="look" value="kyle-{e(lk['id'])}"><p hidden><label>Leave empty <input name="bot-field"></label></p><label for="em-{e(lk['id'])}">Get this look when it drops</label><input id="em-{e(lk['id'])}" type="email" name="email" placeholder="Email address" autocomplete="email" required><button type="submit">Notify me</button><p class="lok" hidden>You&rsquo;re on the list.</p></form>
+  {sum_html(keys)}
+  <details class="lbuy"><summary><span>Shop the full look</span><span aria-hidden="true">&darr;</span></summary><ol>{rows}</ol></details>
 </article>"""
 LOOKS_JS = r"""<script>
 (function(){
-var REMOTE='https://eredo-house-eredo.static.hf.space/looks.js';
+var REMOTE='https://eredo-house-eredo.static.hf.space/looks.json';
 function money(v){return '$'+Math.round(v).toLocaleString('en-US')}
+function pp(p){return money(p.price)+(p.was&&p.was>p.price?' <s>'+money(p.was)+'</s>':'')}
 function apply(D){
-  if(!D||!D.LINKS)return;
+  if(!D||!D.links)return;
   document.querySelectorAll('.look').forEach(function(el){
-    var n=0,t=0;
+    var n=0,now=0,was=0;
     el.querySelectorAll('.lp').forEach(function(a){
-      var k=a.dataset.k,p=D.LINKS[k],row=el.querySelector('li[data-k="'+k+'"]');
+      var k=a.dataset.k,p=D.links[k],row=el.querySelector('li[data-k="'+k+'"]');
       var ok=p&&p.live!==false&&p.url&&!a.dataset.dead;
       a.hidden=!ok;if(row)row.hidden=!ok;
       if(!ok)return;
-      n++;t+=+p.price||0;
+      n++;now+=+p.price||0;was+=+(p.was||p.price)||0;
       if(/^https:/.test(p.url)){a.href=p.url;if(row)row.querySelector('a').href=p.url}
-      if(p.price){a.querySelector('.lpp').textContent=money(p.price);if(row)row.querySelector('.rp').textContent=money(p.price)}
+      a.querySelector('.lpp').innerHTML=pp(p);if(row)row.querySelector('.rp').textContent=money(p.price);
     });
-    el.hidden=n<2;el.querySelector('.ltot').textContent=money(t);
+    el.hidden=n<2;
+    var N=Math.round(now),W=Math.round(was),S=W-N,P=W?Math.floor(S*100/W):0,box=el.querySelector('.lsum');
+    if(box)box.innerHTML=(S>0&&P>=1)?'<s class="lwas">'+money(W)+'</s><span class="lnow">'+money(N)+'</span><b class="lsave">Save '+money(S)+' ('+P+'%)</b>':'<span class="lnow">'+money(N)+'</span>';
   });
   var s=document.getElementById('looks');if(s)s.hidden=!document.querySelector('.look:not([hidden])');
 }
-var LOCAL=window.KW_LOOKS;
-document.querySelectorAll('.lp img').forEach(function(i){function dead(){i.closest('.lp').dataset.dead=1;apply(window.KW_LOOKS_MERGED||LOCAL)}
+var LOCAL=window.KW_LOOKS,CUR=LOCAL;
+document.querySelectorAll('.lp img').forEach(function(i){function dead(){i.closest('.lp').dataset.dead=1;apply(CUR)}
   if(i.complete&&i.naturalWidth===0)dead();else i.addEventListener('error',dead)});
 apply(LOCAL);
-var s=document.createElement('script');s.src=REMOTE;s.async=true;
-s.onload=function(){var R=window.EREDO_LOOKS;if(!LOCAL||!R||typeof R.LINKS!=='object')return;
-  var M={LINKS:{},LOOKS:LOCAL.LOOKS};Object.keys(LOCAL.LINKS).forEach(function(k){var a=LOCAL.LINKS[k],b=R.LINKS[k];
-  M.LINKS[k]=b?{brand:a.brand,name:a.name,img:a.img,url:(b.url&&/^https:/.test(b.url))?b.url:a.url,price:+b.price||a.price,live:b.live!==false}:a});
-  window.KW_LOOKS_MERGED=M;apply(M)};
-document.head.appendChild(s);
-document.querySelectorAll('.ldrop').forEach(function(f){f.addEventListener('submit',function(ev){
-  if(!window.fetch)return;ev.preventDefault();var b=f.querySelector('button');b.disabled=true;
-  fetch(f.action,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(new FormData(f)).toString()})
-  .then(function(){f.querySelector('.lok').hidden=false;f.querySelector('input[type=email]').hidden=true;b.hidden=true;f.querySelector('label[for]').hidden=true})
-  .catch(function(){f.submit()})})});
+if(window.fetch&&LOCAL)fetch(REMOTE).then(function(r){return r.ok?r.json():null}).then(function(R){
+  if(!R||typeof R.links!=='object')return;
+  var byUrl={};Object.keys(R.links).forEach(function(k){var p=R.links[k];if(p&&p.url)byUrl[p.url.replace(/^https:\/\/(www\.)?/,'')]=p});
+  var M={house:LOCAL.house,looks:LOCAL.looks,links:{}};
+  Object.keys(LOCAL.links).forEach(function(k){var a=LOCAL.links[k],b=byUrl[a.url.replace(/^https:\/\/(www\.)?/,'')];
+    M.links[k]=b?{brand:a.brand,name:a.name,img:a.img,url:a.url,price:+b.price||a.price,was:(b.was===null||b.was===undefined)?a.was:+b.was,live:b.live!==false}:a});
+  CUR=M;apply(M)}).catch(function(){});
 var fs=document.createElement('script');fs.src='https://eredo-house-eredo.static.hf.space/family.js';fs.async=true;
 fs.onerror=function(){var v=document.createElement('script');v.src='vendor/family.js';document.body.appendChild(v)};
 document.body.appendChild(fs);
