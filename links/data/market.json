@@ -1,0 +1,90 @@
+{
+ "as_of": "2026-10-24 21:45 EDT",
+ "source": "CoinGecko",
+ "coins": [
+  {
+   "id": "bitcoin",
+   "sym": "BTC",
+   "usd": 80759,
+   "chg": -0.01
+  },
+  {
+   "id": "ethereum",
+   "sym": "ETH",
+   "usd": 2357.65,
+   "chg": -0.76
+  },
+  {
+   "id": "solana",
+   "sym": "SOL",
+   "usd": 102.33,
+   "chg": 0.04
+  },
+  {
+   "id": "ripple",
+   "sym": "XRP",
+   "usd": 1.3,
+   "chg": 0.94
+  },
+  {
+   "id": "binancecoin",
+   "sym": "BNB",
+   "usd": 741.99,
+   "chg": 0.61
+  },
+  {
+   "id": "tron",
+   "sym": "TRX",
+   "usd": 0.329103,
+   "chg": -0.2
+  },
+  {
+   "id": "hyperliquid",
+   "sym": "HYPE",
+   "usd": 76.62,
+   "chg": -0.13
+  },
+  {
+   "id": "dogecoin",
+   "sym": "DOGE",
+   "usd": 0.077772,
+   "chg": -1.06
+  },
+  {
+   "id": "chainlink",
+   "sym": "LINK",
+   "usd": 11.6,
+   "chg": -1.66
+  },
+  {
+   "id": "sui",
+   "sym": "SUI",
+   "usd": 0.937388,
+   "chg": -2.14
+  },
+  {
+   "id": "cardano",
+   "sym": "ADA",
+   "usd": 0.208539,
+   "chg": -1.07
+  },
+  {
+   "id": "avalanche-2",
+   "sym": "AVAX",
+   "usd": 8.99,
+   "chg": -0.49
+  },
+  {
+   "id": "the-open-network",
+   "sym": "TON",
+   "usd": 1.25,
+   "chg": 1.71
+  },
+  {
+   "id": "polkadot",
+   "sym": "DOT",
+   "usd": 1.053,
+   "chg": -2.54
+  }
+ ]
+}
