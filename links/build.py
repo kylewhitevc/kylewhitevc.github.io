@@ -229,8 +229,8 @@ page = f'''<!doctype html>
 <main>
   <section><div class="sh"><h2 class="serif">Find me</h2></div>{links_html}</section>
   <section class="vault" id="vault">
-    <div class="vk"><h2 class="vt serif"><small>EREDO &times; SECONDO</small>The Vault</h2><p class="big" aria-label="up to 80 percent off">80<sup>%</sup></p></div>
-    <p class="vsub">Zegna, Brioni, Tod&rsquo;s, Missoni. Real Italian houses at up to 80% off, every price checked {e(VERIFIED)}.</p>
+    <div class="vk"><h2 class="vt serif"><small>EREDO &times; SECONDO</small>The Vault</h2><p class="big" aria-label="up to 79 percent off">79<sup>%</sup></p></div>
+    <p class="vsub">Zegna, Brioni, Tod&rsquo;s, Missoni. Real Italian houses at up to 79% off, every price checked {e(VERIFIED)}.</p>
     <input class="fx" type="radio" name="vf" id="f-all" checked><input class="fx" type="radio" name="vf" id="f-eredo"><input class="fx" type="radio" name="vf" id="f-secondo">
     <div class="chips" role="group" aria-label="Filter"><label for="f-all">All<span>{len(deals)}</span></label><label for="f-eredo">Eredo<span>{houses_n['EREDO']}</span></label><label for="f-secondo">Secondo<span>{houses_n['SECONDO']}</span></label></div>
     <div class="rail">{deals_html}</div>
