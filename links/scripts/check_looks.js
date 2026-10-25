@@ -1,4 +1,5 @@
 // CI: validate links/data/looks.js against the EREDO looks.json contract.
+// Run locally before every push: python3 deploy.py <files> (the gate). CI only re-checks, quietly.
 // Fails on: a look pointing to a missing links key, a non-https url, a missing local image,
 // a missing/invalid price, or a was (original) price below the now price.
 const fs=require('fs'),vm=require('vm'),path=require('path');
