@@ -1,0 +1,25 @@
+{
+ "links": [
+  {
+   "id": "linkedin",
+   "label": "LinkedIn",
+   "sub": "15K followers. Where I post.",
+   "url": "https://www.linkedin.com/in/kylewhitepr/"
+  },
+  {
+   "id": "site",
+   "label": "kylewhitevc.github.io",
+   "sub": "Track record and the fund",
+   "url": "https://kylewhitevc.github.io/"
+  }
+ ],
+ "houses": [
+  {
+   "id": "eredo",
+   "name": "EREDO",
+   "line": "Italian-American menswear. The best makers, marked down up to 80%.",
+   "url": "https://eredo.netlify.app/",
+   "img": "img/eredo.webp"
+  }
+ ]
+}
