@@ -525,3 +525,5 @@ a:hover .x-logo,a:focus-visible .x-logo,a:focus .x-logo,.x-logos figure:hover .x
 .spk__talks{grid-template-columns:repeat(3,minmax(0,1fr))}
 .spk__talks .eyebrow{color:var(--gold-ink);margin:0}
 @media (max-width:860px){.spk{grid-template-columns:1fr}.spk__photo{max-width:260px}.spk__topics{grid-template-columns:1fr}.spk__talks{grid-template-columns:1fr}}
+
+.book__cta{display:flex;flex-wrap:wrap;gap:10px;margin:0 0 16px}
