@@ -338,5 +338,10 @@ document.querySelectorAll('[data-cg]').forEach(function(a){var q=d[a.dataset.cg]
 a.querySelector('.pr').textContent=px(q.usd);var s=a.querySelector('.chg');s.textContent=(c>=0?'+':'\u2212')+Math.abs(c).toFixed(2)+'%';s.className='chg '+(c>=0?'up':'dn')})}).catch(function(){})}
 go();setInterval(go,60000)})();
 </script>
+<script>
+(function(){var A='https://abacus.jasoncameron.dev/hit/kwlinks/';function hit(k){try{fetch(A+k,{mode:'no-cors',keepalive:true})}catch(e){}}
+document.addEventListener('click',function(ev){var a=ev.target.closest&&ev.target.closest('a[rel~="sponsored"]');if(!a)return;
+var z=a.closest('.look')?'outfit':a.closest('.ticker')?'ticker':a.closest('.cta')?'broker':'other';hit('out-total');hit('out-'+z)},true)})();
+</script>
 </body>
 </html>
