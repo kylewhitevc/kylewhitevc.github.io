@@ -293,7 +293,7 @@ footer .sig{font-family:"Cormorant Garamond",Garamond,serif;font-style:italic;fo
 .sb:nth-child(odd){padding-right:14px}
 .sb:nth-child(even){padding-left:18px;border-left:1px solid var(--line)}
 .sb:nth-child(n+3){border-top:1px solid var(--line)}
-.sn{font-size:46px;line-height:.9;font-weight:500;color:var(--brass2);letter-spacing:-.01em;font-variant-numeric:lining-nums}
+.sn{font-size:42px;line-height:.9;font-weight:500;color:var(--brass2);letter-spacing:-.01em;font-variant-numeric:lining-nums}
 .sl2{margin-top:9px;font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--mute)}
 .stats+.links{margin-top:0;border-top:0}
 @media (min-width:760px){
