@@ -21,15 +21,49 @@ def money(v):
     return f"${v:,.0f}"
 
 
+market = json.load(open(os.path.join(D, 'data/market.json')))
+
+
+def fmt_px(v):
+    v = float(v)
+    if v >= 1000: return f"${v:,.0f}"
+    if v >= 1: return f"${v:,.2f}"
+    return f"${v:.4f}"
+
+
+def fmt_chg(c):
+    c = float(c)
+    return ('up' if c >= 0 else 'dn'), f"{'+' if c >= 0 else '−'}{abs(c):.2f}%"
+
+
+def tick_seq():
+    """About 70% market, 30% clothing: spread the deals evenly through the coins."""
+    coins = market['coins']
+    deals_t = sorted(ticker, key=lambda t: -int(t['pct']))[:max(1, round(len(coins) * 3 / 7))]
+    seq, n, k = [], len(coins) + len(deals_t), 0
+    for i in range(n):
+        if k < len(deals_t) and (i + 1) * len(deals_t) // n > k:
+            seq.append(('d', deals_t[k])); k += 1
+        else:
+            seq.append(('c', coins[i - k]))
+    return seq
+
+
 def tick_items(hidden=False):
     out = []
-    for t in ticker:
-        attrs = ' tabindex="-1" aria-hidden="true"' if hidden else ''
-        out.append(
-            f'<a class="tk" href="{e(t["url"])}" target="_blank" rel="noopener"{attrs}>'
-            f'<b>{e(t["house"])}</b><span class="m">{e(t["maker"])}</span>'
-            f'<span class="pc">{e(t["piece"])}</span><span class="pr">{money(t["price"])}</span>'
-            f'<span class="off">&minus;{int(t["pct"])}%</span></a>')
+    attrs = ' tabindex="-1" aria-hidden="true"' if hidden else ''
+    for kind, t in tick_seq():
+        if kind == 'c':
+            cls, txt = fmt_chg(t['chg'])
+            out.append(
+                f'<a class="tk mk" data-cg="{e(t["id"])}" href="https://www.coingecko.com/en/coins/{e(t["id"])}" target="_blank" rel="noopener"{attrs}>'
+                f'<b>{e(t["sym"])}</b><span class="pr">{fmt_px(t["usd"])}</span><span class="chg {cls}">{txt}</span></a>')
+        else:
+            out.append(
+                f'<a class="tk" href="{e(t["url"])}" target="_blank" rel="sponsored noopener"{attrs}>'
+                f'<b>{e(t["house"])}</b><span class="m">{e(t["maker"])}</span>'
+                f'<span class="pc">{e(t["piece"])}</span><span class="pr">{money(t["price"])}</span>'
+                f'<span class="off">&minus;{int(t["pct"])}%</span></a>')
     return ''.join(out)
 
 
@@ -76,12 +110,14 @@ a{color:inherit;text-decoration:none;-webkit-tap-highlight-color:rgba(195,161,10
 .cap{font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--brass)}
 /* ticker */
 .ticker{position:sticky;top:0;z-index:10;background:#070504;border-bottom:1px solid var(--line);overflow:hidden;height:38px}
-.track{display:flex;width:max-content;animation:run 55s linear infinite}
+.track{display:flex;width:max-content;animation:run 95s linear infinite}
 .ticker:hover .track,.ticker:focus-within .track{animation-play-state:paused}
 .tk{display:flex;align-items:center;gap:8px;height:38px;padding:0 22px;white-space:nowrap;font-size:12.5px;color:var(--ink);border-right:1px solid var(--line)}
 .tk b{font-weight:600;letter-spacing:.2em;font-size:10.5px;color:var(--brass)}
 .tk .m{color:var(--ink);font-weight:500}.tk .pc{color:var(--mute)}.tk .pr{font-variant-numeric:tabular-nums}
 .tk .off{color:#0e0b09;background:var(--brass);font-weight:700;font-size:11px;padding:2px 6px;border-radius:2px}
+.tk.mk b{color:var(--ink);letter-spacing:.14em}
+.chg{font-size:11.5px;font-weight:600;font-variant-numeric:tabular-nums}.chg.up{color:#8fc49a}.chg.dn{color:#e08a7a}
 @keyframes run{to{transform:translateX(-50%)}}
 /* hero */
 .hero{position:relative;max-width:1080px;margin:0 auto}
@@ -198,6 +234,14 @@ footer .sig{font-family:"Cormorant Garamond",Garamond,serif;font-style:italic;fo
 """
 
 VERIFIED = 'Oct 24, 2026'
+JS = r'''<script>
+(function(){var ids=[].slice.call(document.querySelectorAll('[data-cg]')).map(function(a){return a.dataset.cg}).filter(function(v,i,a){return a.indexOf(v)===i});
+function px(v){return v>=1000?'$'+Math.round(v).toLocaleString('en-US'):v>=1?'$'+v.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2}):'$'+v.toFixed(4)}
+function go(){fetch('https://api.coingecko.com/api/v3/simple/price?vs_currencies=usd&include_24hr_change=true&ids='+ids.join(',')).then(function(r){return r.json()}).then(function(d){
+document.querySelectorAll('[data-cg]').forEach(function(a){var q=d[a.dataset.cg];if(!q||q.usd==null)return;var c=q.usd_24h_change||0;
+a.querySelector('.pr').textContent=px(q.usd);var s=a.querySelector('.chg');s.textContent=(c>=0?'+':'\u2212')+Math.abs(c).toFixed(2)+'%';s.className='chg '+(c>=0?'up':'dn')})}).catch(function(){})}
+go();setInterval(go,60000)})();
+</script>'''
 house_html = (f'''<a class="house" href="{e(house['url'])}" target="_blank" rel="noopener"><span><span class="hn">{e(house['name'])}</span><span class="hl">{e(house['line'])}</span><span class="hc">Enter the full shop &rarr;</span></span><img src="{e(house['img'])}" width="112" height="140" alt="" loading="lazy"></a>''' if house else '')
 page = f'''<!doctype html>
 <html lang="en">
@@ -221,7 +265,7 @@ page = f'''<!doctype html>
 <style>{CSS}</style>
 </head>
 <body>
-<nav class="ticker" aria-label="Today's markdowns from EREDO and SECONDO">
+<nav class="ticker" aria-label="Crypto prices and today's markdowns">
   <div class="track"><div style="display:flex">{tick_items()}</div><div class="dup" style="display:flex">{tick_items(True)}</div></div>
 </nav>
 <header class="hero">
@@ -254,6 +298,7 @@ page = f'''<!doctype html>
   <p class="sig">Grazie for stopping by.</p>
   <p>Some links on this page are affiliate links. If you buy through them I may earn a commission, at no extra cost to you. Prices as listed by each store on Oct 24, 2026.</p>
 </footer>
+{JS}
 </body>
 </html>
 '''
