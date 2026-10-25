@@ -1,0 +1,95 @@
+{
+ "verified": "2026-10-24",
+ "items": [
+  {
+   "house": "EREDO",
+   "id": "s5",
+   "maker": "Tod's",
+   "piece": "Gommino driving loafer",
+   "price": 358,
+   "pct": 68,
+   "url": "https://italist.com/products/tod-s-loafer-gray-2238466187"
+  },
+  {
+   "house": "SECONDO",
+   "id": "i1",
+   "maker": "Missoni",
+   "piece": "Striped wool scarf",
+   "price": 128,
+   "pct": 79,
+   "url": "https://www.italist.com/products/missoni-scarf-gray-267019"
+  },
+  {
+   "house": "EREDO",
+   "id": "s1",
+   "maker": "Corneliani",
+   "piece": "Long-sleeve cotton polo",
+   "price": 126,
+   "pct": 80,
+   "url": "https://italist.com/products/corneliani-polo-gray-338699"
+  },
+  {
+   "house": "SECONDO",
+   "id": "i2",
+   "maker": "Dolce & Gabbana",
+   "piece": "Silk necktie",
+   "price": 133,
+   "pct": 75,
+   "url": "https://www.italist.com/products/dolce-gabbana-necktie-blue-390219"
+  },
+  {
+   "house": "EREDO",
+   "id": "s6",
+   "maker": "Brioni",
+   "piece": "Desert jacket",
+   "price": 1732,
+   "pct": 61,
+   "url": "https://italist.com/products/brioni-jacket-navy-2821015691"
+  },
+  {
+   "house": "SECONDO",
+   "id": "k4",
+   "maker": "Gobi",
+   "piece": "Cashmere turtleneck",
+   "price": 160,
+   "pct": 50,
+   "url": "https://us.gobicashmere.com/products/mens-cashmere-turtleneck-charcaol"
+  },
+  {
+   "house": "EREDO",
+   "id": "s2",
+   "maker": "Zegna",
+   "piece": "Oasi cashmere coat",
+   "price": 3033,
+   "pct": 67,
+   "url": "https://italist.com/products/zegna-cashmere-coat-navy-6411339915"
+  },
+  {
+   "house": "SECONDO",
+   "id": "i3",
+   "maker": "Dolce & Gabbana",
+   "piece": "Silk knit tie",
+   "price": 115,
+   "pct": 73,
+   "url": "https://www.italist.com/products/dolce-gabbana-necktie-brown-256267"
+  },
+  {
+   "house": "EREDO",
+   "id": "s3",
+   "maker": "Brioni",
+   "piece": "Cotton shirt",
+   "price": 505,
+   "pct": 66,
+   "url": "https://italist.com/products/brioni-shirt-navy-1876860043"
+  },
+  {
+   "house": "SECONDO",
+   "id": "k1",
+   "maker": "Naadam",
+   "piece": "Cotton-cashmere quarter zip",
+   "price": 69,
+   "pct": 59,
+   "url": "https://naadam.co/products/cotton-cashmere-textured-quarter-zip"
+  }
+ ]
+}
