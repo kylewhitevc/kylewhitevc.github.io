@@ -3,7 +3,7 @@
   {
    "id": "linkedin",
    "label": "LinkedIn",
-   "sub": "15K followers. Where I post most.",
+   "sub": "Where I post most.",
    "url": "https://www.linkedin.com/in/kylewhitepr/"
   },
   {
@@ -84,6 +84,24 @@
    "kind": "Coming soon",
    "line": "",
    "url": ""
+  }
+ ],
+ "stats": [
+  {
+   "n": "18K+",
+   "l": "Followers"
+  },
+  {
+   "n": "55+",
+   "l": "Cointelegraph bylines"
+  },
+  {
+   "n": "50+",
+   "l": "Startups accelerated"
+  },
+  {
+   "n": "$125M+",
+   "l": "Follow-on raised"
   }
  ]
 }
