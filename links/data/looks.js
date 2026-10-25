@@ -1,126 +1,122 @@
-/* Kyle White Links: looks data. The single source of truth for "Shop my outfits".
-   LINKS: one entry per product (key -> brand, name, price USD, url, img, live).
-   LOOKS: each look lists LINKS keys. A piece whose key is missing or live:false hides itself;
-   a look with fewer than 2 live pieces hides itself. CI fails on any look pointing to a missing key.
-   To add a look: add products to LINKS, then add a look below. Rebuild with python3 build.py. */
+/* Kyle White Links: looks data, the single source for "Shop my outfits".
+   Same contract as EREDO's looks.json: links{KEY:{url,brand,name,price(now),was(original or null),img,live}},
+   looks[{id,name,note,pieces:[KEY]}]. Prices read off each merchant page (Oct 25 2026).
+   A piece whose key is missing or live:false hides itself; a look with fewer than 2 live pieces hides itself.
+   CI fails on a missing key, a non-https url, a missing image, or was < price. */
 window.KW_LOOKS = {
- "version": 1,
- "LINKS": {
-  "faloni-blazer": {
-   "brand": "Luca Faloni",
-   "name": "Cashmere blazer",
-   "price": 1695.0,
-   "url": "https://lucafaloni.com/en/us/shop/blazers-and-suits/charcoal-grey-cashmere-blazer",
-   "img": "img/faloni-blazer.webp",
-   "category": "Tailoring",
+ "house": "kyle",
+ "links": {
+  "brioni-shirt": {
+   "url": "https://italist.com/products/brioni-shirt-navy-1876860043",
+   "brand": "Brioni",
+   "name": "Navy cotton shirt",
+   "price": 488.6,
+   "was": 1453.55,
+   "img": "img/deal-s3.webp",
    "live": true
   },
-  "faloni-crew": {
-   "brand": "Luca Faloni",
-   "name": "Silk-cashmere crew",
-   "price": 425.0,
-   "url": "https://lucafaloni.com/en/us/shop/navy-blue-silk-cashmere-crew-neck",
-   "img": "img/faloni-crew.webp",
-   "category": "Knitwear",
+  "dg-silk-tie": {
+   "url": "https://www.italist.com/products/dolce-gabbana-necktie-blue-390219",
+   "brand": "Dolce & Gabbana",
+   "name": "Blue silk necktie",
+   "price": 132.56,
+   "was": 530.23,
+   "img": "img/deal-i2.webp",
    "live": true
   },
-  "velasca-loafer": {
-   "brand": "Velasca",
-   "name": "Maester penny loafer",
-   "price": 500.0,
-   "url": "https://www.velasca.com/products/maester-m",
-   "img": "img/velasca-loafer.webp",
-   "category": "Shoes",
+  "zegna-oasi-coat": {
+   "url": "https://italist.com/products/zegna-cashmere-coat-navy-6411339915",
+   "brand": "Zegna",
+   "name": "Oasi cashmere coat",
+   "price": 3032.69,
+   "was": 9189.97,
+   "img": "img/deal-s2.webp",
    "live": true
   },
-  "faloni-poplin": {
-   "brand": "Luca Faloni",
-   "name": "White poplin shirt",
-   "price": 260.0,
-   "url": "https://lucafaloni.com/en/us/shop/shirts/white-poplin-cotton-shirt",
-   "img": "img/faloni-poplin.webp",
-   "category": "Shirting",
+  "gobi-turtleneck": {
+   "url": "https://us.gobicashmere.com/products/mens-cashmere-turtleneck-charcaol",
+   "brand": "GOBI Cashmere",
+   "name": "Cashmere turtleneck",
+   "price": 159.5,
+   "was": 319.0,
+   "img": "img/deal-k4.webp",
    "live": true
   },
-  "viola-tie": {
-   "brand": "Viola Milano",
-   "name": "Cashmere tie, navy",
-   "price": 114.0,
-   "url": "https://www.violamilano.com/product/solid-handrolled-100-cashmere-tie-navy/",
-   "img": "img/viola-tie.webp",
-   "category": "Neckwear",
+  "brioni-desert-jacket": {
+   "url": "https://italist.com/products/brioni-jacket-navy-2821015691",
+   "brand": "Brioni",
+   "name": "Navy desert jacket",
+   "price": 1732.13,
+   "was": 4441.36,
+   "img": "img/deal-s6.webp",
    "live": true
   },
-  "sunspel-merino": {
-   "brand": "Sunspel",
-   "name": "Extra-fine merino crew",
-   "price": 275.0,
-   "url": "https://us.sunspel.com/products/mens-extra-fine-merino-crew-neck-jumper-in-bakelite-mjum8332-rdel",
-   "img": "img/sunspel-merino.webp",
-   "category": "Knitwear",
+  "tods-gommino": {
+   "url": "https://italist.com/products/tod-s-loafer-gray-2238466187",
+   "brand": "Tod's",
+   "name": "Gommino driving loafer",
+   "price": 357.6,
+   "was": 1117.49,
+   "img": "img/deal-s5.webp",
    "live": true
   },
-  "dents-gloves": {
-   "brand": "Dents",
-   "name": "Cashmere-lined gloves",
-   "price": 391.0,
-   "url": "https://us.dentsgloves.com/products/mens-cashmere-lined-deerskin-leather-gloves",
-   "img": "img/dents-gloves.webp",
-   "category": "Leather",
+  "naadam-quarter-zip": {
+   "url": "https://naadam.co/products/cotton-cashmere-textured-quarter-zip",
+   "brand": "Naadam",
+   "name": "Cotton-cashmere quarter zip",
+   "price": 68.88,
+   "was": 168.0,
+   "img": "img/deal-k1.webp",
    "live": true
   },
-  "velasca-belt": {
-   "brand": "Velasca",
-   "name": "Cognac calf belt",
-   "price": 90.0,
-   "url": "https://www.velasca.com/products/cinta-c",
-   "img": "img/velasca-belt.webp",
-   "category": "Leather",
+  "missoni-scarf": {
+   "url": "https://www.italist.com/products/missoni-scarf-gray-267019",
+   "brand": "Missoni",
+   "name": "Striped wool scarf",
+   "price": 127.54,
+   "was": 607.31,
+   "img": "img/deal-i1.webp",
    "live": true
   },
-  "pantherella-socks": {
-   "brand": "Pantherella",
-   "name": "Cashmere socks",
-   "price": 80.0,
-   "url": "https://www.pantherella.com/us/6250-dgy-13",
-   "img": "img/pantherella-socks.webp",
-   "category": "Hosiery",
+  "corneliani-polo": {
+   "url": "https://italist.com/products/corneliani-polo-gray-338699",
+   "brand": "Corneliani",
+   "name": "Long-sleeve cotton polo",
+   "price": 126.11,
+   "was": 630.56,
+   "img": "img/deal-s1.webp",
    "live": true
   }
  },
- "LOOKS": [
+ "looks": [
   {
    "id": "boardroom",
    "name": "The Boardroom",
-   "line": "Charcoal cashmere, white poplin, a navy tie. Monday through Thursday.",
+   "note": "Navy on navy under a Zegna Oasi cashmere coat.",
    "pieces": [
-    "faloni-blazer",
-    "faloni-poplin",
-    "viola-tie",
-    "velasca-belt",
-    "velasca-loafer"
+    "brioni-shirt",
+    "dg-silk-tie",
+    "zegna-oasi-coat"
    ]
   },
   {
    "id": "friday",
    "name": "Friday in Cashmere",
-   "line": "No tie, no jacket. Silk-cashmere and a penny loafer.",
+   "note": "Cashmere turtleneck, a Brioni desert jacket, Gomminos.",
    "pieces": [
-    "faloni-crew",
-    "velasca-belt",
-    "velasca-loafer",
-    "pantherella-socks"
+    "gobi-turtleneck",
+    "brioni-desert-jacket",
+    "tods-gommino"
    ]
   },
   {
    "id": "november",
    "name": "Ohio in November",
-   "line": "Fine merino, cashmere-lined deerskin, warm feet.",
+   "note": "Soft layers and a Missoni scarf for the cold.",
    "pieces": [
-    "sunspel-merino",
-    "dents-gloves",
-    "pantherella-socks",
-    "velasca-loafer"
+    "corneliani-polo",
+    "naadam-quarter-zip",
+    "missoni-scarf"
    ]
   }
  ]
