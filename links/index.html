@@ -2,116 +2,149 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Kyle White</title>
-<meta name="description" content="Kyle White: accelerator builder and venture investor in Youngstown, Ohio. LinkedIn, website, and the menswear I actually wear.">
+<meta name="description" content="Kyle White: accelerator builder and venture investor from Youngstown, Ohio. LinkedIn, my site, and the Italian menswear I wear.">
 <link rel="canonical" href="https://kylewhitevc.github.io/links/">
+<meta property="og:type" content="profile">
 <meta property="og:title" content="Kyle White">
 <meta property="og:description" content="Accelerator builder, venture investor, and the menswear I actually wear.">
-<meta property="og:image" content="https://kylewhitevc.github.io/links/img/kyle.webp">
+<meta property="og:image" content="https://kylewhitevc.github.io/links/img/kyle-og.jpg">
 <meta property="og:url" content="https://kylewhitevc.github.io/links/">
-<meta name="theme-color" content="#f6f2ea">
+<meta name="twitter:card" content="summary">
+<meta name="theme-color" content="#070504">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap">
+<link rel="preload" as="image" href="img/kyle-hero.webp">
 <style>
-:root{--bg:#f6f2ea;--ink:#1d1b18;--mute:#6f685d;--line:#ddd5c7;--card:#fffdf9;--acc:#7a2e1f}
+:root{--bg:#0e0b09;--bg2:#17120e;--ink:#efe7da;--mute:#a3978a;--brass:#c3a165;--brass2:#e2c88f;--line:rgba(195,161,101,.22)}
 *{box-sizing:border-box;margin:0;padding:0}
-html{-webkit-text-size-adjust:100%}
-body{background:var(--bg);color:var(--ink);font:16px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
-main{max-width:560px;margin:0 auto;padding:40px 18px 32px}
-header{text-align:center}
-.av{width:104px;height:104px;border-radius:50%;object-fit:cover;border:3px solid var(--card);box-shadow:0 1px 0 var(--line),0 6px 20px rgba(40,30,20,.12)}
-h1{font:500 30px/1.15 "Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;letter-spacing:.2px;margin-top:16px}
-.bio{color:var(--mute);margin:8px auto 0;max-width:34ch;font-size:15px}
-.links{margin-top:26px;display:grid;gap:10px}
-.btn{display:flex;align-items:center;justify-content:center;gap:10px;min-height:54px;padding:0 18px;background:var(--card);border:1px solid var(--line);border-radius:14px;color:var(--ink);text-decoration:none;font-weight:600;font-size:15.5px;transition:transform .15s,border-color .15s}
-.btn:hover{border-color:var(--ink)} .btn:active{transform:scale(.985)}
-.btn svg{width:18px;height:18px;flex:none}
-h2{font:500 21px/1.2 "Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;text-align:center;margin-top:44px}
-.sub{text-align:center;color:var(--mute);font-size:14px;margin-top:4px}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:18px}
-.pick{display:flex;flex-direction:column;background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;color:var(--ink);text-decoration:none;transition:border-color .15s}
-.pick:hover{border-color:var(--ink)}
-.pick img{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;background:#ece6db}
-.b{font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:var(--mute);padding:10px 12px 0}
-.n{font-size:14px;font-weight:600;line-height:1.3;padding:2px 12px 0}
-.p{font-size:14px;color:var(--acc);padding:4px 12px 12px;margin-top:auto}
-.ftc{font-size:12px;color:var(--mute);text-align:center;margin-top:16px;line-height:1.45}
-footer{text-align:center;font-size:12px;color:var(--mute);margin-top:34px}
-@media(min-width:520px){.grid{grid-template-columns:1fr 1fr 1fr}}
+html{-webkit-text-size-adjust:100%;background:var(--bg)}
+body{background:var(--bg);color:var(--ink);font:15px/1.55 -apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none;-webkit-tap-highlight-color:rgba(195,161,101,.15)}
+.serif{font-family:"Cormorant Garamond","Cormorant",Garamond,"Times New Roman",serif}
+.cap{font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--brass)}
+/* ticker */
+.ticker{position:sticky;top:0;z-index:10;background:#070504;border-bottom:1px solid var(--line);overflow:hidden;height:38px}
+.track{display:flex;width:max-content;animation:run 55s linear infinite}
+.ticker:hover .track,.ticker:focus-within .track{animation-play-state:paused}
+.tk{display:flex;align-items:center;gap:8px;height:38px;padding:0 22px;white-space:nowrap;font-size:12.5px;color:var(--ink);border-right:1px solid var(--line)}
+.tk b{font-weight:600;letter-spacing:.2em;font-size:10.5px;color:var(--brass)}
+.tk .m{color:var(--ink);font-weight:500}.tk .pc{color:var(--mute)}.tk .pr{font-variant-numeric:tabular-nums}
+.tk .off{color:#0e0b09;background:var(--brass);font-weight:700;font-size:11px;padding:2px 6px;border-radius:2px}
+@keyframes run{to{transform:translateX(-50%)}}
+/* hero */
+.hero{position:relative;max-width:1080px;margin:0 auto}
+.hero figure{position:relative;height:min(118vw,560px);overflow:hidden}
+.hero img{width:100%;height:100%;object-fit:cover;object-position:50% 22%;filter:sepia(.12) saturate(.9);transform:scale(1.06);animation:settle 2.4s cubic-bezier(.2,.7,.2,1) forwards}
+.hero figure:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,11,9,0) 35%,rgba(14,11,9,.55) 68%,var(--bg) 100%)}
+.intro{position:relative;margin-top:-150px;padding:0 24px;z-index:2}
+h1{font-weight:500;font-size:58px;line-height:.95;letter-spacing:-.01em}
+h1 i{color:var(--brass2);font-weight:400}
+.lede{margin-top:16px;font-size:21px;line-height:1.35;color:var(--ink);max-width:30ch;font-style:italic}
+.facts{margin-top:14px;color:var(--mute);font-size:13.5px;max-width:40ch}
+@keyframes settle{to{transform:scale(1)}}
+.rise{opacity:0;transform:translateY(14px);animation:rise .9s .25s cubic-bezier(.2,.7,.2,1) forwards}
+.d2{animation-delay:.45s}.d3{animation-delay:.65s}
+@keyframes rise{to{opacity:1;transform:none}}
+main{max-width:1080px;margin:0 auto;padding:0 24px 40px}
+section{margin-top:52px}
+.sh{display:flex;align-items:baseline;justify-content:space-between;border-bottom:1px solid var(--line);padding-bottom:10px;margin-bottom:6px}
+.sh h2{font-weight:500;font-size:30px;font-style:italic}
+/* rows */
+.row{display:grid;grid-template-columns:1fr auto;grid-template-areas:"l a" "s a";padding:18px 2px;border-bottom:1px solid var(--line);min-height:64px;align-items:center}
+.rl{grid-area:l;font-family:"Cormorant Garamond",Garamond,serif;font-size:25px;line-height:1.1}
+.rs{grid-area:s;color:var(--mute);font-size:13px;margin-top:2px}
+.ar{grid-area:a;color:var(--brass);font-size:22px;transition:transform .3s}
+.row:hover .ar,.row:focus-visible .ar{transform:translateX(5px)}
+/* house */
+.house{display:block;position:relative;margin-top:16px;overflow:hidden;background:#f3ebdd;color:#1a140f}
+.house img{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;transition:transform 1.2s cubic-bezier(.2,.7,.2,1)}
+.house:hover img{transform:scale(1.03)}
+.house .hn,.house .hl,.house .hc{position:absolute;left:22px;right:22px}
+.house .hn{top:20px;font-family:"Cormorant Garamond",Garamond,serif;font-size:44px;letter-spacing:.32em;font-weight:500}
+.house .hl{bottom:58px;font-size:15px;max-width:30ch;color:#3b3027}
+.house .hc{bottom:22px;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:#7a5a24;font-weight:600}
+/* picks */
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:26px 14px;margin-top:18px}
+.pick{display:block}
+.pick:first-child{grid-column:1/-1}
+.ph{display:block;overflow:hidden;background:#f2eee8;aspect-ratio:4/5}
+.ph img{display:block;width:100%;height:100%;object-fit:cover;transition:transform 1s cubic-bezier(.2,.7,.2,1)}
+.pick:hover .ph img{transform:scale(1.04)}
+.pb{display:block;margin-top:10px;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--brass)}
+.pn{display:block;font-family:"Cormorant Garamond",Garamond,serif;font-size:20px;line-height:1.15;margin-top:3px}
+.pick:first-child .pn{font-size:26px}
+.pp{display:block;color:var(--mute);font-size:13px;margin-top:2px;font-variant-numeric:tabular-nums}
+footer{max-width:1080px;margin:0 auto;padding:28px 24px 48px;border-top:1px solid var(--line);color:var(--mute);font-size:12px;line-height:1.6}
+footer .sig{font-family:"Cormorant Garamond",Garamond,serif;font-style:italic;font-size:22px;color:var(--brass2);margin-bottom:8px}
+:focus-visible{outline:2px solid var(--brass);outline-offset:3px}
+@media (min-width:760px){
+ .hero{display:grid;grid-template-columns:1fr 1fr;align-items:end;gap:40px;padding:48px 24px 0}
+ .hero figure{height:600px}
+ .hero figure:after{background:linear-gradient(180deg,rgba(14,11,9,0) 70%,rgba(14,11,9,.4))}
+ .intro{margin:0 0 30px;padding:0}
+ h1{font-size:92px}
+ .cols{display:grid;grid-template-columns:1fr 1fr;gap:48px}
+ .grid{grid-template-columns:repeat(3,1fr);gap:34px 22px}
+ .pick:first-child{grid-column:auto}.pick:first-child .pn{font-size:20px}
+}
+@media (prefers-reduced-motion:reduce){
+ *{animation:none!important;transition:none!important}
+ .rise{opacity:1;transform:none}.hero img{transform:none}
+ .ticker{overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+ .track .dup{display:none}
+}
 </style>
 </head>
 <body>
+<nav class="ticker" aria-label="Today's markdowns from EREDO and SECONDO">
+  <div class="track"><div style="display:flex"><a class="tk" href="https://italist.com/products/tod-s-loafer-gray-2238466187" target="_blank" rel="noopener"><b>EREDO</b><span class="m">Tod&#x27;s</span><span class="pc">Gommino driving loafer</span><span class="pr">$358</span><span class="off">&minus;68%</span></a><a class="tk" href="https://www.italist.com/products/missoni-scarf-gray-267019" target="_blank" rel="noopener"><b>SECONDO</b><span class="m">Missoni</span><span class="pc">Striped wool scarf</span><span class="pr">$128</span><span class="off">&minus;79%</span></a><a class="tk" href="https://italist.com/products/corneliani-polo-gray-338699" target="_blank" rel="noopener"><b>EREDO</b><span class="m">Corneliani</span><span class="pc">Long-sleeve cotton polo</span><span class="pr">$126</span><span class="off">&minus;80%</span></a><a class="tk" href="https://www.italist.com/products/dolce-gabbana-necktie-blue-390219" target="_blank" rel="noopener"><b>SECONDO</b><span class="m">Dolce &amp; Gabbana</span><span class="pc">Silk necktie</span><span class="pr">$133</span><span class="off">&minus;75%</span></a><a class="tk" href="https://italist.com/products/brioni-jacket-navy-2821015691" target="_blank" rel="noopener"><b>EREDO</b><span class="m">Brioni</span><span class="pc">Desert jacket</span><span class="pr">$1,732</span><span class="off">&minus;61%</span></a><a class="tk" href="https://us.gobicashmere.com/products/mens-cashmere-turtleneck-charcaol" target="_blank" rel="noopener"><b>SECONDO</b><span class="m">Gobi</span><span class="pc">Cashmere turtleneck</span><span class="pr">$160</span><span class="off">&minus;50%</span></a><a class="tk" href="https://italist.com/products/zegna-cashmere-coat-navy-6411339915" target="_blank" rel="noopener"><b>EREDO</b><span class="m">Zegna</span><span class="pc">Oasi cashmere coat</span><span class="pr">$3,033</span><span class="off">&minus;67%</span></a><a class="tk" href="https://www.italist.com/products/dolce-gabbana-necktie-brown-256267" target="_blank" rel="noopener"><b>SECONDO</b><span class="m">Dolce &amp; Gabbana</span><span class="pc">Silk knit tie</span><span class="pr">$115</span><span class="off">&minus;73%</span></a><a class="tk" href="https://italist.com/products/brioni-shirt-navy-1876860043" target="_blank" rel="noopener"><b>EREDO</b><span class="m">Brioni</span><span class="pc">Cotton shirt</span><span class="pr">$505</span><span class="off">&minus;66%</span></a><a class="tk" href="https://naadam.co/products/cotton-cashmere-textured-quarter-zip" target="_blank" rel="noopener"><b>SECONDO</b><span class="m">Naadam</span><span class="pc">Cotton-cashmere quarter zip</span><span class="pr">$69</span><span class="off">&minus;59%</span></a></div><div class="dup" style="display:flex"><a class="tk" href="https://italist.com/products/tod-s-loafer-gray-2238466187" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><b>EREDO</b><span class="m">Tod&#x27;s</span><span class="pc">Gommino driving loafer</span><span class="pr">$358</span><span class="off">&minus;68%</span></a><a class="tk" href="https://www.italist.com/products/missoni-scarf-gray-267019" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><b>SECONDO</b><span class="m">Missoni</span><span class="pc">Striped wool scarf</span><span class="pr">$128</span><span class="off">&minus;79%</span></a><a class="tk" href="https://italist.com/products/corneliani-polo-gray-338699" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><b>EREDO</b><span class="m">Corneliani</span><span class="pc">Long-sleeve cotton polo</span><span class="pr">$126</span><span class="off">&minus;80%</span></a><a class="tk" href="https://www.italist.com/products/dolce-gabbana-necktie-blue-390219" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><b>SECONDO</b><span class="m">Dolce &amp; Gabbana</span><span class="pc">Silk necktie</span><span class="pr">$133</span><span class="off">&minus;75%</span></a><a class="tk" href="https://italist.com/products/brioni-jacket-navy-2821015691" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><b>EREDO</b><span class="m">Brioni</span><span class="pc">Desert jacket</span><span class="pr">$1,732</span><span class="off">&minus;61%</span></a><a class="tk" href="https://us.gobicashmere.com/products/mens-cashmere-turtleneck-charcaol" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><b>SECONDO</b><span class="m">Gobi</span><span class="pc">Cashmere turtleneck</span><span class="pr">$160</span><span class="off">&minus;50%</span></a><a class="tk" href="https://italist.com/products/zegna-cashmere-coat-navy-6411339915" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><b>EREDO</b><span class="m">Zegna</span><span class="pc">Oasi cashmere coat</span><span class="pr">$3,033</span><span class="off">&minus;67%</span></a><a class="tk" href="https://www.italist.com/products/dolce-gabbana-necktie-brown-256267" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><b>SECONDO</b><span class="m">Dolce &amp; Gabbana</span><span class="pc">Silk knit tie</span><span class="pr">$115</span><span class="off">&minus;73%</span></a><a class="tk" href="https://italist.com/products/brioni-shirt-navy-1876860043" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><b>EREDO</b><span class="m">Brioni</span><span class="pc">Cotton shirt</span><span class="pr">$505</span><span class="off">&minus;66%</span></a><a class="tk" href="https://naadam.co/products/cotton-cashmere-textured-quarter-zip" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><b>SECONDO</b><span class="m">Naadam</span><span class="pc">Cotton-cashmere quarter zip</span><span class="pr">$69</span><span class="off">&minus;59%</span></a></div></div>
+</nav>
+<header class="hero">
+  <figure><img src="img/kyle-hero.webp" width="380" height="475" alt="Kyle White speaking on a panel at the Crypto Invest Summit" fetchpriority="high"></figure>
+  <div class="intro">
+    <p class="cap rise">Youngstown, Ohio</p>
+    <h1 class="serif rise d2">Kyle <i>White</i></h1>
+    <p class="lede serif rise d3">I build accelerators and back founders. Off the clock, it&rsquo;s Italian cashmere and good leather.</p>
+    <p class="facts rise d3">Built the Cointelegraph accelerator: 60 investments across four cohorts, $125M in follow-on funding. Techstars All-Star Mentor.</p>
+  </div>
+</header>
 <main>
-  <header>
-    <img class="av" src="img/kyle.webp" width="240" height="240" alt="Kyle White">
-    <h1>Kyle White</h1>
-    <p class="bio">I build accelerators and back early founders from Youngstown, Ohio. Off the clock, it&rsquo;s cashmere, good leather, and Italian makers.</p>
-  </header>
-  <nav class="links">
-    <a class="btn" href="https://www.linkedin.com/in/kylewhitepr/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>LinkedIn</a>
-    <a class="btn" href="https://kylewhitevc.github.io/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9.5"/><path d="M2.5 12h19M12 2.5c2.6 2.7 3.9 5.9 3.9 9.5s-1.3 6.8-3.9 9.5c-2.6-2.7-3.9-5.9-3.9-9.5S9.4 5.2 12 2.5z"/></svg>Website</a>
-  </nav>
-  <section>
-    <h2>Shop my picks</h2>
-    <p class="sub">What&rsquo;s in my rotation this fall.</p>
-    <div class="grid">
-      <a class="pick" href="https://lucafaloni.com/en/us/shop/navy-blue-silk-cashmere-crew-neck" target="_blank" rel="sponsored noopener" data-id="faloni-crew">
-        <img src="img/faloni-crew.webp" width="600" height="750" alt="Luca Faloni Silk-cashmere crew" loading="lazy" decoding="async">
-        <span class="b">Luca Faloni</span>
-        <span class="n">Silk-cashmere crew</span>
-        <span class="p">$425</span>
-      </a>
-      <a class="pick" href="https://lucafaloni.com/en/us/shop/blazers-and-suits/charcoal-grey-cashmere-blazer" target="_blank" rel="sponsored noopener" data-id="faloni-blazer">
-        <img src="img/faloni-blazer.webp" width="600" height="750" alt="Luca Faloni Cashmere blazer" loading="lazy" decoding="async">
-        <span class="b">Luca Faloni</span>
-        <span class="n">Cashmere blazer</span>
-        <span class="p">$1,695</span>
-      </a>
-      <a class="pick" href="https://lucafaloni.com/en/us/shop/shirts/white-poplin-cotton-shirt" target="_blank" rel="sponsored noopener" data-id="faloni-poplin">
-        <img src="img/faloni-poplin.webp" width="600" height="750" alt="Luca Faloni White poplin shirt" loading="lazy" decoding="async">
-        <span class="b">Luca Faloni</span>
-        <span class="n">White poplin shirt</span>
-        <span class="p">$260</span>
-      </a>
-      <a class="pick" href="https://www.violamilano.com/product/solid-handrolled-100-cashmere-tie-navy/" target="_blank" rel="sponsored noopener" data-id="viola-tie">
-        <img src="img/viola-tie.webp" width="600" height="750" alt="Viola Milano Cashmere tie, navy" loading="lazy" decoding="async">
-        <span class="b">Viola Milano</span>
-        <span class="n">Cashmere tie, navy</span>
-        <span class="p">$114</span>
-      </a>
-      <a class="pick" href="https://us.sunspel.com/products/mens-extra-fine-merino-crew-neck-jumper-in-bakelite-mjum8332-rdel" target="_blank" rel="sponsored noopener" data-id="sunspel-merino">
-        <img src="img/sunspel-merino.webp" width="600" height="750" alt="Sunspel Extra-fine merino crew" loading="lazy" decoding="async">
-        <span class="b">Sunspel</span>
-        <span class="n">Extra-fine merino crew</span>
-        <span class="p">$275</span>
-      </a>
-      <a class="pick" href="https://www.velasca.com/products/maester-m" target="_blank" rel="sponsored noopener" data-id="velasca-loafer">
-        <img src="img/velasca-loafer.webp" width="600" height="750" alt="Velasca Maester penny loafer" loading="lazy" decoding="async">
-        <span class="b">Velasca</span>
-        <span class="n">Maester penny loafer</span>
-        <span class="p">$500</span>
-      </a>
-      <a class="pick" href="https://www.velasca.com/products/cinta-c" target="_blank" rel="sponsored noopener" data-id="velasca-belt">
-        <img src="img/velasca-belt.webp" width="600" height="750" alt="Velasca Cognac calf belt" loading="lazy" decoding="async">
-        <span class="b">Velasca</span>
-        <span class="n">Cognac calf belt</span>
-        <span class="p">$90</span>
-      </a>
-      <a class="pick" href="https://us.dentsgloves.com/products/mens-cashmere-lined-deerskin-leather-gloves" target="_blank" rel="sponsored noopener" data-id="dents-gloves">
-        <img src="img/dents-gloves.webp" width="600" height="750" alt="Dents Cashmere-lined gloves" loading="lazy" decoding="async">
-        <span class="b">Dents</span>
-        <span class="n">Cashmere-lined gloves</span>
-        <span class="p">$391</span>
-      </a>
-      <a class="pick" href="https://www.pantherella.com/us/6250-dgy-13" target="_blank" rel="sponsored noopener" data-id="pantherella-socks">
-        <img src="img/pantherella-socks.webp" width="600" height="750" alt="Pantherella Cashmere socks" loading="lazy" decoding="async">
-        <span class="b">Pantherella</span>
-        <span class="n">Cashmere socks</span>
-        <span class="p">$80</span>
-      </a>
-    </div>
-    <p class="ftc">Some of these are affiliate links. If you buy through them, I may earn a commission at no extra cost to you.</p>
+  <div class="cols">
+    <section><div class="sh"><h2 class="serif">Find me</h2></div><a class="row" href="https://www.linkedin.com/in/kylewhitepr/" target="_blank" rel="noopener">
+      <span class="rl">LinkedIn</span><span class="rs">15K followers. Where I post.</span><span class="ar" aria-hidden="true">&rarr;</span></a><a class="row" href="https://kylewhitevc.github.io/" target="_blank" rel="noopener">
+      <span class="rl">kylewhitevc.github.io</span><span class="rs">Track record and the fund</span><span class="ar" aria-hidden="true">&rarr;</span></a></section>
+    <section><div class="sh"><h2 class="serif">My shop</h2><span class="cap">Est. 2026</span></div><a class="house" href="https://eredo.netlify.app/" target="_blank" rel="noopener">
+      <img src="img/eredo.webp" width="800" height="1000" alt="" loading="lazy" decoding="async">
+      <span class="hn">EREDO</span><span class="hl">Italian-American menswear. The best makers, marked down up to 80%.</span><span class="hc">Enter the shop &rarr;</span></a></section>
+  </div>
+  <section><div class="sh"><h2 class="serif">What I wear</h2><span class="cap">9 pieces</span></div>
+    <div class="grid"><a class="pick" href="https://lucafaloni.com/en/us/shop/navy-blue-silk-cashmere-crew-neck" target="_blank" rel="sponsored noopener">
+      <span class="ph"><img src="img/faloni-crew.webp" width="600" height="750" alt="Luca Faloni Silk-cashmere crew" loading="lazy" decoding="async"></span>
+      <span class="pb">Luca Faloni</span><span class="pn">Silk-cashmere crew</span><span class="pp">$425</span></a><a class="pick" href="https://lucafaloni.com/en/us/shop/blazers-and-suits/charcoal-grey-cashmere-blazer" target="_blank" rel="sponsored noopener">
+      <span class="ph"><img src="img/faloni-blazer.webp" width="600" height="750" alt="Luca Faloni Cashmere blazer" loading="lazy" decoding="async"></span>
+      <span class="pb">Luca Faloni</span><span class="pn">Cashmere blazer</span><span class="pp">$1,695</span></a><a class="pick" href="https://lucafaloni.com/en/us/shop/shirts/white-poplin-cotton-shirt" target="_blank" rel="sponsored noopener">
+      <span class="ph"><img src="img/faloni-poplin.webp" width="600" height="750" alt="Luca Faloni White poplin shirt" loading="lazy" decoding="async"></span>
+      <span class="pb">Luca Faloni</span><span class="pn">White poplin shirt</span><span class="pp">$260</span></a><a class="pick" href="https://www.violamilano.com/product/solid-handrolled-100-cashmere-tie-navy/" target="_blank" rel="sponsored noopener">
+      <span class="ph"><img src="img/viola-tie.webp" width="600" height="750" alt="Viola Milano Cashmere tie, navy" loading="lazy" decoding="async"></span>
+      <span class="pb">Viola Milano</span><span class="pn">Cashmere tie, navy</span><span class="pp">$114</span></a><a class="pick" href="https://us.sunspel.com/products/mens-extra-fine-merino-crew-neck-jumper-in-bakelite-mjum8332-rdel" target="_blank" rel="sponsored noopener">
+      <span class="ph"><img src="img/sunspel-merino.webp" width="600" height="750" alt="Sunspel Extra-fine merino crew" loading="lazy" decoding="async"></span>
+      <span class="pb">Sunspel</span><span class="pn">Extra-fine merino crew</span><span class="pp">$275</span></a><a class="pick" href="https://www.velasca.com/products/maester-m" target="_blank" rel="sponsored noopener">
+      <span class="ph"><img src="img/velasca-loafer.webp" width="600" height="750" alt="Velasca Maester penny loafer" loading="lazy" decoding="async"></span>
+      <span class="pb">Velasca</span><span class="pn">Maester penny loafer</span><span class="pp">$500</span></a><a class="pick" href="https://www.velasca.com/products/cinta-c" target="_blank" rel="sponsored noopener">
+      <span class="ph"><img src="img/velasca-belt.webp" width="600" height="750" alt="Velasca Cognac calf belt" loading="lazy" decoding="async"></span>
+      <span class="pb">Velasca</span><span class="pn">Cognac calf belt</span><span class="pp">$90</span></a><a class="pick" href="https://us.dentsgloves.com/products/mens-cashmere-lined-deerskin-leather-gloves" target="_blank" rel="sponsored noopener">
+      <span class="ph"><img src="img/dents-gloves.webp" width="600" height="750" alt="Dents Cashmere-lined gloves" loading="lazy" decoding="async"></span>
+      <span class="pb">Dents</span><span class="pn">Cashmere-lined gloves</span><span class="pp">$391</span></a><a class="pick" href="https://www.pantherella.com/us/6250-dgy-13" target="_blank" rel="sponsored noopener">
+      <span class="ph"><img src="img/pantherella-socks.webp" width="600" height="750" alt="Pantherella Cashmere socks" loading="lazy" decoding="async"></span>
+      <span class="pb">Pantherella</span><span class="pn">Cashmere socks</span><span class="pp">$80</span></a></div>
   </section>
-  <footer>&copy; 2026 Kyle White</footer>
 </main>
+<footer>
+  <p class="sig">Grazie for stopping by.</p>
+  <p>Some links on this page are affiliate links. If you buy through them I may earn a commission, at no extra cost to you. Prices as listed by each store on Oct 24, 2026.</p>
+</footer>
 </body>
 </html>
