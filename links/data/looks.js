@@ -1,122 +1,77 @@
-/* Kyle White Links: looks data, the single source for "Shop my outfits".
+/* Kyle White Links: the single outfit for "Shop the look" (CEO order Oct 25 2026: one complete, coherent outfit).
    Same contract as EREDO's looks.json: links{KEY:{url,brand,name,price(now),was(original or null),img,live}},
-   looks[{id,name,note,pieces:[KEY]}]. Prices read off each merchant page (Oct 25 2026).
-   A piece whose key is missing or live:false hides itself; a look with fewer than 2 live pieces hides itself.
+   looks[{id,name,note,pieces:[KEY]}]. Prices and in-stock sizes read off each product page Oct 25 2026.
    CI fails on a missing key, a non-https url, a missing image, or was < price. */
 window.KW_LOOKS = {
  "house": "kyle",
  "links": {
-  "brioni-shirt": {
-   "url": "https://italist.com/products/brioni-shirt-navy-1876860043",
-   "brand": "Brioni",
-   "name": "Navy cotton shirt",
-   "price": 488.6,
-   "was": 1453.55,
-   "img": "img/deal-s3.webp",
+  "tagliatore-navy-blazer": {
+   "url": "https://italist.com/products/tagliatore-blazer-blue-7169182859",
+   "brand": "Tagliatore",
+   "name": "Montecarlo navy wool blazer",
+   "price": 619.06,
+   "was": 965.73,
+   "img": "img/look-jacket.webp",
    "live": true
   },
-  "dg-silk-tie": {
-   "url": "https://www.italist.com/products/dolce-gabbana-necktie-blue-390219",
-   "brand": "Dolce & Gabbana",
-   "name": "Blue silk necktie",
-   "price": 132.56,
-   "was": 530.23,
-   "img": "img/deal-i2.webp",
-   "live": true
-  },
-  "zegna-oasi-coat": {
-   "url": "https://italist.com/products/zegna-cashmere-coat-navy-6411339915",
-   "brand": "Zegna",
-   "name": "Oasi cashmere coat",
-   "price": 3032.69,
-   "was": 9189.97,
-   "img": "img/deal-s2.webp",
-   "live": true
-  },
-  "gobi-turtleneck": {
-   "url": "https://us.gobicashmere.com/products/mens-cashmere-turtleneck-charcaol",
+  "gobi-taupe-rollneck": {
+   "url": "https://us.gobicashmere.com/products/mens-turtle-neck-taupe",
    "brand": "GOBI Cashmere",
-   "name": "Cashmere turtleneck",
-   "price": 159.5,
-   "was": 319.0,
-   "img": "img/deal-k4.webp",
+   "name": "Taupe cashmere roll-neck",
+   "price": 159.0,
+   "was": null,
+   "img": "img/look-turtleneck.webp",
    "live": true
   },
-  "brioni-desert-jacket": {
-   "url": "https://italist.com/products/brioni-jacket-navy-2821015691",
-   "brand": "Brioni",
-   "name": "Navy desert jacket",
-   "price": 1732.13,
-   "was": 4441.36,
-   "img": "img/deal-s6.webp",
+  "cucinelli-grey-trousers": {
+   "url": "https://italist.com/products/brunello-cucinelli-trousers-gray-3444545675",
+   "brand": "Brunello Cucinelli",
+   "name": "Grey merino pleated trousers",
+   "price": 1115.09,
+   "was": 2424.1,
+   "img": "img/look-trousers.webp",
    "live": true
   },
-  "tods-gommino": {
-   "url": "https://italist.com/products/tod-s-loafer-gray-2238466187",
-   "brand": "Tod's",
-   "name": "Gommino driving loafer",
-   "price": 357.6,
-   "was": 1117.49,
-   "img": "img/deal-s5.webp",
+  "cj-suede-loafer": {
+   "url": "https://italist.com/products/crockett-jones-loafer-brown-6293670027",
+   "brand": "Crockett & Jones",
+   "name": "Brown suede penny loafer",
+   "price": 563.52,
+   "was": 845.28,
+   "img": "img/look-loafer.webp",
    "live": true
   },
-  "naadam-quarter-zip": {
-   "url": "https://naadam.co/products/cotton-cashmere-textured-quarter-zip",
-   "brand": "Naadam",
-   "name": "Cotton-cashmere quarter zip",
-   "price": 68.88,
-   "was": 168.0,
-   "img": "img/deal-k1.webp",
+  "slowear-woven-belt": {
+   "url": "https://italist.com/products/slowear-belt-brown-5783522443",
+   "brand": "Slowear",
+   "name": "Woven brown leather belt",
+   "price": 266.7,
+   "was": 400.05,
+   "img": "img/look-belt.webp",
    "live": true
   },
-  "missoni-scarf": {
-   "url": "https://www.italist.com/products/missoni-scarf-gray-267019",
-   "brand": "Missoni",
-   "name": "Striped wool scarf",
-   "price": 127.54,
-   "was": 607.31,
-   "img": "img/deal-i1.webp",
-   "live": true
-  },
-  "corneliani-polo": {
-   "url": "https://italist.com/products/corneliani-polo-gray-338699",
-   "brand": "Corneliani",
-   "name": "Long-sleeve cotton polo",
-   "price": 126.11,
-   "was": 630.56,
-   "img": "img/deal-s1.webp",
+  "cucinelli-brown-scarf": {
+   "url": "https://italist.com/products/brunello-cucinelli-scarf-brown-2709342347",
+   "brand": "Brunello Cucinelli",
+   "name": "Ribbed brown cashmere scarf",
+   "price": 630.4,
+   "was": 1189.43,
+   "img": "img/look-scarf.webp",
    "live": true
   }
  },
  "looks": [
   {
-   "id": "boardroom",
-   "name": "The Boardroom",
-   "note": "Navy on navy under a Zegna Oasi cashmere coat.",
+   "id": "ohio-autumn",
+   "name": "Navy, Taupe & Suede",
+   "note": "A navy Tagliatore blazer over taupe cashmere, Cucinelli grey merino, brown suede and woven leather.",
    "pieces": [
-    "brioni-shirt",
-    "dg-silk-tie",
-    "zegna-oasi-coat"
-   ]
-  },
-  {
-   "id": "friday",
-   "name": "Friday in Cashmere",
-   "note": "Cashmere turtleneck, a Brioni desert jacket, Gomminos.",
-   "pieces": [
-    "gobi-turtleneck",
-    "brioni-desert-jacket",
-    "tods-gommino"
-   ]
-  },
-  {
-   "id": "november",
-   "name": "Ohio in November",
-   "note": "Soft layers and a Missoni scarf for the cold.",
-   "pieces": [
-    "corneliani-polo",
-    "naadam-quarter-zip",
-    "missoni-scarf"
+    "tagliatore-navy-blazer",
+    "gobi-taupe-rollneck",
+    "cucinelli-grey-trousers",
+    "cj-suede-loafer",
+    "slowear-woven-belt",
+    "cucinelli-brown-scarf"
    ]
   }
  ]
