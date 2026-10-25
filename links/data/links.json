@@ -63,6 +63,14 @@
    "img": "img/house-gantry.webp"
   },
   {
+   "id": "palio",
+   "name": "PALIO",
+   "kind": "Ohio game day",
+   "line": "Browns, Steelers and Buckeyes gear, from $25.",
+   "url": "https://eredo-house-gameday.static.hf.space/",
+   "img": "img/house-palio.webp"
+  },
+  {
    "id": "scatto",
    "name": "SCATTO",
    "kind": "Menswear on sale",
@@ -77,13 +85,6 @@
    "line": "Custom lab-grown diamonds, made to order.",
    "url": "https://eredo-house-luce.static.hf.space/",
    "img": "img/house-luce.webp"
-  },
-  {
-   "id": "gameday",
-   "name": "GAMEDAY",
-   "kind": "Coming soon",
-   "line": "",
-   "url": ""
   }
  ],
  "stats": [
