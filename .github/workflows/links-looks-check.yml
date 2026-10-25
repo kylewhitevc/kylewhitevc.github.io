@@ -1,0 +1,16 @@
+name: Links looks check
+on:
+  push:
+    paths: ['links/**', '.github/workflows/links-looks-check.yml']
+  pull_request:
+    paths: ['links/**']
+jobs:
+  looks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Every look points to a real LINKS key
+        run: node links/scripts/check_looks.js
