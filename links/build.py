@@ -180,7 +180,8 @@ section{margin-top:52px}
 #f-all:checked~.chips [for=f-all],#f-eredo:checked~.chips [for=f-eredo],#f-secondo:checked~.chips [for=f-secondo]{background:var(--brass);color:#0e0b09;border-color:var(--brass)}
 #f-eredo:checked~.rail .deal:not(.eredo),#f-secondo:checked~.rail .deal:not(.secondo){display:none}
 .fx{position:absolute;opacity:0;pointer-events:none}
-.rail{display:grid;grid-auto-flow:column;grid-auto-columns:64%;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;margin:14px -24px 0;padding:4px 24px 8px;scroll-padding:0 24px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.rail{display:grid;grid-auto-flow:column;grid-auto-columns:64%;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;margin:14px -24px 0;padding:4px 24px 8px;scroll-padding:0 24px;scrollbar-width:none;-webkit-overflow-scrolling:touch;scroll-padding-left:24px;-webkit-mask-image:linear-gradient(90deg,#000 82%,transparent);mask-image:linear-gradient(90deg,#000 82%,transparent)}
+.lsw{display:block;margin-top:6px;font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--mute)}
 .rail::-webkit-scrollbar{display:none}
 .deal{display:block;scroll-snap-align:start}
 .dimg{position:relative;display:block;aspect-ratio:4/5;background:#ece5d9;overflow:hidden}
@@ -245,7 +246,8 @@ footer .sig{font-family:"Cormorant Garamond",Garamond,serif;font-style:italic;fo
 .lno{font-size:10.5px;letter-spacing:.26em;text-transform:uppercase;color:var(--brass)}
 .lnm{font-size:36px;font-style:italic;font-weight:500;line-height:1;margin-top:6px}
 .ll{color:var(--mute);font-size:13.5px;margin-top:8px;max-width:42ch}
-.lpcs{display:grid;grid-auto-flow:column;grid-auto-columns:41%;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;margin:16px -24px 0;padding:0 24px 6px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.lpcs{display:grid;grid-auto-flow:column;grid-auto-columns:41%;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;margin:16px -24px 0;padding:0 24px 6px;scrollbar-width:none;-webkit-overflow-scrolling:touch;scroll-padding-left:24px;-webkit-mask-image:linear-gradient(90deg,#000 82%,transparent);mask-image:linear-gradient(90deg,#000 82%,transparent)}
+.lsw{display:block;margin-top:6px;font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--mute)}
 .lpcs::-webkit-scrollbar{display:none}
 .lp{display:block;scroll-snap-align:start;min-width:0}
 .lp[hidden],.lbuy li[hidden],.look[hidden]{display:none}
@@ -279,7 +281,8 @@ footer .sig{font-family:"Cormorant Garamond",Garamond,serif;font-style:italic;fo
 .fh:hover .fimg img{transform:scale(1.04)}
 #family-strip{max-width:1080px;margin:0 auto;color:var(--mute)}
 @media (min-width:760px){
- .lpcs{grid-auto-flow:row;grid-template-columns:repeat(5,1fr);overflow:visible;margin:18px 0 0;padding:0}
+ .lpcs{grid-auto-flow:row;grid-template-columns:repeat(5,1fr);overflow:visible;margin:18px 0 0;padding:0;-webkit-mask-image:none;mask-image:none}
+ .lsw{display:none}
  .lbuy,.ldrop{max-width:560px}
  .lnm{font-size:48px}
 }
@@ -337,7 +340,7 @@ for lk in LK['LOOKS']:
     rows = ''.join(f"""<li data-k="{e(k)}"><a href="{e(P[k]['url'])}" target="_blank" rel="sponsored noopener"><span class="rb">{e(P[k]['brand'])}</span><span class="rp">{money(P[k]['price'])}</span><span class="rn">{e(P[k]['name'])}</span><span class="rs">Shop &rarr;</span></a></li>""" for k in keys)
     looks_html += f"""<article class="look" data-look="{e(lk['id'])}">
   <p class="lno">Look N&deg;{_n:02d}</p><h3 class="lnm serif">{e(lk['name'])}</h3><p class="ll">{e(lk['line'])}</p>
-  <div class="lpcs">{pcs}</div>
+  <div class="lpcs">{pcs}</div><span class="lsw">Swipe for all {len(keys)} pieces &rarr;</span>
   <details class="lbuy"><summary><span>Shop the full look</span><b class="ltot">{money(tot)}</b></summary><ol>{rows}</ol></details>
   <form class="ldrop" action="https://eredo.netlify.app/" method="POST"><input type="hidden" name="form-name" value="markdowns"><input type="hidden" name="look" value="kyle-{e(lk['id'])}"><p hidden><label>Leave empty <input name="bot-field"></label></p><label for="em-{e(lk['id'])}">Get this look when it drops</label><input id="em-{e(lk['id'])}" type="email" name="email" placeholder="Email address" autocomplete="email" required><button type="submit">Notify me</button><p class="lok" hidden>You&rsquo;re on the list.</p></form>
 </article>"""
