@@ -49,6 +49,14 @@ def tick_seq():
     return seq
 
 
+_rsrc = open(os.path.join(D, 'links.js')).read()
+REF = json.loads(_rsrc[_rsrc.index('{', _rsrc.index('KW_REF')):].rstrip().rstrip(';'))
+def ref_href(broker):
+    b = REF['brokers'][broker]
+    return b.get('ref') or b['url']
+def coin_broker(cid):
+    return REF.get('coins', {}).get(cid, REF['default'])
+
 def tick_items(hidden=False):
     out = []
     attrs = ' tabindex="-1" aria-hidden="true"' if hidden else ''
@@ -56,7 +64,7 @@ def tick_items(hidden=False):
         if kind == 'c':
             cls, txt = fmt_chg(t['chg'])
             out.append(
-                f'<a class="tk mk" data-cg="{e(t["id"])}" href="https://www.coingecko.com/en/coins/{e(t["id"])}" target="_blank" rel="noopener"{attrs}>'
+                f'<a class="tk mk" data-cg="{e(t["id"])}" data-ref="{e(coin_broker(t["id"]))}" href="{e(ref_href(coin_broker(t["id"])))}" target="_blank" rel="sponsored noopener" title="Buy {e(t["sym"])} on {e(REF["brokers"][coin_broker(t["id"])]["name"])}"{attrs}>'
                 f'<b>{e(t["sym"])}</b><span class="pr">{fmt_px(t["usd"])}</span><span class="chg {cls}">{txt}</span></a>')
         else:
             out.append(
@@ -299,6 +307,16 @@ footer .sig{font-family:"Cormorant Garamond",Garamond,serif;font-style:italic;fo
  .sb:first-child{border-left:0;padding-left:0!important}
  .sn{font-size:64px}
 }
+
+/* broker CTA strip */
+.cta{display:flex;flex-wrap:wrap;align-items:center;gap:8px 10px;max-width:1080px;margin:0 auto;padding:12px 24px 10px;border-bottom:1px solid var(--line)}
+.ctl{font-size:10px;letter-spacing:.26em;text-transform:uppercase;color:var(--brass);margin-right:4px}
+.ctb{display:inline-flex;align-items:baseline;gap:7px;min-height:36px;align-items:center;padding:0 14px;border:1px solid var(--line);border-radius:40px;transition:border-color .25s}
+.ctb:hover{border-color:var(--brass)}
+.ctb b{font-size:12.5px;font-weight:600;color:var(--ink)}
+.ctb i{font-style:normal;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute)}
+.ctd{flex-basis:100%;font-size:11px;color:var(--mute);margin:2px 0 0}
+@media (max-width:420px){.ctb i{display:none}.ctl{flex-basis:100%}}
 :focus-visible{outline:2px solid var(--brass);outline-offset:3px}
 @media (min-width:760px){
  .hero{display:grid;grid-template-columns:1fr 1fr;align-items:end;gap:40px;padding:48px 24px 0}
@@ -412,6 +430,7 @@ document.body.appendChild(fs);
 })();
 </script>"""
 stats_html = ''.join(f'<div class="sb"><span class="sn serif">{e(x["n"])}</span><span class="sl2">{e(x["l"])}</span></div>' for x in L.get('stats',[]))
+cta_html = '<div class="cta"><span class="ctl">Open an account</span>' + ''.join(f'<a class="ctb" data-ref="{e(k)}" href="{e(ref_href(k))}" target="_blank" rel="sponsored noopener"><b>{e(REF["brokers"][k]["name"])}</b><i>{e(REF["brokers"][k]["tag"])}</i></a>' for k in REF['strip']) + '<p class="ctd">I may earn a referral fee if you open an account. Not investment advice.</p></div>'
 houses_live = [h for h in L['houses'] if h.get('url')]
 fam_html = ''.join(f'''<a class="fh" href="{e(h['url'])}" target="_blank" rel="noopener">{('<span class="fimg"><img src="'+e(h['img'])+'" width="600" height="750" alt="'+e(h['name'])+'" loading="lazy" decoding="async"></span>') if h.get('img') else ''}<span class="fno">N&deg;{i:02d}</span><span class="fk">{e(h['kind'])}</span><span class="fnm serif">{e(h['name'])}</span><span class="fl">{e(h['line'])}</span><span class="fe">Enter &rarr;</span></a>''' for i,h in enumerate(houses_live,1))
 house_html = (f'''<a class="house" href="{e(house['url'])}" target="_blank" rel="noopener"><span><span class="hn">{e(house['name'])}</span><span class="hl">{e(house['line'])}</span><span class="hc">Enter the full shop &rarr;</span></span><img src="{e(house['img'])}" width="112" height="140" alt="" loading="lazy"></a>''' if house else '')
@@ -437,9 +456,10 @@ page = f'''<!doctype html>
 <style>{CSS}{UCSS}</style>
 </head>
 <body>
-<nav class="ticker" aria-label="Crypto prices and today's markdowns">
+<nav class="ticker" aria-label="Crypto prices (tap to open an account) and today's markdowns">
   <div class="track"><div style="display:flex">{tick_items()}</div><div class="dup" style="display:flex">{tick_items(True)}</div></div>
 </nav>
+{cta_html}
 <header class="hero">
   <figure><img src="img/kyle-hero.webp" width="752" height="940" alt="Kyle White" fetchpriority="high"></figure>
   <div class="intro">
