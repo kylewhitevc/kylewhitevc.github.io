@@ -254,7 +254,8 @@ footer .sig{font-family:"Cormorant Garamond",Garamond,serif;font-style:italic;fo
 .lno{font-size:10.5px;letter-spacing:.26em;text-transform:uppercase;color:var(--brass)}
 .lnm{font-size:36px;font-style:italic;font-weight:500;line-height:1;margin-top:6px}
 .ll{color:var(--mute);font-size:13.5px;margin-top:8px;max-width:42ch}
-.lpcs{display:grid;grid-auto-flow:column;grid-auto-columns:41%;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;margin:16px -24px 0;padding:0 24px 6px;scrollbar-width:none;-webkit-overflow-scrolling:touch;scroll-padding-left:24px;-webkit-mask-image:linear-gradient(90deg,#000 82%,transparent);mask-image:linear-gradient(90deg,#000 82%,transparent)}
+.lpcs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 12px;margin-top:18px}
+@media(min-width:760px){.lpcs{grid-template-columns:repeat(3,minmax(0,1fr));gap:26px 18px}}
 .lsw{display:block;margin-top:6px;font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--mute)}
 .lpcs::-webkit-scrollbar{display:none}
 .lp{display:block;scroll-snap-align:start;min-width:0}
@@ -384,10 +385,10 @@ for lk in LK['looks']:
     pcs = ''.join(f"""<a class="lp" data-k="{e(k)}" href="{e(P[k]['url'])}" target="_blank" rel="sponsored noopener"><span class="lpi"><img src="{e(P[k]['img'])}" width="600" height="750" alt="{e(P[k]['brand'])} {e(P[k]['name'])}" loading="lazy" decoding="async"></span><span class="lpb">{e(P[k]['brand'])}</span><span class="lpn">{e(P[k]['name'])}</span><span class="lpp">{_pp(k)}</span></a>""" for k in keys)
     rows = ''.join(f"""<li data-k="{e(k)}"><a href="{e(P[k]['url'])}" target="_blank" rel="sponsored noopener"><span class="rb">{e(P[k]['brand'])}</span><span class="rp">{money(P[k]['price'])}</span><span class="rn">{e(P[k]['name'])}</span><span class="rs">Shop &rarr;</span></a></li>""" for k in keys)
     looks_html += f"""<article class="look" data-look="{e(lk['id'])}">
-  <p class="lno">Look N&deg;{_n:02d}</p><h3 class="lnm serif">{e(lk['name'])}</h3><p class="ll">{e(lk.get('note',''))}</p>
-  <div class="lpcs">{pcs}</div><span class="lsw">Swipe for all {len(keys)} pieces &rarr;</span>
+  <h3 class="lnm serif">{e(lk['name'])}</h3><p class="ll">{e(lk.get('note',''))}</p>
+  <div class="lpcs">{pcs}</div>
   {sum_html(keys)}
-  <details class="lbuy"><summary><span>Shop the full look</span><span aria-hidden="true">&darr;</span></summary><ol>{rows}</ol></details>
+  <details class="lbuy" open><summary><span>Shop the full look</span><span aria-hidden="true">&darr;</span></summary><ol>{rows}</ol></details>
 </article>"""
 LOOKS_JS = r"""<script>
 (function(){
@@ -478,34 +479,18 @@ page = f'''<!doctype html>
   <section class="links">{links_html}</section>
   <figure class="stage"><img src="img/kyle-cis.webp" width="720" height="720" alt="Kyle White speaking on a panel at the Crypto Invest Summit" loading="lazy" decoding="async"><figcaption><span class="cap">On stage</span><span class="st serif">Crypto Invest Summit</span><span class="sl">Panelist, Blockchain Technology Investing track.</span></figcaption></figure>
   <section class="looks" id="looks">
-    <div class="sh"><h2 class="vt serif"><small>Shop my outfits</small>The Looks</h2></div>
-    <p class="ulede">How I actually wear it. Tap any piece, or shop the whole look.</p>
+    <div class="sh"><h2 class="vt serif"><small>Shop the look</small>The Outfit</h2></div>
     {looks_html}
-  </section>
-  <section class="vault" id="vault">
-    <div class="vk"><h2 class="vt serif"><small>EREDO &times; SECONDO</small>The Vault</h2><p class="big" aria-label="up to 79 percent off">79<sup>%</sup></p></div>
-    <p class="vsub">Zegna, Brioni, Tod&rsquo;s, Missoni. Real Italian houses at up to 79% off, every price checked {e(VERIFIED)}.</p>
-    <input class="fx" type="radio" name="vf" id="f-all" checked><input class="fx" type="radio" name="vf" id="f-eredo"><input class="fx" type="radio" name="vf" id="f-secondo">
-    <div class="chips" role="group" aria-label="Filter"><label for="f-all">All<span>{len(deals)}</span></label><label for="f-eredo">Eredo<span>{houses_n['EREDO']}</span></label><label for="f-secondo">Secondo<span>{houses_n['SECONDO']}</span></label></div>
-    <div class="rail">{deals_html}</div>
-    <p class="swipe">Swipe &rarr;</p>
-    {house_html}
   </section>
   <section class="fam" id="houses">
     <div class="sh"><h2 class="vt serif"><small>The family</small>The Houses</h2></div>
     <p class="ulede">Each one its own shop, each with a single focus.</p>
     <div class="fgrid">{fam_html}</div>
   </section>
-  <section class="uni">
-    <div class="sh"><h2 class="vt serif"><small>Shop my wardrobe</small>The Uniform</h2></div>
-    <p class="ulede">The nine pieces I wear week in, week out. Cashmere, merino, good leather. Mostly Italian.</p>
-    {ug_inputs}<div class="chips" role="group" aria-label="Filter the wardrobe">{ug_chips}</div>
-    <div class="uwrap">{feat_html}<div class="grid">{picks_html}</div></div>
-  </section>
 </main>
 <footer>
   <p class="sig">Grazie for stopping by.</p>
-  <p>Some links on this page are affiliate links. If you buy through them I may earn a commission, at no extra cost to you. Prices as listed by each store on Oct 24, 2026.</p>
+  <p>Some links on this page are affiliate links. If you buy through them I may earn a commission, at no extra cost to you. Prices as listed by each store on Oct 25, 2026.</p>
 </footer>
 <div id="family-strip"></div>
 <script src="data/looks.js"></script>
