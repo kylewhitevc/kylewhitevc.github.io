@@ -3,14 +3,38 @@
   {
    "id": "linkedin",
    "label": "LinkedIn",
-   "sub": "15K followers. Where I post.",
+   "sub": "15K followers. Where I post most.",
    "url": "https://www.linkedin.com/in/kylewhitepr/"
   },
   {
+   "id": "x",
+   "label": "X",
+   "sub": "@theDeFiDon",
+   "url": "https://x.com/theDeFiDon"
+  },
+  {
+   "id": "instagram",
+   "label": "Instagram",
+   "sub": "@thedefidon",
+   "url": "https://www.instagram.com/thedefidon/"
+  },
+  {
    "id": "site",
-   "label": "kylewhitevc.github.io",
+   "label": "Kyle White, VC",
    "sub": "Track record and the fund",
    "url": "https://kylewhitevc.github.io/"
+  },
+  {
+   "id": "cointelegraph",
+   "label": "Cointelegraph",
+   "sub": "My bylines",
+   "url": "https://cointelegraph.com/authors/kyle-white"
+  },
+  {
+   "id": "press",
+   "label": "Press",
+   "sub": "Every story, on Muck Rack",
+   "url": "https://muckrack.com/kyle-white-crypto"
   }
  ],
  "houses": [
