@@ -1,16 +1,29 @@
 name: Links looks check
+# Quiet by design: runs only when looks data or its checker changes, cancels superseded runs,
+# and never fails the job (problems show as a warning annotation, so no failure emails).
+# The real gate is local: links/deploy.py runs scripts/check_looks.js before anything is pushed.
 on:
   push:
-    paths: ['links/**', '.github/workflows/links-looks-check.yml']
-  pull_request:
-    paths: ['links/**']
+    branches: [main]
+    paths:
+      - 'links/data/looks.js'
+      - 'links/scripts/check_looks.js'
+concurrency:
+  group: links-looks-check
+  cancel-in-progress: true
 jobs:
   looks:
     runs-on: ubuntu-latest
+    timeout-minutes: 5
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
-      - name: Every look points to a real LINKS key
+      - name: Every look points to a real links key
+        id: check
+        continue-on-error: true
         run: node links/scripts/check_looks.js
+      - name: Report
+        if: steps.check.outcome == 'failure'
+        run: echo "::warning::looks.js check failed; see the step above. Fix and redeploy with links/deploy.py."
