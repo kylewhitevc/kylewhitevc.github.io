@@ -93,12 +93,24 @@ feat_html = f"""<a class="feat" href="{href(feat)}" target="_blank" rel="sponsor
   <img src="img/{e(feat['id'])}.webp" width="900" height="1125" alt="{e(feat['brand'])} {e(feat['name'])}" loading="lazy" decoding="async">
   <span class="fo"><span class="no">N&deg;01</span><span class="pb">{e(feat['brand'])} &middot; {e(origin(feat['made_in']))}</span>
   <span class="fn">{e(feat['name'])}</span><span class="fp">{money(feat['price'])}<i>Shop &rarr;</i></span></span></a>"""
+GROUP = {'Tailoring':'tailoring','Shirting':'tailoring','Knitwear':'knitwear','Shoes':'shoes'}
+UG = [('all','All'),('tailoring','Tailoring'),('knitwear','Knitwear'),('shoes','Shoes'),('accessories','Accessories')]
+def grp(r): return GROUP.get(r['category'],'accessories')
+ug_n = {k: (len(picks) if k=='all' else sum(1 for r in picks if grp(r)==k)) for k,_ in UG}
 picks_html = ''.join(
-    f"""<a class="pick" href="{href(r)}" target="_blank" rel="sponsored noopener">
+    f"""<a class="pick g-{grp(r)}{' p1' if i==1 else ''}" href="{href(r)}" target="_blank" rel="sponsored noopener">
       <span class="ph"><img src="img/{e(r['id'])}.webp" width="600" height="750" alt="{e(r['brand'])} {e(r['name'])}" loading="lazy" decoding="async"><span class="no">N&deg;{i:02d}</span></span>
       <span class="pc">{e(r['category'])}</span><span class="pb">{e(r['brand'])}</span><span class="pn">{e(r['name'])}</span>
       <span class="pf"><span class="pp">{money(r['price'])}</span><span class="po">{e(origin(r['made_in']))}</span></span></a>"""
-    for i, r in enumerate(rest, 2))
+    for i, r in enumerate(picks, 1))
+ug_inputs = ''.join(f'<input class="fx" type="radio" name="uf" id="u-{k}"{" checked" if k=="all" else ""}>' for k,_ in UG)
+ug_chips = ''.join(f'<label for="u-{k}">{n}<span>{ug_n[k]}</span></label>' for k,n in UG if ug_n[k])
+UCSS = ''.join(f'#u-{k}:checked~.chips [for=u-{k}]{{background:var(--brass);color:#0e0b09;border-color:var(--brass)}}' for k,_ in UG) + \
+  ''.join(f'#u-{k}:checked~.uwrap .pick:not(.g-{k}){{display:none}}' for k,_ in UG if k!='all') + \
+  '.uni .chips{flex-wrap:wrap}#u-all:checked~.uwrap .p1{display:none}' + \
+  ''.join(f'#u-{k}:checked~.uwrap .feat' for k,_ in UG if k!='all').replace('.feat#','.feat,#') + '{display:none}' + \
+  '@media (min-width:760px){' + ''.join(f'#u-{k}:checked~.uwrap' for k,_ in UG if k!='all').replace('.uwrap#','.uwrap,#') + '{display:block}' + ''.join(f'#u-{k}:checked~.uwrap .grid' for k,_ in UG if k!='all').replace('.grid#','.grid,#') + '{grid-template-columns:repeat(4,1fr)}}'
+
 
 CSS = r"""
 :root{--bg:#0e0b09;--bg2:#17120e;--ink:#efe7da;--mute:#a3978a;--brass:#c3a165;--brass2:#e2c88f;--line:rgba(195,161,101,.22)}
@@ -145,10 +157,14 @@ section{margin-top:52px}
 .ar{grid-area:a;color:var(--brass);font-size:22px;transition:transform .3s}
 .row:hover .ar,.row:focus-visible .ar{transform:translateX(5px)}
 /* stage */
-.stage{margin-top:34px}
+.stage{margin:44px 0 0;border-top:1px solid var(--line);padding-top:28px}
+.stage figcaption{display:block}
+.stage .cap{display:block;font-size:10.5px;letter-spacing:.26em;text-transform:uppercase;color:var(--brass);margin-top:14px}
+.stage .st{display:block;font-size:34px;line-height:1.05;margin-top:6px;font-style:italic}
+.stage .sl{display:block;color:var(--mute);font-size:13.5px;margin-top:8px}
 .links{margin-top:40px;border-top:1px solid var(--line)}
 .stage img{display:block;width:100%;height:auto;aspect-ratio:1/1;object-fit:cover}
-.stage figcaption{margin-top:9px;font-family:"Cormorant Garamond",Garamond,serif;font-style:italic;font-size:16px;color:var(--mute)}
+
 /* vault */
 .vault{margin-top:64px;position:relative}
 .vk{display:flex;align-items:flex-end;justify-content:space-between;gap:12px}
@@ -222,7 +238,8 @@ footer .sig{font-family:"Cormorant Garamond",Garamond,serif;font-style:italic;fo
  .swipe{display:none}
  .vt{font-size:72px}.big{font-size:120px}
  .links{display:grid;grid-template-columns:1fr 1fr;column-gap:40px}
- .stage{display:grid;grid-template-columns:minmax(0,420px) 1fr;gap:28px;align-items:end}
+ .stage{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+ .stage .st{font-size:56px}
  .uwrap{display:grid;grid-template-columns:5fr 7fr;gap:36px;align-items:start}
  .feat{margin:22px 0 0;position:sticky;top:60px}
  .grid{grid-template-columns:repeat(2,1fr);gap:34px 22px}
@@ -264,7 +281,7 @@ page = f'''<!doctype html>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap">
 <link rel="preload" as="image" href="img/kyle-hero.webp">
-<style>{CSS}</style>
+<style>{CSS}{UCSS}</style>
 </head>
 <body>
 <nav class="ticker" aria-label="Crypto prices and today's markdowns">
@@ -280,7 +297,8 @@ page = f'''<!doctype html>
   </div>
 </header>
 <main>
-  <section class="links">{links_html}<figure class="stage"><img src="img/kyle-cis.webp" width="720" height="720" alt="Kyle White speaking on a panel at the Crypto Invest Summit" loading="lazy" decoding="async"><figcaption>On the panel at the Crypto Invest Summit.</figcaption></figure></section>
+  <section class="links">{links_html}</section>
+  <figure class="stage"><img src="img/kyle-cis.webp" width="720" height="720" alt="Kyle White speaking on a panel at the Crypto Invest Summit" loading="lazy" decoding="async"><figcaption><span class="cap">On stage</span><span class="st serif">Crypto Invest Summit</span><span class="sl">Panelist, Blockchain Technology Investing track.</span></figcaption></figure>
   <section class="vault" id="vault">
     <div class="vk"><h2 class="vt serif"><small>EREDO &times; SECONDO</small>The Vault</h2><p class="big" aria-label="up to 79 percent off">79<sup>%</sup></p></div>
     <p class="vsub">Zegna, Brioni, Tod&rsquo;s, Missoni. Real Italian houses at up to 79% off, every price checked {e(VERIFIED)}.</p>
@@ -291,8 +309,9 @@ page = f'''<!doctype html>
     {house_html}
   </section>
   <section class="uni">
-    <div class="sh"><h2 class="serif">The Uniform</h2><span class="cap">{len(picks)} pieces</span></div>
-    <p class="ulede">What I actually wear, week in, week out. Cashmere, merino, good leather. Mostly Italian.</p>
+    <div class="sh"><h2 class="vt serif"><small>Shop my wardrobe</small>The Uniform</h2></div>
+    <p class="ulede">The nine pieces I wear week in, week out. Cashmere, merino, good leather. Mostly Italian.</p>
+    {ug_inputs}<div class="chips" role="group" aria-label="Filter the wardrobe">{ug_chips}</div>
     <div class="uwrap">{feat_html}<div class="grid">{picks_html}</div></div>
   </section>
 </main>
