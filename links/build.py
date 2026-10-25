@@ -237,6 +237,52 @@ section{margin-top:52px}
 .po{font-size:10.5px;letter-spacing:.06em}
 footer{max-width:1080px;margin:0 auto;padding:28px 24px 48px;border-top:1px solid var(--line);color:var(--mute);font-size:12px;line-height:1.6}
 footer .sig{font-family:"Cormorant Garamond",Garamond,serif;font-style:italic;font-size:22px;color:var(--brass2);margin-bottom:8px}
+
+/* looks */
+.looks{margin-top:72px}
+.look{margin-top:26px;padding-top:22px;border-top:1px solid var(--line)}
+.look:first-of-type{border-top:0;padding-top:4px}
+.lno{font-size:10.5px;letter-spacing:.26em;text-transform:uppercase;color:var(--brass)}
+.lnm{font-size:36px;font-style:italic;font-weight:500;line-height:1;margin-top:6px}
+.ll{color:var(--mute);font-size:13.5px;margin-top:8px;max-width:42ch}
+.lpcs{display:grid;grid-auto-flow:column;grid-auto-columns:41%;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;margin:16px -24px 0;padding:0 24px 6px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.lpcs::-webkit-scrollbar{display:none}
+.lp{display:block;scroll-snap-align:start;min-width:0}
+.lp[hidden],.lbuy li[hidden],.look[hidden]{display:none}
+.lpi{display:block;aspect-ratio:4/5;background:#ece5d9;overflow:hidden}
+.lpi img{display:block;width:100%;height:100%;object-fit:cover;transition:transform 1.1s cubic-bezier(.2,.7,.2,1)}
+.lp:hover .lpi img{transform:scale(1.05)}
+.lpb{display:block;margin-top:9px;font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--brass)}
+.lpn{display:block;font-family:"Cormorant Garamond",Garamond,serif;font-size:18px;line-height:1.1;margin-top:3px}
+.lpp{display:block;margin-top:4px;font-size:13px;color:var(--ink);font-variant-numeric:tabular-nums}
+.lbuy{margin-top:16px}
+.lbuy summary{list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px;min-height:54px;padding:0 18px;background:var(--brass);color:#0e0b09;font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;font-weight:600;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.lbuy summary::-webkit-details-marker{display:none}
+.lbuy summary b{font-size:16px;letter-spacing:.02em;font-variant-numeric:tabular-nums}
+.lbuy[open] summary{background:var(--brass2)}
+.lbuy ol{list-style:none;margin:0;padding:0;border:1px solid var(--line);border-top:0}
+.lbuy li+li{border-top:1px solid var(--line)}
+.lbuy li a{display:grid;grid-template-columns:1fr auto;gap:3px 14px;align-items:baseline;padding:13px 18px;min-height:56px}
+.rb{font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--brass)}
+.rp{font-size:14px;font-variant-numeric:tabular-nums;text-align:right}
+.rn{font-family:"Cormorant Garamond",Garamond,serif;font-size:18px;line-height:1.1}
+.rs{font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--brass2);text-align:right}
+.ldrop{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.ldrop label[for]{flex-basis:100%;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--mute)}
+.ldrop input[type=email]{flex:1;min-width:0;height:48px;padding:0 14px;background:transparent;border:1px solid var(--line);border-radius:0;color:var(--ink);font-size:16px}
+.ldrop input[type=email]:focus{border-color:var(--brass);outline:none}
+.ldrop button{height:48px;padding:0 18px;background:transparent;border:1px solid var(--brass);color:var(--brass2);font-size:11px;letter-spacing:.2em;text-transform:uppercase;cursor:pointer}
+.ldrop [hidden]{display:none}
+.lok{flex-basis:100%;font-family:"Cormorant Garamond",Garamond,serif;font-style:italic;font-size:20px;color:var(--brass2)}
+.fimg{display:block;margin:-22px -20px 16px;aspect-ratio:4/3;overflow:hidden;background:#ece5d9}
+.fimg img{display:block;width:100%;height:100%;object-fit:cover;transition:transform 1.2s cubic-bezier(.2,.7,.2,1)}
+.fh:hover .fimg img{transform:scale(1.04)}
+#family-strip{max-width:1080px;margin:0 auto;color:var(--mute)}
+@media (min-width:760px){
+ .lpcs{grid-auto-flow:row;grid-template-columns:repeat(5,1fr);overflow:visible;margin:18px 0 0;padding:0}
+ .lbuy,.ldrop{max-width:560px}
+ .lnm{font-size:48px}
+}
 :focus-visible{outline:2px solid var(--brass);outline-offset:3px}
 @media (min-width:760px){
  .hero{display:grid;grid-template-columns:1fr 1fr;align-items:end;gap:40px;padding:48px 24px 0}
@@ -272,8 +318,72 @@ document.querySelectorAll('[data-cg]').forEach(function(a){var q=d[a.dataset.cg]
 a.querySelector('.pr').textContent=px(q.usd);var s=a.querySelector('.chg');s.textContent=(c>=0?'+':'\u2212')+Math.abs(c).toFixed(2)+'%';s.className='chg '+(c>=0?'up':'dn')})}).catch(function(){})}
 go();setInterval(go,60000)})();
 </script>'''
+
+_lsrc = open(os.path.join(D, 'data', 'looks.js')).read()
+LK = json.loads(_lsrc[_lsrc.index('{', _lsrc.index('KW_LOOKS')):].rstrip().rstrip(';'))
+def _live(k):
+    p = LK['LINKS'].get(k)
+    return bool(p and p.get('live', True) and p.get('url'))
+looks_html = ''
+_n = 0
+for lk in LK['LOOKS']:
+    keys = [k for k in lk['pieces'] if _live(k)]
+    if len(keys) < 2:
+        continue
+    _n += 1
+    P = LK['LINKS']
+    tot = sum(P[k]['price'] for k in keys)
+    pcs = ''.join(f"""<a class="lp" data-k="{e(k)}" href="{e(P[k]['url'])}" target="_blank" rel="sponsored noopener"><span class="lpi"><img src="{e(P[k]['img'])}" width="600" height="750" alt="{e(P[k]['brand'])} {e(P[k]['name'])}" loading="lazy" decoding="async"></span><span class="lpb">{e(P[k]['brand'])}</span><span class="lpn">{e(P[k]['name'])}</span><span class="lpp">{money(P[k]['price'])}</span></a>""" for k in keys)
+    rows = ''.join(f"""<li data-k="{e(k)}"><a href="{e(P[k]['url'])}" target="_blank" rel="sponsored noopener"><span class="rb">{e(P[k]['brand'])}</span><span class="rp">{money(P[k]['price'])}</span><span class="rn">{e(P[k]['name'])}</span><span class="rs">Shop &rarr;</span></a></li>""" for k in keys)
+    looks_html += f"""<article class="look" data-look="{e(lk['id'])}">
+  <p class="lno">Look N&deg;{_n:02d}</p><h3 class="lnm serif">{e(lk['name'])}</h3><p class="ll">{e(lk['line'])}</p>
+  <div class="lpcs">{pcs}</div>
+  <details class="lbuy"><summary><span>Shop the full look</span><b class="ltot">{money(tot)}</b></summary><ol>{rows}</ol></details>
+  <form class="ldrop" action="https://eredo.netlify.app/" method="POST"><input type="hidden" name="form-name" value="markdowns"><input type="hidden" name="look" value="kyle-{e(lk['id'])}"><p hidden><label>Leave empty <input name="bot-field"></label></p><label for="em-{e(lk['id'])}">Get this look when it drops</label><input id="em-{e(lk['id'])}" type="email" name="email" placeholder="Email address" autocomplete="email" required><button type="submit">Notify me</button><p class="lok" hidden>You&rsquo;re on the list.</p></form>
+</article>"""
+LOOKS_JS = r"""<script>
+(function(){
+var REMOTE='https://eredo-house-eredo.static.hf.space/looks.js';
+function money(v){return '$'+Math.round(v).toLocaleString('en-US')}
+function apply(D){
+  if(!D||!D.LINKS)return;
+  document.querySelectorAll('.look').forEach(function(el){
+    var n=0,t=0;
+    el.querySelectorAll('.lp').forEach(function(a){
+      var k=a.dataset.k,p=D.LINKS[k],row=el.querySelector('li[data-k="'+k+'"]');
+      var ok=p&&p.live!==false&&p.url&&!a.dataset.dead;
+      a.hidden=!ok;if(row)row.hidden=!ok;
+      if(!ok)return;
+      n++;t+=+p.price||0;
+      if(/^https:/.test(p.url)){a.href=p.url;if(row)row.querySelector('a').href=p.url}
+      if(p.price){a.querySelector('.lpp').textContent=money(p.price);if(row)row.querySelector('.rp').textContent=money(p.price)}
+    });
+    el.hidden=n<2;el.querySelector('.ltot').textContent=money(t);
+  });
+  var s=document.getElementById('looks');if(s)s.hidden=!document.querySelector('.look:not([hidden])');
+}
+var LOCAL=window.KW_LOOKS;
+document.querySelectorAll('.lp img').forEach(function(i){function dead(){i.closest('.lp').dataset.dead=1;apply(window.KW_LOOKS_MERGED||LOCAL)}
+  if(i.complete&&i.naturalWidth===0)dead();else i.addEventListener('error',dead)});
+apply(LOCAL);
+var s=document.createElement('script');s.src=REMOTE;s.async=true;
+s.onload=function(){var R=window.EREDO_LOOKS;if(!LOCAL||!R||typeof R.LINKS!=='object')return;
+  var M={LINKS:{},LOOKS:LOCAL.LOOKS};Object.keys(LOCAL.LINKS).forEach(function(k){var a=LOCAL.LINKS[k],b=R.LINKS[k];
+  M.LINKS[k]=b?{brand:a.brand,name:a.name,img:a.img,url:(b.url&&/^https:/.test(b.url))?b.url:a.url,price:+b.price||a.price,live:b.live!==false}:a});
+  window.KW_LOOKS_MERGED=M;apply(M)};
+document.head.appendChild(s);
+document.querySelectorAll('.ldrop').forEach(function(f){f.addEventListener('submit',function(ev){
+  if(!window.fetch)return;ev.preventDefault();var b=f.querySelector('button');b.disabled=true;
+  fetch(f.action,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(new FormData(f)).toString()})
+  .then(function(){f.querySelector('.lok').hidden=false;f.querySelector('input[type=email]').hidden=true;b.hidden=true;f.querySelector('label[for]').hidden=true})
+  .catch(function(){f.submit()})})});
+var fs=document.createElement('script');fs.src='https://eredo-house-eredo.static.hf.space/family.js';fs.async=true;
+fs.onerror=function(){var v=document.createElement('script');v.src='vendor/family.js';document.body.appendChild(v)};
+document.body.appendChild(fs);
+})();
+</script>"""
 houses_live = [h for h in L['houses'] if h.get('url')]
-fam_html = ''.join(f'''<a class="fh" href="{e(h['url'])}" target="_blank" rel="noopener"><span class="fno">N&deg;{i:02d}</span><span class="fk">{e(h['kind'])}</span><span class="fnm serif">{e(h['name'])}</span><span class="fl">{e(h['line'])}</span><span class="fe">Enter &rarr;</span></a>''' for i,h in enumerate(houses_live,1))
+fam_html = ''.join(f'''<a class="fh" href="{e(h['url'])}" target="_blank" rel="noopener">{('<span class="fimg"><img src="'+e(h['img'])+'" width="600" height="750" alt="'+e(h['name'])+'" loading="lazy" decoding="async"></span>') if h.get('img') else ''}<span class="fno">N&deg;{i:02d}</span><span class="fk">{e(h['kind'])}</span><span class="fnm serif">{e(h['name'])}</span><span class="fl">{e(h['line'])}</span><span class="fe">Enter &rarr;</span></a>''' for i,h in enumerate(houses_live,1))
 house_html = (f'''<a class="house" href="{e(house['url'])}" target="_blank" rel="noopener"><span><span class="hn">{e(house['name'])}</span><span class="hl">{e(house['line'])}</span><span class="hc">Enter the full shop &rarr;</span></span><img src="{e(house['img'])}" width="112" height="140" alt="" loading="lazy"></a>''' if house else '')
 page = f'''<!doctype html>
 <html lang="en">
@@ -312,6 +422,11 @@ page = f'''<!doctype html>
 <main>
   <section class="links">{links_html}</section>
   <figure class="stage"><img src="img/kyle-cis.webp" width="720" height="720" alt="Kyle White speaking on a panel at the Crypto Invest Summit" loading="lazy" decoding="async"><figcaption><span class="cap">On stage</span><span class="st serif">Crypto Invest Summit</span><span class="sl">Panelist, Blockchain Technology Investing track.</span></figcaption></figure>
+  <section class="looks" id="looks">
+    <div class="sh"><h2 class="vt serif"><small>Shop my outfits</small>The Looks</h2></div>
+    <p class="ulede">How I actually wear it. Tap any piece, or shop the whole look.</p>
+    {looks_html}
+  </section>
   <section class="vault" id="vault">
     <div class="vk"><h2 class="vt serif"><small>EREDO &times; SECONDO</small>The Vault</h2><p class="big" aria-label="up to 79 percent off">79<sup>%</sup></p></div>
     <p class="vsub">Zegna, Brioni, Tod&rsquo;s, Missoni. Real Italian houses at up to 79% off, every price checked {e(VERIFIED)}.</p>
@@ -337,6 +452,9 @@ page = f'''<!doctype html>
   <p class="sig">Grazie for stopping by.</p>
   <p>Some links on this page are affiliate links. If you buy through them I may earn a commission, at no extra cost to you. Prices as listed by each store on Oct 24, 2026.</p>
 </footer>
+<div id="family-strip"></div>
+<script src="data/looks.js"></script>
+{LOOKS_JS}
 {JS}
 </body>
 </html>
@@ -346,7 +464,7 @@ def _v(m):
     p = os.path.join(D, m.group(1))
     h = hashlib.md5(open(p, 'rb').read()).hexdigest()[:8] if os.path.exists(p) else ''
     return f'src="{m.group(1)}?v={h}"' if h else m.group(0)
-page = re.sub(r'src="(img/[^"?]+)"', _v, page)
+page = re.sub(r'src="((?:img|data|vendor)/[^"?]+)"', _v, page)
 page = re.sub(r'href="(img/[^"?]+)"', lambda m: 'href=' + _v(m)[4:], page)
 open(os.path.join(D, 'index.html'), 'w').write(page)
 print('built', len(page), 'bytes;', len(ticker), 'ticker items;', len(picks), 'picks')
