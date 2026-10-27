@@ -7,22 +7,16 @@
    "url": "https://www.linkedin.com/in/kylewhitepr/"
   },
   {
-   "id": "x",
-   "label": "X",
-   "sub": "@theDeFiDon",
-   "url": "https://x.com/theDeFiDon"
-  },
-  {
-   "id": "instagram",
-   "label": "Instagram",
-   "sub": "@thedefidon",
-   "url": "https://www.instagram.com/thedefidon/"
-  },
-  {
    "id": "site",
    "label": "Kyle White, VC",
-   "sub": "Track record and the fund",
+   "sub": "Track record and background",
    "url": "https://kylewhitevc.github.io/"
+  },
+  {
+   "id": "speaking",
+   "label": "Speaking",
+   "sub": "Talks, panels and podcasts",
+   "url": "https://kylewhitevc.github.io/#speaking"
   },
   {
    "id": "cointelegraph",
@@ -37,80 +31,23 @@
    "url": "https://muckrack.com/kyle-white-crypto"
   }
  ],
- "houses": [
-  {
-   "id": "eredo",
-   "name": "EREDO",
-   "kind": "Italian menswear",
-   "line": "The great Italian houses at their biggest markdowns, up to 79% off.",
-   "url": "https://eredo-house-eredo.static.hf.space/",
-   "img": "img/house-eredo.webp"
-  },
-  {
-   "id": "tenor",
-   "name": "EREDO TENOR",
-   "kind": "Top-tier menswear",
-   "line": "The finest makers, found at steal prices.",
-   "url": "https://eredo-house-tenor.static.hf.space/",
-   "img": "img/house-tenor.webp"
-  },
-  {
-   "id": "gantry",
-   "name": "GANTRY",
-   "kind": "American workwear",
-   "line": "Workwear made in America, built to last decades.",
-   "url": "https://eredo-house-gantry.static.hf.space/",
-   "img": "img/house-gantry.webp"
-  },
-  {
-   "id": "palio",
-   "name": "PALIO",
-   "kind": "Ohio game day",
-   "line": "Browns, Steelers and Buckeyes gear, from $25.",
-   "url": "https://eredo-house-gameday.static.hf.space/",
-   "img": "img/house-palio.webp"
-  },
-  {
-   "id": "scatto",
-   "name": "SCATTO",
-   "kind": "Menswear on sale",
-   "line": "Well-made menswear on sale, $39 to $95.",
-   "url": "https://eredo-house-scatto.static.hf.space/",
-   "img": "img/house-scatto.webp"
-  },
-  {
-   "id": "luce",
-   "name": "LUCE",
-   "kind": "Lab-grown diamonds",
-   "line": "Custom lab-grown diamonds, made to order.",
-   "url": "https://eredo-house-luce.static.hf.space/",
-   "img": "img/house-luce.webp"
-  },
-  {
-   "id": "tuta",
-   "name": "TUTA",
-   "kind": "Italian tracksuits",
-   "line": "Full Italian tracksuits on sale.",
-   "url": "https://eredo-house-tuta.static.hf.space/?utm_source=kwlinks&utm_medium=xlink&utm_campaign=kwlinks-tuta-card",
-   "img": "img/house-tuta.webp"
-  }
- ],
+ "houses": [],
  "stats": [
   {
-   "n": "18K+",
-   "l": "Followers"
+   "n": "15K",
+   "l": "LinkedIn followers"
   },
   {
-   "n": "55+",
-   "l": "Cointelegraph bylines"
+   "n": "60",
+   "l": "Investments"
   },
   {
-   "n": "50+",
-   "l": "Startups accelerated"
+   "n": "$125M",
+   "l": "Follow-on funding"
   },
   {
-   "n": "$125M+",
-   "l": "Follow-on raised"
+   "n": "70",
+   "l": "VC partners"
   }
  ]
 }
