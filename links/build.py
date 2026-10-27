@@ -502,7 +502,6 @@ page = f'''<!doctype html>
 <footer>
   <p class="sig">Grazie for stopping by.</p>
 </footer>
-{JS}
 {TRACK_JS}
 </body>
 </html>
