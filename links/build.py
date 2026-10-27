@@ -431,6 +431,20 @@ fs.onerror=function(){var v=document.createElement('script');v.src='vendor/famil
 document.body.appendChild(fs);
 })();
 </script>"""
+GC_HEAD = r'''<!-- Analytics Desk: GoatCounter (installed 2026-10-26) -->
+<script>
+window.goatcounter = {path: function(p){ return '/links' + p }};
+document.addEventListener('click', function(e){
+  var a = e.target.closest && e.target.closest('a[href]'); if(!a || !window.goatcounter.count) return;
+  var h = a.hostname, ev = null;
+  if (/sponsored|affiliate/.test(a.rel) || a.hasAttribute('data-aff')) ev = 'out/links/aff/' + h;
+  else if (/calendar\.app\.google|calendly|cal\.com|booking|book/i.test(a.href)) ev = 'out/links/book/' + h;
+  else if (/^mailto:/.test(a.href)) ev = 'out/links/mail';
+  else if (h && h !== location.hostname) ev = 'out/links/link/' + h;
+  if (ev) window.goatcounter.count({path: ev, title: (a.textContent||'').trim().slice(0,60), event: true});
+});
+</script>
+<script data-goatcounter="https://kylewhitevc.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>'''
 TRACK_JS = r'''<script>
 (function(){var A='https://abacus.jasoncameron.dev/hit/kwlinks/';function hit(k){try{fetch(A+k,{mode:'no-cors',keepalive:true})}catch(e){}}
 document.addEventListener('click',function(ev){var a=ev.target.closest&&ev.target.closest('a[rel~="sponsored"]');if(!a)return;
@@ -465,6 +479,7 @@ page = f'''<!doctype html>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap">
 <link rel="preload" as="image" href="img/kyle-hero.webp">
 <style>{CSS}{UCSS}</style>
+{GC_HEAD}
 </head>
 <body>
 <nav class="ticker" aria-label="Crypto prices (tap to open an account) and today's markdowns">
