@@ -247,6 +247,7 @@ section{margin-top:52px}
 .po{font-size:10.5px;letter-spacing:.06em}
 footer{max-width:1080px;margin:0 auto;padding:28px 24px 48px;border-top:1px solid var(--line);color:var(--mute);font-size:12px;line-height:1.6}
 .presby{max-width:1080px;margin:0 auto;padding:9px 24px;display:flex;gap:10px;align-items:baseline;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--mute);border-bottom:1px solid var(--line)}.presby a{color:var(--brass);text-decoration:none}.presby a:hover{color:var(--brass2)}
+.fdisc{margin-top:14px;font-size:11.5px;color:var(--mute);line-height:1.5}
 footer .spon{margin:0 0 12px}footer .spon a{color:var(--brass);font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:2px}footer .spon a:hover{color:var(--brass2);border-color:var(--brass)}
 footer .sig{font-family:"Cormorant Garamond",Garamond,serif;font-style:italic;font-size:22px;color:var(--brass2);margin-bottom:8px}
 
@@ -510,6 +511,7 @@ page = f'''<!doctype html>
     <div class="sh"><h2 class="vt serif"><small>The family</small>The Houses</h2></div>
     <p class="ulede">Each one its own shop, each with a single focus.</p>
     <div class="fgrid">{fam_html}</div>
+    <p class="fdisc">The houses link to stores that may pay me a commission when you buy, at no extra cost to you.</p>
   </section>
 </main>
 <footer>
