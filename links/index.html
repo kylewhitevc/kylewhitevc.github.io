@@ -286,14 +286,6 @@ document.addEventListener('click', function(e){
   <p class="sig">Grazie for stopping by.</p>
 </footer>
 <script>
-(function(){var ids=[].slice.call(document.querySelectorAll('[data-cg]')).map(function(a){return a.dataset.cg}).filter(function(v,i,a){return a.indexOf(v)===i});
-function px(v){return v>=1000?'$'+Math.round(v).toLocaleString('en-US'):v>=1?'$'+v.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2}):'$'+v.toFixed(4)}
-function go(){fetch('https://api.coingecko.com/api/v3/simple/price?vs_currencies=usd&include_24hr_change=true&ids='+ids.join(',')).then(function(r){return r.json()}).then(function(d){
-document.querySelectorAll('[data-cg]').forEach(function(a){var q=d[a.dataset.cg];if(!q||q.usd==null)return;var c=q.usd_24h_change||0;
-a.querySelector('.pr').textContent=px(q.usd);var s=a.querySelector('.chg');s.textContent=(c>=0?'+':'\u2212')+Math.abs(c).toFixed(2)+'%';s.className='chg '+(c>=0?'up':'dn')})}).catch(function(){})}
-go();setInterval(go,60000)})();
-</script>
-<script>
 (function(){var A='https://abacus.jasoncameron.dev/hit/kwlinks/';function hit(k){try{fetch(A+k,{mode:'no-cors',keepalive:true})}catch(e){}}
 document.addEventListener('click',function(ev){var a=ev.target.closest&&ev.target.closest('a[rel~="sponsored"]');if(!a)return;
 var z=a.closest('.look')?'outfit':a.closest('.ticker')?'ticker':a.closest('.cta')?'broker':'other';hit('out-total');hit('out-'+z)},true)})();
