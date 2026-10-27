@@ -464,11 +464,11 @@ page = f'''<!doctype html>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Kyle White</title>
-<meta name="description" content="Kyle White: accelerator builder and venture investor from Youngstown, Ohio. LinkedIn, my site, and the Italian menswear I wear.">
+<meta name="description" content="Kyle White: accelerator builder and venture investor from Youngstown, Ohio.">
 <link rel="canonical" href="https://kylewhitevc.github.io/links/">
 <meta property="og:type" content="profile">
 <meta property="og:title" content="Kyle White">
-<meta property="og:description" content="Accelerator builder, venture investor, and the menswear I actually wear.">
+<meta property="og:description" content="Accelerator builder and venture investor from Youngstown, Ohio.">
 <meta property="og:image" content="https://kylewhitevc.github.io/links/img/kyle-og.jpg">
 <meta property="og:url" content="https://kylewhitevc.github.io/links/">
 <meta name="twitter:card" content="summary">
@@ -485,17 +485,12 @@ page = f'''<!doctype html>
 {GC_HEAD}
 </head>
 <body>
-<nav class="ticker" aria-label="Crypto prices (tap to open an account) and today's markdowns">
-  <div class="track"><div style="display:flex">{tick_items()}</div><div class="dup" style="display:flex">{tick_items(True)}</div></div>
-</nav>
-{cta_html}
-<p class="presby"><span>Presented by</span><a href="mailto:kylecapital330@gmail.com?subject=Presenting%20Kyle%20White">This spot is open</a></p>
 <header class="hero">
   <figure><img src="img/kyle-hero.webp" width="752" height="940" alt="Kyle White" fetchpriority="high"></figure>
   <div class="intro">
     <p class="cap rise">Youngstown, Ohio</p>
     <h1 class="serif rise d2">Kyle <i>White</i></h1>
-    <p class="lede serif rise d3">I build accelerators and back founders. Off the clock, it&rsquo;s Italian cashmere and good leather.</p>
+    <p class="lede serif rise d3">I build accelerators and investor programs from zero, and I back the builders of American industry.</p>
     <p class="facts rise d3">Built the Cointelegraph accelerator: 60 investments across four cohorts, $125M in follow-on funding. Techstars All-Star Mentor.</p>
   </div>
 </header>
@@ -503,25 +498,10 @@ page = f'''<!doctype html>
   <div class="stats" aria-label="Reach and track record">{stats_html}</div>
   <section class="links">{links_html}</section>
   <figure class="stage"><img src="img/kyle-cis.webp" width="720" height="720" alt="Kyle White speaking on a panel at the Crypto Invest Summit" loading="lazy" decoding="async"><figcaption><span class="cap">On stage</span><span class="st serif">Crypto Invest Summit</span><span class="sl">Panelist, Blockchain Technology Investing track.</span></figcaption></figure>
-  <section class="looks" id="looks">
-    <div class="sh"><h2 class="vt serif"><small>Shop the look</small>The Outfit</h2></div>
-    {looks_html}
-  </section>
-  <section class="fam" id="houses">
-    <div class="sh"><h2 class="vt serif"><small>The family</small>The Houses</h2></div>
-    <p class="ulede">Each one its own shop, each with a single focus.</p>
-    <div class="fgrid">{fam_html}</div>
-    <p class="fdisc">The houses link to stores that may pay me a commission when you buy, at no extra cost to you.</p>
-  </section>
 </main>
 <footer>
   <p class="sig">Grazie for stopping by.</p>
-  <p class="spon"><a href="mailto:kylecapital330@gmail.com?subject=Sponsoring%20Kyle%20White">Sponsor this page &rarr;</a></p>
-  <p>Some links on this page are affiliate links. If you buy through them I may earn a commission, at no extra cost to you. Prices as listed by each store on Oct 25, 2026.</p>
 </footer>
-<div id="family-strip"></div>
-<script src="data/looks.js"></script>
-{LOOKS_JS}
 {JS}
 {TRACK_JS}
 </body>
