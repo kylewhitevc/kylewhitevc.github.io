@@ -108,18 +108,6 @@ var SHORT_BIO = "Kyle White is a Youngstown-based venture investor and accelerat
     });
   });
 
-  var fBtns = [].slice.call(document.querySelectorAll(".x-filter button"));
-  var score = document.getElementById("score");
-  var cards = [].slice.call(score.querySelectorAll(".call"));
-  fBtns.forEach(function (b) {
-    b.addEventListener("click", function () {
-      var f = b.dataset.f;
-      fBtns.forEach(function (o) { o.setAttribute("aria-pressed", o === b ? "true" : "false"); });
-      cards.forEach(function (c) { c.hidden = !(f === "all" || c.dataset.asset === f); });
-      score.scrollLeft = 0;
-    });
-  });
-
   function copy(text, btn) {
     if (!btn.dataset.label) btn.dataset.label = btn.textContent;
     var t = document.createElement("textarea");
@@ -195,43 +183,4 @@ var SHORT_BIO = "Kyle White is a Youngstown-based venture investor and accelerat
   window.addEventListener("resize", function () { if (window.innerWidth > 640) setNav(false); });
 })();
 
-(function () {
-  if (!window.fetch) return;
-  function run() {
-  var ctl = window.AbortController ? new AbortController() : null;
-  var timer = setTimeout(function () { if (ctl) ctl.abort(); }, 4000);
-  fetch("https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd", ctl ? { signal: ctl.signal } : {})
-    .finally(function () { clearTimeout(timer); })
-    .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
-    .then(function (j) {
-      var px = j && j.bitcoin && +j.bitcoin.usd;
-      if (!px || !isFinite(px)) return;
-      var asof = "as of " + new Date().toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
-      document.querySelectorAll('.call[data-asset="btc"]').forEach(function (card) {
-        var cv = card.querySelector("canvas[data-call]"), c = cv && CHART_DATA.calls[cv.dataset.call];
-        if (!c) return;
-        c.now = Math.round(px);
-        var gain = Math.round((px / c.then - 1) * 100);
-        var now = card.querySelector('[data-btc="now"]'), pct = card.querySelector('[data-btc="pct"]'), when = card.querySelector('[data-btc="asof"]');
-        if (now) now.textContent = "$" + Math.round(px).toLocaleString("en-US");
-        if (pct) pct.textContent = (gain >= 0 ? "+" : "") + gain + "%";
-        if (when) when.textContent = asof;
-        var ch = window.Chart && Chart.getChart && Chart.getChart(cv);
-        if (ch) { ch.data.datasets[0].data[1] = c.now; ch.update("none"); }
-      });
-    })
-    .catch(function () {});
-  }
 
-  var started = false;
-  function start() { if (started) return; started = true; setTimeout(run, 0); }
-  var score = document.getElementById("score");
-  function watch() {
-    if (!score || !("IntersectionObserver" in window)) return setTimeout(start, 3000);
-    var io = new IntersectionObserver(function (es) {
-      if (es[0].isIntersecting) { io.disconnect(); start(); }
-    }, { rootMargin: "400px 0px" });
-    io.observe(score);
-  }
-  watch();
-})();
