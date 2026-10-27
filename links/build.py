@@ -53,7 +53,8 @@ _rsrc = open(os.path.join(D, 'links.js')).read()
 REF = json.loads(_rsrc[_rsrc.index('{', _rsrc.index('KW_REF')):].rstrip().rstrip(';'))
 def ref_href(broker):
     b = REF['brokers'][broker]
-    return b.get('ref') or b['url']
+    u = b.get('ref') or b['url']
+    return u + ('&' if '?' in u else '?') + 'utm_source=kylelinks&utm_medium=link&utm_campaign=finref-202610&utm_content=' + broker
 def coin_broker(cid):
     return REF.get('coins', {}).get(cid, REF['default'])
 
@@ -245,6 +246,7 @@ section{margin-top:52px}
 .pp{color:var(--ink);font-size:14px;font-variant-numeric:tabular-nums}
 .po{font-size:10.5px;letter-spacing:.06em}
 footer{max-width:1080px;margin:0 auto;padding:28px 24px 48px;border-top:1px solid var(--line);color:var(--mute);font-size:12px;line-height:1.6}
+.presby{max-width:1080px;margin:0 auto;padding:9px 24px;display:flex;gap:10px;align-items:baseline;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--mute);border-bottom:1px solid var(--line)}.presby a{color:var(--brass);text-decoration:none}.presby a:hover{color:var(--brass2)}
 footer .spon{margin:0 0 12px}footer .spon a{color:var(--brass);font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:2px}footer .spon a:hover{color:var(--brass2);border-color:var(--brass)}
 footer .sig{font-family:"Cormorant Garamond",Garamond,serif;font-style:italic;font-size:22px;color:var(--brass2);margin-bottom:8px}
 
@@ -486,6 +488,7 @@ page = f'''<!doctype html>
   <div class="track"><div style="display:flex">{tick_items()}</div><div class="dup" style="display:flex">{tick_items(True)}</div></div>
 </nav>
 {cta_html}
+<p class="presby"><span>Presented by</span><a href="mailto:kylecapital330@gmail.com?subject=Presenting%20Kyle%20White">This spot is open</a></p>
 <header class="hero">
   <figure><img src="img/kyle-hero.webp" width="752" height="940" alt="Kyle White" fetchpriority="high"></figure>
   <div class="intro">
