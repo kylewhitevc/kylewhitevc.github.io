@@ -245,6 +245,20 @@ footer .sig{font-family:"Cormorant Garamond",Garamond,serif;font-style:italic;fo
  .track .dup{display:none}
 }
 #u-all:checked~.chips [for=u-all]{background:var(--brass);color:#0e0b09;border-color:var(--brass)}#u-tailoring:checked~.chips [for=u-tailoring]{background:var(--brass);color:#0e0b09;border-color:var(--brass)}#u-knitwear:checked~.chips [for=u-knitwear]{background:var(--brass);color:#0e0b09;border-color:var(--brass)}#u-shoes:checked~.chips [for=u-shoes]{background:var(--brass);color:#0e0b09;border-color:var(--brass)}#u-accessories:checked~.chips [for=u-accessories]{background:var(--brass);color:#0e0b09;border-color:var(--brass)}#u-tailoring:checked~.uwrap .pick:not(.g-tailoring){display:none}#u-knitwear:checked~.uwrap .pick:not(.g-knitwear){display:none}#u-shoes:checked~.uwrap .pick:not(.g-shoes){display:none}#u-accessories:checked~.uwrap .pick:not(.g-accessories){display:none}.uni .chips{flex-wrap:wrap}#u-all:checked~.uwrap .p1{display:none}#u-tailoring:checked~.uwrap .feat,#u-knitwear:checked~.uwrap .feat,#u-shoes:checked~.uwrap .feat,#u-accessories:checked~.uwrap .feat{display:none}@media (min-width:760px){#u-tailoring:checked~.uwrap,#u-knitwear:checked~.uwrap,#u-shoes:checked~.uwrap,#u-accessories:checked~.uwrap{display:block}#u-tailoring:checked~.uwrap .grid,#u-knitwear:checked~.uwrap .grid,#u-shoes:checked~.uwrap .grid,#u-accessories:checked~.uwrap .grid{grid-template-columns:repeat(4,1fr)}}</style>
+<!-- Analytics Desk: GoatCounter (installed 2026-10-26) -->
+<script>
+window.goatcounter = {path: function(p){ return '/links' + p }};
+document.addEventListener('click', function(e){
+  var a = e.target.closest && e.target.closest('a[href]'); if(!a || !window.goatcounter.count) return;
+  var h = a.hostname, ev = null;
+  if (/sponsored|affiliate/.test(a.rel) || a.hasAttribute('data-aff')) ev = 'out/links/aff/' + h;
+  else if (/calendar\.app\.google|calendly|cal\.com|booking|book/i.test(a.href)) ev = 'out/links/book/' + h;
+  else if (/^mailto:/.test(a.href)) ev = 'out/links/mail';
+  else if (h && h !== location.hostname) ev = 'out/links/link/' + h;
+  if (ev) window.goatcounter.count({path: ev, title: (a.textContent||'').trim().slice(0,60), event: true});
+});
+</script>
+<script data-goatcounter="https://kylewhitevc.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </head>
 <body>
 <nav class="ticker" aria-label="Crypto prices (tap to open an account) and today's markdowns">
